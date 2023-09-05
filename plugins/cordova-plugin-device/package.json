@@ -1,27 +1,27 @@
 {
-  "_from": "cordova-plugin-device@^2.0.2",
+  "_from": "cordova-plugin-device@2.1.0",
   "_id": "cordova-plugin-device@2.1.0",
   "_inBundle": false,
   "_integrity": "sha512-FU0Lw1jZpuKOgG4v80LrfMAOIMCGfAVPumn7AwaX9S1iU/X3OPZUyoKUgP09q4bxL35IeNPkqNWVKYduAXZ1sg==",
   "_location": "/cordova-plugin-device",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-device@^2.0.2",
+    "raw": "cordova-plugin-device@2.1.0",
     "name": "cordova-plugin-device",
     "escapedName": "cordova-plugin-device",
-    "rawSpec": "^2.0.2",
+    "rawSpec": "2.1.0",
     "saveSpec": null,
-    "fetchSpec": "^2.0.2"
+    "fetchSpec": "2.1.0"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-device/-/cordova-plugin-device-2.1.0.tgz",
   "_shasum": "ef2292c2f0a34d01b5aca6c39cf204e48a460fb2",
-  "_spec": "cordova-plugin-device@^2.0.2",
-  "_where": "/Users/mac-artnew/Documents/Gustavo Teles/projetos/saude-te-chama/saudetechama-app",
+  "_spec": "cordova-plugin-device@2.1.0",
+  "_where": "C:\\Users\\Gustavo\\Documents\\projetos\\free-lancer\\stc-app",
   "author": {
     "name": "Apache Software Foundation"
   },

@@ -17592,7 +17592,7 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
             var prototypeDesc = ObjectGetOwnPropertyDescriptor(prototype, name);
 
             if (!isPropertyWritable(prototypeDesc)) {
-              return "continue";
+              return 1; // continue
             }
 
             prototype[name] = function (delegate) {
@@ -17607,9 +17607,7 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
         };
 
         for (var i = 0; i < fnNames.length; i++) {
-          var _ret = _loop3();
-
-          if (_ret === "continue") continue;
+          if (_loop3()) continue;
         }
       }
 
@@ -20241,7 +20239,7 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
   },
 
   /***/
-  1:
+  2:
   /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
     !*** multi ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js zone.js/dist/zone-legacy ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js ./src/polyfills.ts ***!
     \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -20251,7 +20249,7 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! /Users/junior-crefisa/Documents/Pessoal/projetos/saudetechama-app/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js */
+    /*! C:\Users\Gustavo\Documents\projetos\free-lancer\stc-app\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
 
     __webpack_require__(
@@ -20259,17 +20257,17 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
     "./node_modules/zone.js/dist/zone-legacy.js");
 
     __webpack_require__(
-    /*! /Users/junior-crefisa/Documents/Pessoal/projetos/saudetechama-app/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */
+    /*! C:\Users\Gustavo\Documents\projetos\free-lancer\stc-app\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
     __webpack_require__(
-    /*! /Users/junior-crefisa/Documents/Pessoal/projetos/saudetechama-app/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js */
+    /*! C:\Users\Gustavo\Documents\projetos\free-lancer\stc-app\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-jit-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js");
 
     module.exports = __webpack_require__(
-    /*! /Users/junior-crefisa/Documents/Pessoal/projetos/saudetechama-app/src/polyfills.ts */
+    /*! C:\Users\Gustavo\Documents\projetos\free-lancer\stc-app\src\polyfills.ts */
     "./src/polyfills.ts");
     /***/
   }
-}, [[1, "runtime"]]]);
+}, [[2, "runtime"]]]);
 //# sourceMappingURL=polyfills-es5.js.map

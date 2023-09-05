@@ -1,27 +1,27 @@
 {
-  "_from": "cordova-plugin-splashscreen@^5.0.2",
-  "_id": "cordova-plugin-splashscreen@5.0.4",
+  "_from": "cordova-plugin-splashscreen@6.0.2",
+  "_id": "cordova-plugin-splashscreen@6.0.2",
   "_inBundle": false,
-  "_integrity": "sha512-zmyhBrObNuwDH4KB4zuZrJ9IKC113EM6KJpqC0/2f3o9GRznPk1S4j9O9rosJT4EASg4X3hdssv9XkAH3D5ZYg==",
+  "_integrity": "sha512-7JiUfnInir+SCOEgTJ+5/cHF3UFl69jp6cAQfHtJaaQt9Pli8D8yTJjU0HGlJCvryvsVs4Xlc7/sEJM7vLJgvg==",
   "_location": "/cordova-plugin-splashscreen",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-splashscreen@^5.0.2",
+    "raw": "cordova-plugin-splashscreen@6.0.2",
     "name": "cordova-plugin-splashscreen",
     "escapedName": "cordova-plugin-splashscreen",
-    "rawSpec": "^5.0.2",
+    "rawSpec": "6.0.2",
     "saveSpec": null,
-    "fetchSpec": "^5.0.2"
+    "fetchSpec": "6.0.2"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-5.0.4.tgz",
-  "_shasum": "1bb6fc2d0d5a55cb987e35af554a2693f80abc39",
-  "_spec": "cordova-plugin-splashscreen@^5.0.2",
-  "_where": "/Users/mac-artnew/Documents/Gustavo Teles/projetos/saude-te-chama/saudetechama-app",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-6.0.2.tgz",
+  "_shasum": "2151ee7256fbd64f07a84951854687855c56856f",
+  "_spec": "cordova-plugin-splashscreen@6.0.2",
+  "_where": "C:\\Users\\Gustavo\\Documents\\projetos\\free-lancer\\stc-app",
   "author": {
     "name": "Apache Software Foundation"
   },
@@ -33,8 +33,6 @@
     "id": "cordova-plugin-splashscreen",
     "platforms": [
       "android",
-      "ubuntu",
-      "ios",
       "windows",
       "browser"
     ]
@@ -42,25 +40,25 @@
   "deprecated": false,
   "description": "Cordova Splashscreen Plugin",
   "devDependencies": {
-    "jshint": "^2.6.0"
+    "@cordova/eslint-config": "^3.0.0"
   },
   "engines": {
     "cordovaDependencies": {
       "2.0.0": {
         "cordova-android": ">=3.6.0"
       },
-      "4.0.0": {
-        "cordova-android": ">=3.6.0",
+      "6.0.2": {
+        "cordova-android": ">=3.6.0 <11.0.0",
         "cordova-windows": ">=4.4.0"
       },
-      "6.0.0": {
+      "7.0.0": {
         "cordova": ">100"
       },
-      "<6.0.0": {
-        "cordova-ios": "<6.0.0"
+      ">=4.0.0": {
+        "cordova-android": ">=3.6.0",
+        "cordova-windows": ">=4.4.0"
       }
-    },
-    "node": ">=6.0.0"
+    }
   },
   "homepage": "https://github.com/apache/cordova-plugin-splashscreen#readme",
   "keywords": [
@@ -68,8 +66,8 @@
     "splashscreen",
     "ecosystem:cordova",
     "cordova-android",
-    "cordova-ios",
-    "cordova-windows"
+    "cordova-windows",
+    "cordova-browser"
   ],
   "license": "Apache-2.0",
   "name": "cordova-plugin-splashscreen",
@@ -78,9 +76,9 @@
     "url": "git+https://github.com/apache/cordova-plugin-splashscreen.git"
   },
   "scripts": {
-    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
-    "test": "npm run jshint"
+    "lint": "eslint .",
+    "test": "npm run lint"
   },
   "types": "./types/index.d.ts",
-  "version": "5.0.4"
+  "version": "6.0.2"
 }
