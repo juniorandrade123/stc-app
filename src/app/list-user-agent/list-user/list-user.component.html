@@ -1,0 +1,76 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" name="arrow-back-outline" [routerLink]="['/agent']">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Meus Pacientes</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-4 mr-auto ml-auto mt-4 text-center filter">
+      <div class="row" (click)="presentModal()">
+        <div class="col-8 filter-text">
+          <span>Filtrar</span>
+          <span class="filter-applied" *ngIf="isFilterActive"></span>
+        </div>
+        <div class="col-3 text-right filter-text">
+          <ion-icon class="filter-icon" name="funnel"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mr-auto ml-auto mt-4 text-center filter">
+      <div class="row" (click)="userAddModal()">
+        <div class="col-8 filter-text">
+          Novo
+        </div>
+        <div class="col-3 text-right filter-text">
+          <ion-icon class="filter-icon" name="add-circle"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-11 mr-auto ml-auto mt-4" *ngIf="holders.length === 0">
+      <ion-card class="card p-2 noneholder">
+        <ion-card-content>
+          <div class="row p-0 text-center">
+            <div class="col-12">Nenhum paciente vinculado</div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="col-10 mr-auto ml-auto mt-4" *ngFor="let item of holders">
+      <ion-card class="card p-2">
+        <ion-card-header>
+          <ion-card-title class="title">PACIENTE</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="row p-0" (click)="viewUser(item)">
+            <div class="col-7"><b>Nome: </b> {{item.patient.name}}</div>
+            <div class="col-5 text-right"><b>Idade: </b> {{item.age}}</div>
+            <div class="col-12">
+              <b>CPF: </b> {{item.patient.cpf | mask: '000.000.000-00'}}
+            </div>
+            <div class="col-12" *ngIf="item.nextConsulting !== null">
+              <b>Próxima Consulta: </b> {{item.nextConsulting | date:'dd/MM/yyyy'}}
+            </div>
+            <div class="col-12" *ngIf="item.nextConsulting === null">
+              <b>Próxima Consulta: </b> <br> Nenhuma consulta encontrada
+            </div>
+          </div>
+          <div class="row p-0">
+            <div class="col-12 mt-4">
+              <div class="btn-cancel" (click)="removePatientConfirm(item)">
+                Remover
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="row" [formGroup]="form">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" name="arrow-back-outline" (click)="dismiss()">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Filtrar</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-10 mr-auto ml-auto mt-4">
+      <div class="col-12 mt-3">
+        <label class="label-first-second">CPF</label><br>
+        <ion-input formControlName="cpf" class="input-border" placeholder="000.000.000-00" type="text"
+          [brmasker]="{person: true}">
+        </ion-input>
+      </div>
+      <div class="col-12 mt-4">
+        <label class="label-first-second">Data de nascimento</label><br>
+        <ion-datetime displayFormat="DD/MM/YYYY" placeholder="00/00/0000" formControlName="birthDate"
+          class="input-border" display-timezone="utc"
+          monthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez" done-text="confirmar"
+          cancel-text="cancelar"></ion-datetime>
+      </div>
+      <div class="row mt-4">
+        <div class="col-6">
+          <div class="btn-back" (click)="cleanFilter()">Limpar Filtro</div>
+        </div>
+        <div class="col-6">
+          <div class="btn-login" (click)="applyFilter()">Aplicar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

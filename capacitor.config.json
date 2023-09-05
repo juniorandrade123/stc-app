@@ -1,0 +1,16 @@
+{
+  "appId": "com.triasoftware.saudetechama",
+  "appName": "Saúde te Chama",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    },
+    "PushNotification": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  },
+  "cordova": {}
+}

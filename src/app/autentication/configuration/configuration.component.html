@@ -1,0 +1,53 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" name="arrow-back-outline" routerLink="/">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Configurações</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-10 ml-auto mr-auto mt-5">
+      <ion-card class="card">
+        <ion-card-header class="pl-2 pt-3 pr-2">
+          <ion-card-title *ngIf="dependent === null ? true : false" class="title">{{user.user}}</ion-card-title>          
+          <ion-card-title *ngIf="dependent !== null ? true : false" class="title">{{dependent?.patient?.name}}</ion-card-title>          
+        </ion-card-header>
+        <hr>
+        <ion-card-content class="pl-2 pt-1 pr-2 pb-3">
+          <div class="row p-0">
+          <div class="col-12" *ngIf="dependent === null ? true : false">
+            CPF: <br><b>{{user.cpf | mask: '000.000.000-00'}}</b>
+          </div>
+          <div class="col-12" *ngIf="dependent !== null ? true : false">
+            CPF: <br><b>{{dependent?.patient?.cpf | mask: '000.000.000-00'}}</b>
+          </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="col-10 ml-auto mr-auto mt-3">
+      <div class="col-12 btn-login text-center" routerLink="/personal-data">
+        Dados pessoais
+      </div>
+      <div class="col-12 btn-back text-center mt-2" (click)="presentAlert()">
+        Alterar senha
+      </div>
+      <div class="col-12 btn-back text-center mt-2" (click)="presentAlertConsortium()">
+        Alterar convênio
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar (click)="logout()">
+    <ion-title color="danger">Sair</ion-title>
+  </ion-toolbar>
+</ion-footer>

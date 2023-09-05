@@ -1,0 +1,105 @@
+.title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #4d4d4d;
+    font-family: "Baloo 2", cursive;
+}
+
+.card-subtitle {
+    background: #c9c9c9;
+    border-radius: 3px;
+    height: 19px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: #ffffff;
+    font-family: "Baloo 2", cursive;
+}
+
+.status {
+    position: absolute;
+    width: 22px;
+    height: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px 0px 0px 5px;
+    font-family: "Baloo 2", cursive;
+}
+
+.await-confirm {
+    background: #ff993c;
+}
+
+.peding-evaluation {
+    background: #ffe24b;
+}
+
+.canceled {
+    background: #f55555;
+}
+
+.not-met {
+    background: #ec2c2c;
+}
+
+.confirmation {
+    background: #406aef;
+}
+
+.present {
+    background: #54b488;
+}
+
+.complete {
+    background: #54b488;
+}
+
+.title-card {
+    color: #54b488;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: "Baloo 2", cursive;
+}
+
+.card {
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-family: "Baloo 2", cursive;
+    color: #656565;
+}
+
+.title {
+    color: #54b488;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: "Baloo 2", cursive;
+}
+
+.filter {
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+}
+
+.filter-text {
+    color: #54b488;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Baloo 2", cursive;
+}
+
+.filter-icon {
+    font-size: 1.5rem;
+    margin-top: 0.6rem;
+}
+
+.noneholder {
+    height: 75px;
+    line-height: 62px;
+}

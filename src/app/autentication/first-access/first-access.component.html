@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-12 header-first">
+    <div class="row">
+      <div class="col-2 mt-2">
+        <ion-icon *ngIf="stepSelect === 0" (click)="backLogin()" class="ml-2" style="cursor:pointer;" name="close-outline"></ion-icon>
+        <ion-icon *ngIf="stepSelect !== 0" (click)="next(stepSelect - 1)" class="ml-2" name="arrow-back-outline">
+        </ion-icon>
+      </div>
+      <div class="col-10">
+        <label class="label-account">CRIAR CONTA</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-5"></div>
+  <div class="col-12 mt-5"></div>
+  <div class="col-12" [formGroup]="formFirst">
+    <div class="col-12" [hidden]="stepSelect !== 0">
+      <label class="label-first ml-3 mt-5">Vamos criar sua conta!</label>
+      <div class="col-12 mt-3">
+        <label class="label-first-second">Insira seu CPF</label><br>
+        <ion-input 
+           formControlName="cpf"
+           class="input-border"
+           placeholder="000.000.000-00" 
+           type="text"
+           [brmasker]="{person: true}">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="col-12" [hidden]="stepSelect !== 1">
+      <label class="label-first ml-3 mt-5">Olá, {{user?.name}}</label>
+      <div class="col-12 mt-3">
+        <label class="label-first-second">Insira sua data de nascimento</label><br>
+        <ion-input formControlName="date" class="input-border" placeholder="13/12/1993" type="date">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="col-12" [hidden]="stepSelect !== 2">
+      <label class="label-first ml-3 mt-5">
+        {{user?.name}}, indentificamos em nosso sistema que você é um agente do STC.
+      </label>
+      <div class="col-12 mt-3">
+        <span class="label-first-secound">
+          Você pode alternar sua conta para o “modo paciente” acessando o menu e indo na opção alternar contas.
+        </span>
+      </div>
+    </div>
+
+    <div class="col-12" [hidden]="stepSelect !== 3">
+      <div class="col-12 mt-5">
+        <label class="label-first-second">E-mail</label><br>
+        <ion-input formControlName="email" class="input-border" placeholder="email@email.com" type="email"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <label class="label-first-second">Confirmar E-mail</label><br>
+        <ion-input formControlName="cEmail" class="input-border" placeholder="email@email.com" type="email"></ion-input>
+      </div>
+    </div>
+
+    <div class="col-12" [hidden]="stepSelect !== 4">
+      <div class="col-12 mt-5">
+        <label class="label-first-second">Senha</label><br>
+        <ion-input formControlName="password" class="input-border" placeholder="********" type="password"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <label class="label-first-second">Confirmar senha</label><br>
+        <ion-input formControlName="repeatPassword" class="input-border" placeholder="********" type="password"></ion-input>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="stepSelect !== stepEnd" class="col-8 btn-login mr-auto ml-auto mt-5" (click)="next(stepSelect + 1)">
+    Próximo
+  </div>
+
+  <div *ngIf="stepSelect === stepEnd" class="col-8 btn-login mr-auto ml-auto mt-5" (click)="save()">
+    Salvar
+  </div>
+
+  <div *ngIf="stepSelect !== 0" class="col-8 btn-back mr-auto ml-auto mt-3" (click)="next(stepSelect - 1, true)">
+    Voltar
+  </div>
+
+</div>

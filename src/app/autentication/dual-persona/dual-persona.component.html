@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-dual">
+      <div class="logo-dual"></div>
+    </div>
+    <div class="col-10 mt-5 ml-auto mr-auto mb-5">
+      <p class="msg">
+        <strong>Olá, {{user.user}}.</strong> <br>Vimos no nosso sistema que você é um dos nossos agentes.
+        <br> Qual modo você deseja acessar?
+      </p>
+      <hr style="background: #00000012;">
+    </div>
+    <div class="col-9 mt-4 ml-auto mr-auto">
+      <div class="row card-footer footer-next mt-5">
+        <div class="col-12" (click)="viewDashboard()">
+          <p>
+            <span class="view-info">MODO PACIENTE</span>
+            <span class="view-info-icon">
+              <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 mt-5 ml-auto mr-auto"></div>
+    <div class="col-9 mt-5 ml-auto mr-auto">
+      <div class="row card-footer footer-agent">
+        <div class="col-12" (click)="viewAgent()">
+          <p>
+            <span class="view-info">MODO AGENTE</span>
+            <span class="view-info-icon">
+              <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>265454616492-n0ijkf6sb7osgtvesi7jgagiv12nksau.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.265454616492-n0ijkf6sb7osgtvesi7jgagiv12nksau</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDrG4fU51PKbKqMhhMsnIHvHEuai3yvQrI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>265454616492</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.saudetechama</string>
+	<key>PROJECT_ID</key>
+	<string>stc-app-f8a39</string>
+	<key>STORAGE_BUCKET</key>
+	<string>stc-app-f8a39.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:265454616492:ios:7a90b545ad8d7317188409</string>
+	<key>DATABASE_URL</key>
+	<string>https://stc-app-f8a39.firebaseio.com</string>
+</dict>
+</plist>

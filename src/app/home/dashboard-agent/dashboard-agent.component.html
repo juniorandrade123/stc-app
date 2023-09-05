@@ -1,0 +1,95 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header">
+      <div class="row ml-4 mt-4">
+        <div class="col-7 logo-dashboard mt-2"></div>
+        <div class="col-2 mt-2 text-right">
+          <ion-icon (click)="dash()" class="icon-swapper" name="sync-circle"></ion-icon>
+        </div>
+        <div class="col-2 mt-2 text-right">
+          <ion-icon class="icon-swapper" name="settings" routerLink="/configuration"></ion-icon>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <label class="welcome">
+            Olá,&nbsp;&nbsp;{{user.user}}!
+          </label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <ion-card *ngIf="isLoading">
+          <ion-card-content class="text-center">
+            <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Carregando...</span>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="title-next">TOTAL DE PACIENTE</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="card-content info">
+            Você gerencia <span class="text-count-user">{{countUser}} pacientes.</span>
+          </ion-card-content>
+          <ion-row class="card-footer footer-next" (click)="listUser()">
+            <ion-col>
+              <p>
+                <span class="view-info">VER INFORMAÇÕES</span>
+                <span class="view-info-icon">
+                  <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+                </span>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="title-next">AGENDAMENTOS PENDENTES</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="card-content info">
+            Agendamentos Pendentes
+          </ion-card-content>
+          <ion-row class="card-footer footer-my" (click)="listPendingUserSchedules()">
+            <ion-col>
+              <p>
+                <span class="view-info">VER INFORMAÇÕES</span>
+                <span class="view-info-icon">
+                  <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+                </span>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="title-next">AGENDAMENTOS CONFIRMADOS</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="card-content info">
+            Agendamentos Confirmados
+          </ion-card-content>
+          <ion-row class="card-footer footer-depe" (click)="listConfirmedUserSchedules()">
+            <ion-col>
+              <p>
+                <span class="view-info">VER INFORMAÇÕES</span>
+                <span class="view-info-icon">
+                  <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+                </span>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+      </div>
+    </div>
+  </div>
+  <!-- Botao do chat virtual -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="light">
+    <img src="assets/imagens/chat.png" (click)="showModalChat()" alt="auto" width=50px>
+    <ion-badge style="background-color: #3880ff;">{{amountOfMessages}}</ion-badge>
+  </ion-fab>
+</ion-content>

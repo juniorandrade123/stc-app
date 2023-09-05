@@ -1,0 +1,183 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" (click)="backDash()" name="arrow-back-outline">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label *ngIf="modAgent === null" class="label-account">Meus agendamentos</label>
+          <label *ngIf="modAgent !== null" class="label-account">{{modAgent?.patient?.name}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+  <!--  <div class="col-4 mr-auto ml-auto mt-4 text-center filter">
+      <div class="row" (click)="presentModal()">
+        <div class="col-8 filter-text">
+          <span>Filtrar</span>
+          <span class="filter-applied" *ngIf="isFilterActive"></span>
+        </div>
+        <div class="col-3 text-right filter-text">
+          <ion-icon class="filter-icon" name="funnel"></ion-icon>
+        </div>
+      </div>
+    </div>-->
+    <!-- Pendências -->
+    <div class="col-12 mt-3" *ngIf="schedulingList.length === 0">
+      <ion-card class="card p-2 noneholder">
+        <ion-card-content>
+          <div class="row p-0 text-center">
+            <div class="col-12">Nenhum agendamento encontrado</div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="col-12 mt-3" *ngFor="let item of schedulingList">
+      <div class="col-12 p-0" *ngIf="item.title === 'Pendências' ">
+        <span class="title ml-3">
+          {{item.title}}
+        </span>
+        <!-- Cards -->
+        <ion-card *ngFor="let card of item.card" (click)="detailOrQuiz(card)" class="card-content">
+          <div [ngClass]="card.backGroundColor"></div>
+          <ion-card-header>
+            <ion-card-subtitle class="card-subtitle ml-2">
+              <span class="ml-1">{{card.nameStatus}}</span>
+            </ion-card-subtitle>
+            <ion-card-title class="ml-2 title-card mt-1">{{card.title}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content class="ml-2">
+            <span>
+              <b>Local: </b> {{card.local}}
+            </span><br>
+            <span>
+              <b>Data: </b> {{card.data}}
+            </span>
+            <span><br>
+              <b>Horário: </b> {{card.hour}}
+            </span>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <!-- Agendamentos -->
+    <div class="col-12 mt-1" *ngFor="let item of schedulingList">
+      <div class="col-12 p-0" *ngIf="item.title === 'Agendamentos' ">
+        <span class="title ml-3">
+          {{item.title}}
+        </span>
+        <!-- Cards Status = Confirmado -->
+        <div class="col-12 p-0" *ngFor="let card of item.card">
+          <ion-card *ngIf="card.cardStatus === 3" (click)="detailOrQuiz(card)" class="card-content">
+            <div [ngClass]="card.backGroundColor"></div>
+            <ion-card-header>
+              <ion-card-subtitle class="card-subtitle ml-2">
+                <span class="ml-1">{{card.nameStatus}}</span>
+              </ion-card-subtitle>
+              <ion-card-title class="ml-2 title-card mt-1">{{card.title}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="ml-2">
+              <span>
+                <b>Local: </b> {{card.local}}
+              </span><br>
+              <span>
+                <b>Data: </b> {{card.data}}
+              </span>
+              <span><br>
+                <b>Horário: </b> {{card.hour}}
+              </span>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <!-- Cards Status = Presente -->
+        <div class="col-12 p-0" *ngFor="let card of item.card">
+          <ion-card *ngIf="card.cardStatus === 5" (click)="detailOrQuiz(card)" class="card-content">
+            <div [ngClass]="card.backGroundColor"></div>
+            <ion-card-header>
+              <ion-card-subtitle class="card-subtitle ml-2">
+                <span class="ml-1">{{card.nameStatus}}</span>
+              </ion-card-subtitle>
+              <ion-card-title class="ml-2 title-card mt-1">{{card.title}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="ml-2">
+              <span>
+                <b>Local: </b> {{card.local}}
+              </span><br>
+              <span>
+                <b>Data: </b> {{card.data}}
+              </span>
+              <span><br>
+                <b>Horário: </b> {{card.hour}}
+              </span>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <!-- Cards Status = Faltou -->
+        <div class="col-12 p-0" *ngFor="let card of item.card">
+          <ion-card *ngIf="card.cardStatus === 11" class="card-content">
+            <div [ngClass]="card.backGroundColor"></div>
+            <ion-card-header>
+              <ion-card-subtitle class="card-subtitle ml-2">
+                <span class="ml-1">{{card.nameStatus}}</span>
+              </ion-card-subtitle>
+              <ion-card-title class="ml-2 title-card mt-1">{{card.title}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="ml-2">
+              <span>
+                <b>Local: </b> {{card.local}}
+              </span><br>
+              <span>
+                <b>Data: </b> {{card.data}}
+              </span>
+              <span><br>
+                <b>Horário: </b> {{card.hour}}
+              </span>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conluidos -->
+    <div class="col-12 mt-1" *ngFor="let item of schedulingList">
+      <div class="col-12 p-0" *ngIf="item.title === 'Concluídos' ">
+        <span class="title ml-3">
+          {{item.title}}
+        </span>
+        <!-- Cards Status = Conluidos -->
+        <div class="col-12 p-0" *ngFor="let card of item.card">
+          <ion-card *ngIf="card.cardStatus === 12" class="card-content">
+            <div [ngClass]="card.backGroundColor"></div>
+            <ion-card-header>
+              <ion-card-subtitle class="card-subtitle ml-2">
+                <span class="ml-1">{{card.nameStatus}}</span>
+              </ion-card-subtitle>
+              <ion-card-title class="ml-2 title-card mt-1">{{card.title}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content class="ml-2">
+              <span>
+                <b>Local: </b> {{card.local}}
+              </span><br>
+              <span>
+                <b>Data: </b> {{card.data}}
+              </span>
+              <span><br>
+                <b>Horário: </b> {{card.hour}}
+              </span>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,94 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" (click)="closeModal()" name="arrow-back-outline">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Chat Vírtual</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div *ngIf="user.typeUser === 'agente'" class="col-4 mr-auto ml-auto mt-4 text-center filter">
+      <div class="row" (click)="presentModal()">
+        <div class="col-8 filter-text">
+          <span>Filtrar</span>
+          <span class="filter-applied" *ngIf="isFilterActive"></span>
+        </div>
+        <div class="col-3 text-right filter-text">
+          <ion-icon class="filter-icon" name="funnel"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="user.typeUser === 'agente'">
+      <div class="col-11 mr-auto ml-auto mt-4" *ngFor="let mensageiro of mensageiros">
+        <ion-card class="card p-2" (click)="openChat(mensageiro.patient)">
+          <div style="margin-block-end: -50px;">
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col></ion-col>
+              <ion-col></ion-col>
+              <ion-col>
+                <ion-button fill="clear">
+                  <img src="assets/imagens/chat.png" alt="auto" width=50px>
+                  <ion-badge *ngIf="mensageiro.patient['amountOfMessages']"
+                    style="background-color: #3880ff; height: 15px; font-size: 10px;">
+                    {{mensageiro.patient['amountOfMessages']}}</ion-badge>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+          <ion-card-header>
+            <ion-card-title class="title">PACIENTE</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="row p-0">
+              <div class="col-7"><b>Nome: </b> {{mensageiro.patient.name}}</div>
+              <div class="col-5 text-right"><b>Idade: </b> {{mensageiro.age}}</div>
+              <div class="col-12">
+                <b>CPF: </b> {{mensageiro.patient.cpf | mask: '000.000.000-00'}}
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+    <div *ngIf="user.typeUser !== 'agente'">
+      <div class="col-11 mr-auto ml-auto mt-4" *ngFor="let mensageiro of mensageiros">
+        <ion-card class="card p-2" (click)="openChat(mensageiro)">
+          <div style="margin-block-end: -50px;">
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col></ion-col>
+              <ion-col></ion-col>
+              <ion-col>
+                <ion-button fill="clear">
+                  <img src="assets/imagens/chat.png" alt="auto" width=50px>
+                  <ion-badge *ngIf="mensageiro['amountOfMessages']"
+                    style="background-color: #3880ff; height: 15px; font-size: 10px;">{{mensageiro['amountOfMessages']}}
+                  </ion-badge>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+          <ion-card-header>
+            <ion-card-title class="title">AGENTE</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="row p-0">
+              <div class="col-7"><b>Nome: </b> {{mensageiro.name}}</div>
+              <div class="col-5 text-right"><b>E-mail: </b> {{mensageiro.email}}</div>
+              <div class="col-12">
+                <b>CPF: </b> {{mensageiro.cpf | mask: '000.000.000-00'}}
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>`

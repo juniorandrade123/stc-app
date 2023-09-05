@@ -1,0 +1,31 @@
+.title-question {
+    text-align: justify;
+    color: #54B488;
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+}
+
+.option {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.option-icon {
+    font-size: 27px;
+    position: relative;
+    top: 3px;
+    font-weight: bold;
+}
+
+.option-select {
+    background-color: #49505775;
+}
+
+.font-size-anonimate {
+    font-size: 0.7em;
+}

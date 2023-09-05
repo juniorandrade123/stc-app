@@ -1,0 +1,71 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" name="arrow-back-outline" routerLink="/configuration">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Dados pessoais</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>    
+    <div class="col-10 mt-4 mr-auto ml-auto" [formGroup]="formPersonal">
+      <div class="col-12 mt-1">
+        <p class="info-data">Confira seus dados, qualquer alteração dirija-se a uma unidade de saúde para atualizá-los.</p>
+      </div>
+      <div class="col-12">
+        <ion-label>Nome</ion-label>
+        <ion-input formControlName="name" placeholder="Nome" class="input-border" type="text"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>E-mail</ion-label>
+        <ion-input formControlName="email" placeholder="E-mail" class="input-border" type="email"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>Data de Nascimento</ion-label>
+        <ion-input formControlName="date" placeholder="Data de nascimento" class="input-border" type="date"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>Sexo</ion-label>
+        <ion-select formControlName="sexo" placeholder="Sexo" class="input-border pl-0">
+          <ion-select-option value="2">Feminino</ion-select-option>
+          <ion-select-option value="1">Masculino</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>Telefone</ion-label>
+        <ion-input [brmasker]="{phone: true}" formControlName="phone" placeholder="Telefone" class="input-border" type="text"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>CEP</ion-label>
+        <ion-input [brmasker]="{mask: '12412-170', type:'num', len:9}" formControlName="cep" placeholder="CEP" class="input-border" type="text"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>Endereço</ion-label>
+        <ion-input formControlName="end" placeholder="Endereço" class="input-border" type="text"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>Estado</ion-label>
+        <ion-input formControlName="estado" placeholder="Estado" class="input-border" type="text"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>Cidade</ion-label>
+        <ion-input formControlName="city" placeholder="Cidade" class="input-border" type="text"></ion-input>
+      </div>
+      <div class="col-12 mt-3">
+        <ion-label>Bairro</ion-label>
+        <ion-input formControlName="district" placeholder="Bairro" class="input-border" type="text"></ion-input>
+      </div>
+      <div class="col-12 mt-3 mb-5">
+        <ion-label>Número</ion-label>
+        <ion-input formControlName="number" placeholder="Numero" class="input-border" type="number"></ion-input>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

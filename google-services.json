@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "265454616492",
+    "firebase_url": "https://stc-app-f8a39.firebaseio.com",
+    "project_id": "stc-app-f8a39",
+    "storage_bucket": "stc-app-f8a39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265454616492:android:da5f6d588e273ae2188409",
+        "android_client_info": {
+          "package_name": "com.saudetechama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265454616492-1rjou9kmu4belc5mdd4b5kc3ll3si1jk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn9v-jw-bb4kO09h_MEYrdIFX9XhdGMKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265454616492-1rjou9kmu4belc5mdd4b5kc3ll3si1jk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "265454616492-29554u2csah1jjbbb5k18rpc3ujjh3qg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.triasoftware.saudetechama"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265454616492:android:8fa1c6fd3979b8c3188409",
+        "android_client_info": {
+          "package_name": "com.triasoftware.saudetechama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265454616492-1rjou9kmu4belc5mdd4b5kc3ll3si1jk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn9v-jw-bb4kO09h_MEYrdIFX9XhdGMKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265454616492-1rjou9kmu4belc5mdd4b5kc3ll3si1jk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "265454616492-29554u2csah1jjbbb5k18rpc3ujjh3qg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.triasoftware.saudetechama"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

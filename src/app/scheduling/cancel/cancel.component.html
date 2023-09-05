@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" name="arrow-back-outline" (click)="backList()">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Desistir da consulta</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-3">
+      <div class="col-10 options mr-auto ml-auto mt-3" *ngFor="let item of optionCancel" (click)="presentModal(item)">
+        {{item.name}}
+      </div>
+    </div>
+    <!-- <div class="col-11 ml-auto mr-auto mt-5">
+      <div class="btn-cancel">
+        Cancelar
+      </div>
+    </div> -->
+  </div>
+</ion-content>

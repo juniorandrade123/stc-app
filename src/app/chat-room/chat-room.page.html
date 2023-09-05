@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" (click)="closeModal()" name="arrow-back-outline">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">{{ user.name }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div>
+      <div class="col-11 mr-auto ml-auto mt-4" *ngFor="let mess of messages">
+        <div flex flow-right *ngIf="mess.from === session">
+          <ion-card bg-light>
+            <ion-card-content style="padding-bottom: 0px;">
+              {{ mess.msg }}
+              <p text-right no-margin light-time-white>{{ formatDate(mess) }}</p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <div flex *ngIf="mess.from !== session">
+          <ion-card bg-white>
+            <ion-card-content style="padding-bottom: 0px;">
+              {{ mess.msg }}
+              <p text-right no-margin light-time>{{ formatDate(mess) }}</p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div slot="start" padding>😀</div>
+    <ion-input [(ngModel)]="chat" (keyup.enter)="sendChat()" placeholder="No que você esta pensando agora?"></ion-input>
+    <img src="assets/imagens/enviar.png" (click)="sendChat()" alt="auto" width=25px slot="end" padding>
+    <img src="assets/imagens/email.png" alt="auto" width=30px slot="end" padding>
+  </ion-toolbar>
+</ion-footer>

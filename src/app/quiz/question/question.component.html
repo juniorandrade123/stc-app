@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" name="arrow-back-outline" [routerLink]="['/list']">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Avaliar consulta</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-10 mr-auto ml-auto mt-4 text-center" *ngFor="let question of questions; let last = last; let first = first;" [hidden]="question.step !== stepActual">
+      <label class="title-question" *ngIf="!last">{{question.title}}</label>      
+      <div class="col-12 mr-auto ml-auto" *ngFor="let option of question.options" (click)="navigateStep(stepActual + 1, option)">
+        <div class="option row mt-4" [ngClass]="{'option-select': option.select}">
+          <div class="col-6 text-left">
+            {{option.name}}
+          </div>
+          <div class="col-6 text-right option-icon">
+          <ion-icon [ngStyle]="{'color': option.color}" name={{option.icon}}></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mr-auto ml-auto" *ngIf="last">
+        <ion-textarea rows="6" cols="20" [(ngModel)]="comments" placeholder="{{question.title}}"></ion-textarea>
+      </div>      
+
+    <div class="btn-back col-12 mr-auto ml-auto mt-4" *ngIf="!first" (click)="navigateStep(stepActual - 1)">
+      Voltar
+    </div>
+    <div (click)="send()" class="btn-login col-12 mr-auto ml-auto mt-4" *ngIf="last">
+      Enviar
+    </div>
+
+    <div class="col-12 mt-5 mr-auto ml-auto" *ngIf="last">                       
+      <ion-label class="font-size-anonimate">
+        Desejo responder o questionário anonimamente          
+      </ion-label>        
+    </div>
+    <div class="col-12 mt-3 mr-auto ml-auto"  *ngIf="last" [formGroup]="form_anonimate">
+      <ion-checkbox formControlName="is_anonimate"></ion-checkbox> 
+    </div>
+
+    </div>
+  </div>
+</ion-content>

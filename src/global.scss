@@ -1,0 +1,141 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap");
+
+.body {
+    font-family: "Baloo 2", cursive;
+}
+
+.no-border {
+    border: 0 !important;
+}
+
+.font-size-12 {
+    font-size: 12px !important;
+}
+
+.header {
+    background-image: url("assets/background-header.png");
+    background-repeat: no-repeat;
+    height: 250px;
+    background-size: 100%;
+    font-family: "Baloo 2", cursive;
+}
+
+.logo {
+    background-image: url("assets/logo.png");
+    background-repeat: no-repeat;
+    height: 72px;
+    background-position: center;
+    margin-top: 20%;
+}
+
+.btn-login {
+    background: #54b488;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 57px;
+    text-align: center;
+    color: white;
+    line-height: 57px;
+    font-style: normal;
+    font-weight: 600;
+    font-family: "Baloo 2", cursive;
+}
+
+.btn-back {
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 57px;
+    text-align: center;
+    color: #3760e0;
+    line-height: 57px;
+    font-style: normal;
+    font-weight: 600;
+    font-family: "Baloo 2", cursive;
+}
+
+.btn-cancel {
+    background: #f55555;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: 57px;
+    text-align: center;
+    color: white;
+    line-height: 57px;
+    font-style: normal;
+    font-weight: 600;
+    font-family: "Baloo 2", cursive;
+}
+
+.header-first {
+    background: #406aef;
+    height: 100px;
+    color: white;
+    line-height: 100px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Baloo 2", cursive;
+    position: fixed;
+    left: 0;
+    z-index: 999;
+}
+
+.label-account {
+    font-size: 18px;
+    font-family: "Baloo 2", cursive;
+}
+
+.card-content {
+    font-family: "Baloo 2", cursive;
+}
+
+ion-content {
+    --background: #f4f4f4;
+}
+
+.filter-applied {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff9900;
+    position: absolute;
+    left: 6.8em;
+    top: 9px;
+    z-index: 10000;
+}
+
+
+.alert-wrapper.sc-ion-alert-ios {
+    background: #f9f9f9;
+ }
+
+ .loading-wrapper.sc-ion-loading-ios {
+    background: #f9f9f9;
+ }

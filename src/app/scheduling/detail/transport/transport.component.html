@@ -1,0 +1,73 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon routerLink="/detail/{{id}}" class="ml-2" name="arrow-back-outline">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label class="label-account">Confirmação de Agendamento</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-2">
+      <div class="col-12 text-center title mt-2">
+        Transporte: Locais e Horários de partida.
+      </div>
+      <div class="col-11 ml-auto mr-auto subtitle" *ngIf="transport.length !== 0">
+        <label>Toque para escolher o transporte</label>
+      </div>
+
+      <div class="col-12 mt-4" *ngIf="transport.length === 0">
+        <ion-card class="card p-2">
+          <ion-card-content>
+            <div class="row p-0 text-center">
+              <div class="col-12">Nenhum transporte encontrado, porém ao clicar no botão confirmar o agendamento um
+                transporte será definido por um gestor responsável </div>
+              <div class="col-12 mt-2">
+                <div class="btn-login" (click)="confirmWithoutTransport()">
+                  Confirmar Agendamento
+                </div>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <ion-card *ngFor="let item of transport" class="mt-4" (click)="select(item)">
+        <ion-card-header class="card-header">
+          <ion-card-title class="content mt-1"><b>Data:</b> {{item.date}}</ion-card-title>
+          <ion-card-subtitle class="content mt-1">
+            <span><b>Horário de partida: </b>{{item.hourStart}}</span><br>
+            <span><b>Horário de retorno: </b>{{item.hourReturn}}</span>
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content class="mt-2 card-content">
+          <p>
+            <b>Local: </b> {{item.site}}
+          </p>
+          <p>
+            <b>Cidade: </b> {{item.city}}
+          </p>
+          <p>
+            <b>Endereço: </b> {{item.address}}
+          </p>
+          <p>
+            <b>Bairro: </b> {{item.district}}
+          </p>
+          <p>
+            <b>Referencia: </b> {{item.reference}}
+          </p>
+          <p>
+            <b>Veículo: </b> {{item.board}}
+          </p>
+          <p><b>Motorista: </b> {{item.driver}}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12 header">
+    <div class="logo"></div>
+  </div>
+</div>
+  <div class="row">
+  <div class="col-12 mt-1" [formGroup]="formLogin">
+    <!-- FORM LOGIN -->
+    <div class="row m-auto pr-5 pl-5">
+      <div class="col-12 row input-login m-auto">
+        <div class="col-2 text-right">
+          <ion-icon name="person-outline"></ion-icon>
+        </div>
+        <div class="col-10">
+          <input id="cpf" formControlName="cpf" placeholder="CPF" type="text" max="14"
+            class="form-control input-login no-border font-size-12" [brmasker]="{person: true}">
+        </div>
+      </div>
+    </div>
+    <div class="row m-auto pl-5 pr-5 pt-3">
+      <div class="col-12 row input-login m-auto">
+        <div class="col-2 text-right">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </div>
+        <div class="col-10">
+          <input id="senha" formControlName="password" placeholder="Senha" type="password"
+            class="form-control input-login no-border font-size-12">
+        </div>
+      </div>
+    </div>
+    <div class="row m-auto pl-5 pr-5 pt-4">
+      <button class="col-12 btn-login m-auto" (click)="postLogin()">
+        Entrar
+      </button>
+    </div>
+    <div class="row m-auto pl-5 pr-5 pt-4">
+      <div class="col-12 text-center label-password" style="cursor: pointer;" (click)="resetPassword()">
+        Esqueci minha senha
+      </div>
+    </div>
+  </div>
+</div>
+<ion-footer class="ion-no-border footer-app text-center">
+  <span style="cursor: pointer;" (click)="openFirstAccess()">
+     Primeiro Acesso?
+  </span>
+</ion-footer>

@@ -1,0 +1,67 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" (click)="backDash()" name="arrow-back-outline">
+          </ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-4 mr-auto ml-auto mt-4 text-center filter">
+      <div class="row" (click)="presentModal()">
+        <div class="col-8 filter-text">
+          <span>Filtrar</span>
+          <span class="filter-applied" *ngIf="isFilterActive"></span>
+        </div>
+        <div class="col-3 text-right filter-text">
+          <ion-icon class="filter-icon" name="funnel"></ion-icon>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-12 mt-1" *ngIf="schedulingList?.length === 0">
+      <div class="col-12 p-0">
+        <ion-card class="card-content">
+          <ion-card-content class="ml-2">
+             <span class="ml-1">NENHUM AGENDAMENTO ENCONTRADO</span>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <!-- Agendamentos -->
+    <div class="col-12 mt-1" *ngFor="let item of schedulingList">
+      <div class="col-12 p-0">
+        <!-- Cards Status = Presente -->
+        <ion-card class="card-content">
+          <div [ngClass]="item.backGroundColor"></div>
+          <ion-card-header>
+            <ion-card-subtitle class="card-subtitle ml-2">
+              <span class="ml-1">{{item.nameStatus}}</span>
+            </ion-card-subtitle>
+            <ion-card-title class="ml-2 title-card mt-1">{{item.title}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content class="ml-2">
+            <span>
+              <b>Paciente: </b> {{item.patientName}}
+            </span><br>
+            <span>
+              <b>Local: </b> {{item.local}}
+            </span><br>
+            <span>
+              <b>Data: </b> {{item.data}}
+            </span>
+            <span><br>
+              <b>Horário: </b> {{item.hour}}
+            </span>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

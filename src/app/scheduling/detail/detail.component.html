@@ -1,0 +1,258 @@
+<ion-content>
+  <div class="row">
+    <div class="col-12 header-first">
+      <div class="row">
+        <div class="col-2 mt-2">
+          <ion-icon class="ml-2" name="arrow-back-outline" (click)="backDash()">
+          </ion-icon>
+        </div>
+        <div class="col-10">
+          <label *ngIf="stepActual === 1" class="label-account">Detalhes do Agendamento</label>
+          <label *ngIf="stepActual !== 1" class="label-account">Confirmação de Agendamento</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5"></div>
+    <div class="col-12 mt-5" *ngIf="scheduling.transport === null"></div>
+    <div class="col-11 ml-auto mr-auto mt-3" *ngIf="scheduling.transport !== null">
+      <span class="title-card"><b>Agendamento</b></span>
+    </div>
+    <div class="col-12">
+      <ion-card class="mt-1">
+        <ion-card-header class="card-header">
+          <ion-card-title class="title-card mt-1">{{
+            scheduling.title
+            }}</ion-card-title>
+          <ion-card-subtitle class="card-subtitle mt-1">
+            <span>{{ scheduling.professional }}</span>
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content class="mt-2 card-content">
+          <div class="row">
+            <div class="col-6">
+              <span> <b>Data: </b> {{ scheduling.data }} </span>
+            </div>
+            <div class="col-6 text-right">
+              <span>
+                {{ scheduling.day }}
+              </span>
+            </div>
+            <div class="col-12">
+              <span> <b>Horário: </b> {{ scheduling.hour }} </span>
+            </div>
+            <div class="col-12">
+              <span> <b>Local: </b> {{ scheduling.local }} </span>
+            </div>
+            <div class="col-12">
+              <span> <b>Cidade: </b> {{ scheduling.city }} </span>
+            </div>
+            <div class="col-12">
+              <span> <b>Endereço: </b> {{ scheduling.address }} </span>
+            </div>
+            <div class="col-12">
+              <span> <b>Bairro: </b> {{ scheduling.district }} </span>
+            </div>
+            <div class="col-12">
+              <span> <b>Número: </b> {{ scheduling.number }} </span>
+            </div>
+            <div class="col-12">
+              <span> <b>Observações:</b> {{ scheduling.obs }} </span>
+            </div>
+            <div class="col-12" *ngIf="scheduling?.files?.length > 0">
+              <hr>
+              <div class="row">
+                <div class="col-12 text-center mt-2" *ngFor="let item of scheduling?.files">
+                  <ion-icon name="file-tray-full-outline" style="font-size: 2em" (click)="downloadFile(item)"></ion-icon>
+                  <br />
+                  {{ item.fileName }}
+                </div>
+              </div>
+            </div>
+            <div class="col-12 text-center mt-2" *ngIf="scheduling.urlMap !== null">
+              <a target="_blank" href="{{ scheduling.urlMap }}">
+                <ion-icon style="font-size: 2em" name="map-outline"></ion-icon><br />
+                Ver no mapa
+              </a>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="col-11 m-auto" *ngIf="scheduling.transport !== null">
+      <span class="title-card"><b>Transporte</b></span>
+    </div>
+    <div class="col-12" *ngIf="scheduling.transport !== null">
+      <ion-card class="mt-1">
+        <ion-card-header class="card-header">
+          <ion-card-title class="content mt-1"><b>Data:</b> {{ scheduling?.data }}</ion-card-title>
+          <ion-card-subtitle class="content mt-1">
+            <span><b>Horário de partida: </b>{{ scheduling?.transport?.hourStart }}</span><br />
+            <span><b>Horário de retorno: </b>{{ scheduling?.transport?.hourReturn }}</span>
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content class="mt-2 card-content">
+          <div class="row">
+            <div class="col-12">
+              <b>Destino: </b> {{ scheduling?.transport?.site }}
+            </div>
+            <div class="col-12">
+              <b>Partida: </b> {{ scheduling?.transport?.city }}
+            </div>
+            <div class="col-12">
+              <b>Endereço: </b> {{ scheduling?.transport?.address }}
+            </div>
+            <div class="col-12">
+              <b>Bairro: </b> {{ scheduling?.transport?.district }}
+            </div>
+            <div class="col-12">
+              <b>Referencia: </b> {{ scheduling?.transport?.reference }}
+            </div>
+            <div class="col-12">
+              <b>Placa do veículo: </b> {{ scheduling?.transport?.board }}
+            </div>
+            <div class="col-12">
+              <b>Motorista: </b> {{ scheduling?.transport?.driver }}
+            </div>
+            <div class="col-12">
+              <b>Telefone do Motorista:</b>
+              {{ scheduling?.transport?.driverTel }}
+            </div>
+            <div class="col-12 mt-3 text-center alert-transport">
+              <b>O transporte pode ser alterado devido a disponibilidade da
+                prefeitura.</b>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="col-12 mb-2 mt-2" *ngIf="stepActual === 1">
+      <div class="row">
+        <div class="col-11 ml-auto mr-auto text-center">
+          <label class="title-card-Notification">
+            <ion-icon name="warning" class="icWarning"></ion-icon> <br />
+            Prezado paciente, se não puder comparecer, cancele seu agendamento
+            e/ou transporte a tempo de que outra pessoa possa utilizar o
+            serviço, assim evita desperdícios e permite que outra pessoa da fila
+            ocupe seu lugar.
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mb-2 mt-2" *ngIf="scheduling.transport === null && stepActual === 4">
+      <div class="row">
+        <div class="col-11 ml-auto mr-auto text-center">
+          <label class="title-card-Notification">
+            <ion-icon name="warning" class="icWarning"></ion-icon> <br />
+            Acompanhantes somente serão permitidos em caso de real necessidade,
+            como: limitações de mobilidade ou entendimento, acima de 65 anos, abaixo de 18 anos e
+            quando exigido pelo procedimento a ser realizado. Acompanhantes sem
+            necessidade não poderão embarcar no transporte.
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="scheduling.transport === null && scheduling.cardStatus === 1">
+      <div class="row" *ngFor="let item of stepCard" [hidden]="item.id !== stepActual">
+        <div class="col-12 ml-4">
+          <label class="title-card title-step">
+            {{ item.name }}
+          </label>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-10 mr-auto ml-auto btn-login" (click)="navigateStep(stepActual + 1, false, true)">
+          Sim
+        </div>
+
+        <div class="col-10 mr-auto ml-auto mt-2 btn-back" (click)="navigateStep(null, true, false)" *ngIf="stepActual === 1"
+          [ngClass]="{ 'btn-cancel': stepActual === 1 }">
+          Não
+        </div>
+
+        <div class="col-10 mr-auto ml-auto mt-2 btn-back" (click)="navigateStep(stepActual + 1, false, false)" *ngIf="stepActual > 1">
+          Não
+        </div>
+
+      </div>
+    </div>
+    <div class="col-12" *ngIf="
+        scheduling.transport === null &&
+        scheduling.cardStatus === 3 &&
+        stepActual === 1
+      ">
+      <div class="row">
+        <div class="col-10 mr-auto ml-auto mb-3 text-center">
+          <label class="label-no-transport">SEM TRANSPORTE</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10 m-auto">
+          <div class="btn-login" (click)="requestTransport()">
+            Solicitar Transporte
+          </div>
+        </div>
+        <div class="col-10 mr-auto ml-auto mb-3 mt-2">
+          <div class="btn-cancel" (click)="navigateStep(null, true)">
+            Cancelar Agendamento
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="
+        scheduling.transport !== null &&
+        scheduling.cardStatus !== 4 &&
+        scheduling.cardStatus !== 5
+      ">
+      <div class="row">
+        <div class="col-10 m-auto">
+          <div class="btn-cancel" (click)="cancelTransportAlert()">
+            Cancelar Transporte
+          </div>
+        </div>
+        <div class="col-10 mr-auto ml-auto mb-3 mt-2">
+          <div class="btn-cancel" (click)="navigateStep(null, true)">
+            Cancelar Agendamento
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step quando tiver sem transporte -->
+
+    <div class="col-12" *ngIf="
+        scheduling.transport === null &&
+        scheduling.cardStatus === 3 &&
+        stepActual !== 1
+      ">
+      <div class="row" *ngFor="let item of stepCard" [hidden]="item.id !== stepActual">
+        <div class="col-12 ml-4">
+          <label class="title-card title-step">
+            {{ item.name }}
+          </label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-10 mr-auto ml-auto btn-login" (click)="navigateStep(stepActual + 1, false, true)">
+          Sim
+        </div>
+
+        <div class="col-10 mr-auto ml-auto mt-2 btn-back" (click)="navigateStep(null, true, false)" *ngIf="stepActual === 1"
+          [ngClass]="{ 'btn-cancel': stepActual === 1 }">
+          Não
+        </div>
+
+        <div class="col-10 mr-auto ml-auto mt-2 btn-back" (click)="navigateStep(stepActual + 1, false, false)" *ngIf="stepActual > 1">
+          Não
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ion-content>
