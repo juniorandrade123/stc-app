@@ -25,17 +25,17 @@
           "/*": [
             {
               "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 5,
+              "count": 6,
               "after": "uses-permission"
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.FOREGROUND_SERVICE\" />",
-              "count": 5,
+              "count": 6,
               "after": "uses-permission"
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.POST_NOTIFICATIONS\" />",
-              "count": 5,
+              "count": 6,
               "after": "uses-permission"
             }
           ]
