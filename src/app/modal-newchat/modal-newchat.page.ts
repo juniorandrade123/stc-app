@@ -203,24 +203,19 @@ export class ModalNewchatPage implements OnInit {
      */
     public serSendMenssage(userInfo: any) {
         try {
-            let userSelect: boolean = false;
-            const users: any = [];
-            for (const user of this.listUsersSendMessage) {
-                if (user.cpf !== userInfo.cpf) {
-                    users.push(user);
-                    
-                } else if (user.cpf === userInfo.cpf) {
-                    userSelect = true;
+            let userExist: boolean = false;
+            this.listUsersSendMessage.forEach((item, index) => {
+                if (item.cpf === userInfo.cpf.toUpperCase()) {
+                    this.listUsersSendMessage.splice(index, 1);
+                    userExist = true;
                 }
-            }
+            });
 
-            if ((users.length === 0 && this.listUsersSendMessage.length > 0 && !userSelect) || this.listUsersSendMessage.length === 0) {
-                users.push(userInfo);
+            if ((this.listUsersSendMessage.length === 0 && !userExist) || !userExist) {
+                this.listUsersSendMessage.push(userInfo);
             }
-
-            this.listUsersSendMessage = users;
         } catch (error) {
-            console.log("🚀 ~ file: modal-newchat.page.ts:216 ~ ModalNewchatPage ~ serSendMenssage ~ error:", error);
+            console.log("🚀 ~ file: modal-newchat.page.ts:215 ~ ModalNewchatPage ~ serSendMenssage ~ error:", error);
         }
     }
 }
