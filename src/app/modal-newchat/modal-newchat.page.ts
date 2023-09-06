@@ -25,6 +25,7 @@ export class ModalNewchatPage implements OnInit {
     public user: any;
     public loading: any;
     public isFilterActive = false;
+    public listUsersSendMessage: any = [];
 
     constructor(
         public navParams: NavParams,
@@ -40,6 +41,7 @@ export class ModalNewchatPage implements OnInit {
     }
 
     public async ngOnInit() {
+        this.listUsersSendMessage = [];
         await this.presentLoading();
         /**Salvando o token de notificação push do usuário! */
         this.firebaseService.saveTokenUserFirebase();
@@ -192,5 +194,33 @@ export class ModalNewchatPage implements OnInit {
         const msgA = a.patient['amountOfMessages'];
         const msgB = b.patient['amountOfMessages'];
         return msgA > msgB ? -1 : 1;
+    }
+
+    /**
+     * @param userInfo 
+     * Método que colocar o usuário na lista de
+     *  mensagens globais
+     */
+    public serSendMenssage(userInfo: any) {
+        try {
+            let userSelect: boolean = false;
+            const users: any = [];
+            for (const user of this.listUsersSendMessage) {
+                if (user.cpf !== userInfo.cpf) {
+                    users.push(user);
+                    
+                } else if (user.cpf === userInfo.cpf) {
+                    userSelect = true;
+                }
+            }
+
+            if ((users.length === 0 && this.listUsersSendMessage.length > 0 && !userSelect) || this.listUsersSendMessage.length === 0) {
+                users.push(userInfo);
+            }
+
+            this.listUsersSendMessage = users;
+        } catch (error) {
+            console.log("🚀 ~ file: modal-newchat.page.ts:216 ~ ModalNewchatPage ~ serSendMenssage ~ error:", error);
+        }
     }
 }

@@ -26,10 +26,11 @@
     </div>
     <div *ngIf="user.typeUser === 'agente'">
       <div class="col-11 mr-auto ml-auto mt-4" *ngFor="let mensageiro of mensageiros">
-        <ion-card class="card p-2" (click)="openChat(mensageiro.patient)">
+        <ion-card class="card p-2">
           <div style="margin-block-end: -50px;">
-            <ion-row>
-              <ion-col></ion-col>
+            <ion-row style="margin-bottom: 15px;">
+              <ion-col style="margin-left: -3px; margin-top: -5px;"><ion-checkbox
+                  (click)="serSendMenssage(mensageiro.patient)">Enviar menssagem</ion-checkbox></ion-col>
               <ion-col></ion-col>
               <ion-col></ion-col>
               <ion-col>
@@ -45,7 +46,7 @@
           <ion-card-header>
             <ion-card-title class="title">PACIENTE</ion-card-title>
           </ion-card-header>
-          <ion-card-content>
+          <ion-card-content (click)="openChat(mensageiro.patient)">
             <div class="row p-0">
               <div class="col-7"><b>Nome: </b> {{mensageiro.patient.name}}</div>
               <div class="col-5 text-right"><b>Idade: </b> {{mensageiro.age}}</div>
@@ -59,10 +60,11 @@
     </div>
     <div *ngIf="user.typeUser !== 'agente'">
       <div class="col-11 mr-auto ml-auto mt-4" *ngFor="let mensageiro of mensageiros">
-        <ion-card class="card p-2" (click)="openChat(mensageiro)">
+        <ion-card class="card p-2">
           <div style="margin-block-end: -50px;">
-            <ion-row>
-              <ion-col></ion-col>
+            <ion-row style="margin-bottom: 15px;">
+              <ion-col style="margin-left: -3px; margin-top: -5px;"><ion-checkbox
+                  (click)="serSendMenssage(mensageiro)">Enviar menssagem</ion-checkbox></ion-col>
               <ion-col></ion-col>
               <ion-col></ion-col>
               <ion-col>
@@ -78,7 +80,7 @@
           <ion-card-header>
             <ion-card-title class="title">AGENTE</ion-card-title>
           </ion-card-header>
-          <ion-card-content>
+          <ion-card-content (click)="openChat(mensageiro)">
             <div class="row p-0">
               <div class="col-7"><b>Nome: </b> {{mensageiro.name}}</div>
               <div class="col-5 text-right"><b>E-mail: </b> {{mensageiro.email}}</div>
@@ -91,4 +93,9 @@
       </div>
     </div>
   </div>
+  <!-- Botao do envio de menssagem global -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="light">
+    <img src="assets/imagens/chat.png" alt="auto" width=50px>
+    <ion-badge style="background-color: #3880ff;">{{listUsersSendMessage.length}}</ion-badge>
+  </ion-fab>
 </ion-content>`
