@@ -228,23 +228,32 @@ export class ModalNewchatPage implements OnInit {
      */
     public async openSendGlobalMessage() {
         try {
-            const popover = await this.popoverController.create({
-                component: SendGlobalMessagePage,
-                translucent: true,
-                cssClass: 'popoverController',
-                componentProps: {
-                    users: this.listUsersSendMessage
-                }
-            });
+            if (this.listUsersSendMessage.length > 0) {
+                const popover = await this.popoverController.create({
+                    component: SendGlobalMessagePage,
+                    translucent: true,
+                    cssClass: 'popoverController',
+                    componentProps: {
+                        users: this.listUsersSendMessage
+                    }
+                });
 
-            await popover.present();
+                await popover.present();
 
-            await popover.onDidDismiss().then(async data => {
-                if (data.data !== undefined) {
-                   await this.ngOnInit();
-                }
-            });
-
+                await popover.onDidDismiss().then(async data => {
+                    if (data.data !== undefined) {
+                        await this.ngOnInit();
+                    }
+                });
+            } else {
+                const toast = await this.toastController.create({
+                    message: 'Selecione pelo menos um usuário!',
+                    duration: 3000,
+                    position: 'bottom',
+                    cssClass: 'toast-css'
+                });
+                toast.present();
+            }
         } catch (error) {
             console.log("🚀 ~ file: modal-newchat.page.ts:249 ~ ModalNewchatPage ~ openSendGlobalMessage ~ error:", error);
         }

@@ -157,3 +157,10 @@ ion-content {
         --backdrop-opacity: var(--ion-backdrop-opacity, 0.5);
     }
 }
+
+.toast-css {
+    --background: #ec4946;
+    --color: #fff;
+    text-align: center;
+    border-radius: 30px;
+}

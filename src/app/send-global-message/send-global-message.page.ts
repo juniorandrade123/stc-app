@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent, NavParams, PopoverController } from '@ionic/angular';
+import { IonContent, LoadingController, NavParams, PopoverController } from '@ionic/angular';
 import { FcmService } from 'src/app/service/fcm/fcm.service';
 import { FirebaseService } from 'src/app/service/firebase/firebase.service';
 
@@ -35,8 +35,8 @@ export class SendGlobalMessagePage implements OnInit {
         public router: Router,
         public navParams: NavParams,
         private fcmService: FcmService,
-        private popoverController: PopoverController
-    ) { }
+        private popoverController: PopoverController,
+        public loadingController: LoadingController) { }
 
     public async ngOnInit() {
         this.session = JSON.parse(localStorage.getItem("user"));
@@ -56,26 +56,40 @@ export class SendGlobalMessagePage implements OnInit {
     }
 
     public async sendChat() {
-        if (this.chat) {
-            for (const user of this.users) {
-                let cpfUsuario = user.cpf;
-                if (cpfUsuario.includes('/')) {
-                    cpfUsuario = cpfUsuario.replace('/', '');
-                }
-                if (cpfUsuario.includes('-')) {
-                    cpfUsuario = cpfUsuario.replace('-', '');
-                }
-                if (cpfUsuario.includes('.')) {
-                    cpfUsuario = cpfUsuario.replace('.', '');
-                }
-                this.cpfEnvio = parseFloat(cpfUsuario);
+        const loading = await this.loadingController.create({
+            cssClass: 'my-custom-class',
+            message: 'Enviando...',
+            duration: 2000000
+        });
+        await loading.present();
 
-                const loggedInUser = JSON.parse(localStorage.getItem("user"));
-                this.fcmService.sendPushMsg(loggedInUser.user, this.chat, user.cpf);
-                this.firebaseService.sendMsg(this.cpfEnvio, this.cpfEnvio, this.session, this.chat);
+        try {
+            if (this.chat) {
+                for (const user of this.users) {
+                    let cpfUsuario = user.cpf;
+                    if (cpfUsuario.includes('/')) {
+                        cpfUsuario = cpfUsuario.replace('/', '');
+                    }
+                    if (cpfUsuario.includes('-')) {
+                        cpfUsuario = cpfUsuario.replace('-', '');
+                    }
+                    if (cpfUsuario.includes('.')) {
+                        cpfUsuario = cpfUsuario.replace('.', '');
+                    }
+                    this.cpfEnvio = parseFloat(cpfUsuario);
+
+                    const loggedInUser = JSON.parse(localStorage.getItem("user"));
+                    this.fcmService.sendPushMsg(loggedInUser.user, this.chat, user.cpf);
+                    this.firebaseService.sendMsg(this.cpfEnvio, this.cpfEnvio, this.session, this.chat);
+                }
+                await loading.dismiss();
+                await this.closeModal();
             }
+            this.chat = '';
+        } catch (error) {
+            console.log("🚀 ~ file: send-global-message.page.ts:81 ~ SendGlobalMessagePage ~ sendChat ~ error:", error);
+            await loading.dismiss();
         }
-        this.chat = '';
     }
 
     sortDate(a, b) {
@@ -99,4 +113,5 @@ export class SendGlobalMessagePage implements OnInit {
         const date = message['timestamp'] ? message['timestamp'].toDate() : new Date();
         return this.firebaseService.formatAMPM(date);
     }
+
 }
