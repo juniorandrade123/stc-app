@@ -241,9 +241,10 @@ export class ModalNewchatPage implements OnInit {
                 await popover.present();
 
                 await popover.onDidDismiss().then(async data => {
-                    if (data.data !== undefined) {
-                        await this.ngOnInit();
-                    }
+                    console.log("🚀 ~ FECHOU POPOVER", data)
+                    this.mensageiros = [];
+                    this.mensageirosAux = [];
+                    await this.ngOnInit();
                 });
             } else {
                 const toast = await this.toastController.create({
