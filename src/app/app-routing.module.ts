@@ -23,7 +23,11 @@ const routes: Routes = [
         path: 'modal-newchat',
         loadChildren: () => import('./modal-newchat/modal-newchat.module').then(m => m.ModalNewchatPageModule),
         pathMatch: 'full'
-    }
+    },  {
+    path: 'send-global-message',
+    loadChildren: () => import('./send-global-message/send-global-message.module').then( m => m.SendGlobalMessagePageModule)
+  }
+
 ];
 
 @NgModule({

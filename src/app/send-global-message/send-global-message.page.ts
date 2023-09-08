@@ -10,12 +10,13 @@ import { FirebaseService } from 'src/app/service/firebase/firebase.service';
  * 
  * @author Gustavo Teles
  */
+
 @Component({
     selector: 'app-send-global-message',
-    templateUrl: './send-global-message.component.html',
-    styleUrls: ['./send-global-message.component.scss'],
+    templateUrl: './send-global-message.page.html',
+    styleUrls: ['./send-global-message.page.scss'],
 })
-export class SendGlobalMessageComponent implements OnInit {
+export class SendGlobalMessagePage implements OnInit {
     @Input() users: any;
     @ViewChild(IonContent, { static: true }) content: IonContent;
 
@@ -35,34 +36,10 @@ export class SendGlobalMessageComponent implements OnInit {
         public navParams: NavParams,
         private fcmService: FcmService,
         private popoverController: PopoverController
-    ) {
-        this.user = this.navParams.data.data;
-        let cpfUsuario = this.user.cpf;
-        if (cpfUsuario.includes('/')) {
-            cpfUsuario = cpfUsuario.replace('/', '');
-        }
-        if (cpfUsuario.includes('-')) {
-            cpfUsuario = cpfUsuario.replace('-', '');
-        }
-        if (cpfUsuario.includes('.')) {
-            cpfUsuario = cpfUsuario.replace('.', '');
-        }
-        this.cpfEnvio = parseFloat(cpfUsuario);
-    }
+    ) { }
 
     public async ngOnInit() {
-        this.session = JSON.parse(localStorage.getItem("user"));
-        let cpfSession = this.session.cpf;
 
-        while (cpfSession.includes('/') || cpfSession.includes('-') || cpfSession.includes('.')) {
-            cpfSession = cpfSession.replace('/', '');
-            cpfSession = cpfSession.replace('-', '');
-            cpfSession = cpfSession.replace('.', '');
-        }
-
-        this.session = parseFloat(cpfSession);
-        await this.getChat();
-        this.content.scrollToBottom();
     }
 
     public async ionViewDidEnter() {

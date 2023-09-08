@@ -30,6 +30,7 @@ import { ChatRoomPageModule } from './chat-room/chat-room.module';
 import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { HttpModule } from '@angular/http';
+import { SendGlobalMessagePageModule } from './send-global-message/send-global-message.module';
 
 registerLocaleData(localeBr, 'pt');
 
@@ -51,6 +52,7 @@ registerLocaleData(localeBr, 'pt');
         HttpModule,
         ModalNewchatPageModule,
         ChatRoomPageModule,
+        SendGlobalMessagePageModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             registrationStrategy: 'registerWhenStable:30000',

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SendGlobalMessageComponent } from './send-global-message.component';
+import { SendGlobalMessagePage } from './send-global-message.page';
 
-describe('SendGlobalMessageComponent', () => {
-  let component: SendGlobalMessageComponent;
-  let fixture: ComponentFixture<SendGlobalMessageComponent>;
+describe('SendGlobalMessagePage', () => {
+  let component: SendGlobalMessagePage;
+  let fixture: ComponentFixture<SendGlobalMessagePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SendGlobalMessageComponent ],
+      declarations: [ SendGlobalMessagePage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SendGlobalMessageComponent);
+    fixture = TestBed.createComponent(SendGlobalMessagePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

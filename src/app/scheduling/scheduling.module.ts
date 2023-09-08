@@ -9,11 +9,10 @@ import { ModalCancelComponent } from './cancel/modal-cancel/modal-cancel.compone
 import { ReactiveFormsModule } from '@angular/forms';
 import { TransportComponent } from './detail/transport/transport.component';
 import { FilterDateModalComponent } from '../components/filter-date-modal/filter-date-modal.component';
-import { SendGlobalMessageComponent } from '../components/send-global-message/send-global-message.component';
 
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, CancelComponent, ModalCancelComponent, TransportComponent, FilterDateModalComponent, SendGlobalMessageComponent],
+  declarations: [ListComponent, DetailComponent, CancelComponent, ModalCancelComponent, TransportComponent, FilterDateModalComponent],
   imports: [
     CommonModule,
     SchedulingRoutingModule,

@@ -5,7 +5,7 @@ import { RequestService } from '../core/request-help/request-service';
 import { ChatRoomPage } from '../chat-room/chat-room.page';
 import { FilterChatModalComponent } from '../components/filter-chat-modal/filter-chat-modal.component';
 import { FirebaseService } from '../service/firebase/firebase.service';
-import { SendGlobalMessageComponent } from '../components/send-global-message/send-global-message.component';
+import { SendGlobalMessagePage } from '../send-global-message/send-global-message.page';
 
 /**
  * Classe responsável pela exibição da lista de usuários para se comunicar via chat virtual
@@ -229,7 +229,7 @@ export class ModalNewchatPage implements OnInit {
     public async openSendGlobalMessage() {
         try {
             const popover = await this.popoverController.create({
-                component: SendGlobalMessageComponent,
+                component: SendGlobalMessagePage,
                 translucent: true,
                 cssClass: 'popoverController',
                 componentProps: {
