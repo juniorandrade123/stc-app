@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { SchedulingRoutingModule } from './scheduling-routing.module';
 import { ListComponent } from './list/list.component';
 import { IonicModule } from '@ionic/angular';
@@ -10,15 +9,17 @@ import { ModalCancelComponent } from './cancel/modal-cancel/modal-cancel.compone
 import { ReactiveFormsModule } from '@angular/forms';
 import { TransportComponent } from './detail/transport/transport.component';
 import { FilterDateModalComponent } from '../components/filter-date-modal/filter-date-modal.component';
+import { SendGlobalMessageComponent } from '../components/send-global-message/send-global-message.component';
 
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, CancelComponent, ModalCancelComponent, TransportComponent, FilterDateModalComponent],
+  declarations: [ListComponent, DetailComponent, CancelComponent, ModalCancelComponent, TransportComponent, FilterDateModalComponent, SendGlobalMessageComponent],
   imports: [
     CommonModule,
     SchedulingRoutingModule,
     IonicModule,
     ReactiveFormsModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SchedulingModule { }
