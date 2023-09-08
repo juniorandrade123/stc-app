@@ -142,7 +142,7 @@ ion-content {
 .popoverController {
     &::part(content) {
         --min-width: 90% !important;
-        --min-height: 50% !important;
+        --min-height: 90% !important;
         border-radius: 30px !important;
         //margin-left: 15px;
 
