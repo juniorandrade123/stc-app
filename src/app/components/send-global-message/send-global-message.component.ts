@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent, ModalController, NavParams } from '@ionic/angular';
+import { IonContent, NavParams, PopoverController } from '@ionic/angular';
 import { FcmService } from 'src/app/service/fcm/fcm.service';
 import { FirebaseService } from 'src/app/service/firebase/firebase.service';
 
@@ -16,6 +16,7 @@ import { FirebaseService } from 'src/app/service/firebase/firebase.service';
     styleUrls: ['./send-global-message.component.scss'],
 })
 export class SendGlobalMessageComponent implements OnInit {
+    @Input() users: any;
     @ViewChild(IonContent, { static: true }) content: IonContent;
 
     public user: any;
@@ -32,8 +33,8 @@ export class SendGlobalMessageComponent implements OnInit {
         public route: ActivatedRoute,
         public router: Router,
         public navParams: NavParams,
-        public modalCtrl: ModalController,
-        private fcmService: FcmService
+        private fcmService: FcmService,
+        private popoverController: PopoverController
     ) {
         this.user = this.navParams.data.data;
         let cpfUsuario = this.user.cpf;
@@ -69,9 +70,7 @@ export class SendGlobalMessageComponent implements OnInit {
     }
 
     public async closeModal() {
-        this.modalCtrl.dismiss({
-            'dismissed': true
-        });
+        this.popoverController.dismiss();
     }
 
     public async sendChat() {

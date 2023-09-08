@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavParams, ModalController, ToastController, LoadingController, AlertController } from '@ionic/angular';
+import { NavParams, ModalController, ToastController, LoadingController, AlertController, PopoverController } from '@ionic/angular';
 import { DependentHolderFilterDto } from '../dependent/model/dependent-holder-filter-dto';
 import { RequestService } from '../core/request-help/request-service';
 import { ChatRoomPage } from '../chat-room/chat-room.page';
 import { FilterChatModalComponent } from '../components/filter-chat-modal/filter-chat-modal.component';
 import { FirebaseService } from '../service/firebase/firebase.service';
+import { SendGlobalMessageComponent } from '../components/send-global-message/send-global-message.component';
 
 /**
  * Classe responsável pela exibição da lista de usuários para se comunicar via chat virtual
@@ -35,7 +36,8 @@ export class ModalNewchatPage implements OnInit {
         public loadingController: LoadingController,
         public alertController: AlertController,
         public modalController: ModalController,
-        private firebaseService: FirebaseService
+        private firebaseService: FirebaseService,
+        private popoverController: PopoverController
     ) {
         this.user = JSON.parse(localStorage.getItem("user"));
     }
@@ -216,6 +218,35 @@ export class ModalNewchatPage implements OnInit {
             }
         } catch (error) {
             console.log("🚀 ~ file: modal-newchat.page.ts:215 ~ ModalNewchatPage ~ serSendMenssage ~ error:", error);
+        }
+    }
+
+    /**
+     * Método responsável por abrir o modal
+     * com o componente de envio de 
+     * menssagem global
+     */
+    public async openSendGlobalMessage() {
+        try {
+            const popover = await this.popoverController.create({
+                component: SendGlobalMessageComponent,
+                translucent: true,
+                cssClass: 'popoverController',
+                componentProps: {
+                    users: this.listUsersSendMessage
+                }
+            });
+
+            await popover.present();
+
+            await popover.onDidDismiss().then(async data => {
+                if (data.data !== undefined) {
+
+                }
+            });
+
+        } catch (error) {
+            console.log("🚀 ~ file: modal-newchat.page.ts:249 ~ ModalNewchatPage ~ openSendGlobalMessage ~ error:", error);
         }
     }
 }
