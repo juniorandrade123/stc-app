@@ -203,7 +203,7 @@ export class ModalNewchatPage implements OnInit {
      * Método que colocar o usuário na lista de
      *  mensagens globais
      */
-    public serSendMenssage(userInfo: any) {
+    public setSendMenssage(userInfo: any) {
         try {
             let userExist: boolean = false;
             this.listUsersSendMessage.forEach((item, index) => {
@@ -241,7 +241,7 @@ export class ModalNewchatPage implements OnInit {
 
             await popover.onDidDismiss().then(async data => {
                 if (data.data !== undefined) {
-
+                   await this.ngOnInit();
                 }
             });
 

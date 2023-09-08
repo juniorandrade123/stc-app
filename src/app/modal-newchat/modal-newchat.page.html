@@ -30,7 +30,7 @@
           <div style="margin-block-end: -50px;">
             <ion-row style="margin-bottom: 15px;">
               <ion-col style="margin-left: -3px; margin-top: -3px;"><ion-checkbox
-                  (click)="serSendMenssage(mensageiro.patient)">Enviar menssagem</ion-checkbox></ion-col>
+                  (click)="setSendMenssage(mensageiro.patient)"></ion-checkbox></ion-col>
               <ion-col></ion-col>
               <ion-col></ion-col>
               <ion-col>
@@ -60,11 +60,10 @@
     </div>
     <div *ngIf="user.typeUser !== 'agente'">
       <div class="col-11 mr-auto ml-auto mt-4" *ngFor="let mensageiro of mensageiros">
-        <ion-card class="card p-2">
+        <ion-card class="card p-2" (click)="openChat(mensageiro)">
           <div style="margin-block-end: -50px;">
-            <ion-row style="margin-bottom: 15px;">
-              <ion-col style="margin-left: -3px; margin-top: -3px;"><ion-checkbox
-                  (click)="serSendMenssage(mensageiro)">Enviar menssagem</ion-checkbox></ion-col>
+            <ion-row>
+              <ion-col></ion-col>
               <ion-col></ion-col>
               <ion-col></ion-col>
               <ion-col>
@@ -80,7 +79,7 @@
           <ion-card-header>
             <ion-card-title class="title">AGENTE</ion-card-title>
           </ion-card-header>
-          <ion-card-content (click)="openChat(mensageiro)">
+          <ion-card-content>
             <div class="row p-0">
               <div class="col-7"><b>Nome: </b> {{mensageiro.name}}</div>
               <div class="col-5 text-right"><b>E-mail: </b> {{mensageiro.email}}</div>
@@ -94,7 +93,7 @@
     </div>
   </div>
   <!-- Botao do envio de menssagem global -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="light" (click)="openSendGlobalMessage()">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="light" (click)="openSendGlobalMessage()" *ngIf="user.typeUser === 'agente'">
     <img src="assets/imagens/enviar.png" alt="auto" width=40px>
     <ion-badge style="background-color: #2dd36f;">{{listUsersSendMessage.length}}</ion-badge>
   </ion-fab>
