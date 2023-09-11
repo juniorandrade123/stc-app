@@ -7,10 +7,6 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
-    <feature name="SplashScreen">
-        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-        <param name="onload" value="true" />
-    </feature>
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
@@ -18,6 +14,10 @@
     <allow-navigation href="cdvfile:*" />
     <feature name="CordovaHttpPlugin">
         <param name="android-package" value="com.silkimen.cordovahttp.CordovaHttpPlugin" />
+    </feature>
+    <feature name="FirebaseMessaging">
+        <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin" />
+        <param name="onload" value="true" />
     </feature>
     <allow-navigation href="http://localhost/*" />
     <allow-navigation href="https://localhost/*" />
@@ -40,14 +40,14 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
-        <application android:networkSecurityConfig="@xml/network_security_config" />
-    </edit-config>
     <config-file after="uses-permission" parent="/*" target="app/src/main/AndroidManifest.xml">
         <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
         <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     </config-file>
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+        <application android:usesCleartextTraffic="true" />
+        <application android:networkSecurityConfig="@xml/network_security_config" />
+    </edit-config>
     <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
     <allow-intent href="market:*" />
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -71,6 +71,8 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine" />
+    <preference name="GradlePluginGoogleServicesEnabled" value="true" />
+    <preference name="GradlePluginGoogleServicesVersion" value="4.3.13" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="22" />
     <preference name="android-targetSdkVersion" value="33" />
@@ -86,5 +88,6 @@
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="android-build-tool" value="gradle" />
-    <preference name="Scheme" value="http" />
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="resources/splash.png" />
+    <preference name="AndroidWindowSplashScreenBackground" value="#FFFFFF" />
 </widget>

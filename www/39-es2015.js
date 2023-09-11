@@ -1,2 +1,264 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[39],{vnES:function(e,t,i){"use strict";i.r(t),i.d(t,"ion_nav",(function(){return d})),i.d(t,"ion_nav_link",(function(){return m}));var n=i("wEJo"),s=i("E/Mt"),o=i("bC4P"),r=i("W6o/"),a=i("qb1Q"),c=i("spDm");class h{constructor(e,t){this.component=e,this.params=t,this.state=1}async init(e){if(this.state=2,!this.element){const t=this.component;this.element=await Object(c.a)(this.delegate,e,t,["ion-page","ion-page-invisible"],this.params)}}_destroy(){Object(r.m)(3!==this.state,"view state must be ATTACHED");const e=this.element;e&&(this.delegate?this.delegate.removeViewFromDom(e.parentElement,e):e.remove()),this.nav=void 0,this.state=3}}const u=(e,t,i)=>{if(!e)return!1;if(e.component!==t)return!1;const n=e.params;if(n===i)return!0;if(!n&&!i)return!0;if(!n||!i)return!1;const s=Object.keys(n),o=Object.keys(i);if(s.length!==o.length)return!1;for(const r of s)if(n[r]!==i[r])return!1;return!0},l=(e,t)=>e?e instanceof h?e:new h(e,t):null,d=class{constructor(e){Object(n.o)(this,e),this.ionNavWillLoad=Object(n.g)(this,"ionNavWillLoad",7),this.ionNavWillChange=Object(n.g)(this,"ionNavWillChange",3),this.ionNavDidChange=Object(n.g)(this,"ionNavDidChange",3),this.transInstr=[],this.animationEnabled=!0,this.useRouter=!1,this.isTransitioning=!1,this.destroyed=!1,this.views=[],this.animated=!0}swipeGestureChanged(){this.gesture&&this.gesture.enable(!0===this.swipeGesture)}rootChanged(){void 0!==this.root&&(this.useRouter||this.setRoot(this.root,this.rootParams))}componentWillLoad(){if(this.useRouter=!!document.querySelector("ion-router")&&!this.el.closest("[no-router]"),void 0===this.swipeGesture){const e=Object(s.b)(this);this.swipeGesture=s.c.getBoolean("swipeBackEnabled","ios"===e)}this.ionNavWillLoad.emit()}async componentDidLoad(){this.rootChanged(),this.gesture=(await i.e(14).then(i.bind(null,"TWyq"))).createSwipeBackGesture(this.el,this.canStart.bind(this),this.onStart.bind(this),this.onMove.bind(this),this.onEnd.bind(this)),this.swipeGestureChanged()}disconnectedCallback(){for(const e of this.views)Object(a.h)(e.element,a.e),e._destroy();this.gesture&&(this.gesture.destroy(),this.gesture=void 0),this.transInstr.length=this.views.length=0,this.destroyed=!0}push(e,t,i,n){return this.queueTrns({insertStart:-1,insertViews:[{component:e,componentProps:t}],opts:i},n)}insert(e,t,i,n,s){return this.queueTrns({insertStart:e,insertViews:[{component:t,componentProps:i}],opts:n},s)}insertPages(e,t,i,n){return this.queueTrns({insertStart:e,insertViews:t,opts:i},n)}pop(e,t){return this.queueTrns({removeStart:-1,removeCount:1,opts:e},t)}popTo(e,t,i){const n={removeStart:-1,removeCount:-1,opts:t};return"object"==typeof e&&e.component?(n.removeView=e,n.removeStart=1):"number"==typeof e&&(n.removeStart=e+1),this.queueTrns(n,i)}popToRoot(e,t){return this.queueTrns({removeStart:1,removeCount:-1,opts:e},t)}removeIndex(e,t=1,i,n){return this.queueTrns({removeStart:e,removeCount:t,opts:i},n)}setRoot(e,t,i,n){return this.setPages([{component:e,componentProps:t}],i,n)}setPages(e,t,i){return null==t&&(t={}),!0!==t.animated&&(t.animated=!1),this.queueTrns({insertStart:0,insertViews:e,removeStart:0,removeCount:-1,opts:t},i)}setRouteId(e,t,i,n){const s=this.getActiveSync();if(u(s,e,t))return Promise.resolve({changed:!1,element:s.element});let o;const r=new Promise(e=>o=e);let a;const c={updateURL:!1,viewIsReady:e=>{let t;const i=new Promise(e=>t=e);return o({changed:!0,element:e,markVisible:async()=>{t(),await a}}),i}};if("root"===i)a=this.setRoot(e,t,c);else{const s=this.views.find(i=>u(i,e,t));s?a=this.popTo(s,Object.assign(Object.assign({},c),{direction:"back",animationBuilder:n})):"forward"===i?a=this.push(e,t,Object.assign(Object.assign({},c),{animationBuilder:n})):"back"===i&&(a=this.setRoot(e,t,Object.assign(Object.assign({},c),{direction:"back",animated:!0,animationBuilder:n})))}return r}async getRouteId(){const e=this.getActiveSync();return e?{id:e.element.tagName,params:e.params,element:e.element}:void 0}getActive(){return Promise.resolve(this.getActiveSync())}getByIndex(e){return Promise.resolve(this.views[e])}canGoBack(e){return Promise.resolve(this.canGoBackSync(e))}getPrevious(e){return Promise.resolve(this.getPreviousSync(e))}getLength(){return this.views.length}getActiveSync(){return this.views[this.views.length-1]}canGoBackSync(e=this.getActiveSync()){return!(!e||!this.getPreviousSync(e))}getPreviousSync(e=this.getActiveSync()){if(!e)return;const t=this.views,i=t.indexOf(e);return i>0?t[i-1]:void 0}async queueTrns(e,t){if(this.isTransitioning&&null!=e.opts&&e.opts.skipIfBusy)return Promise.resolve(!1);const i=new Promise((t,i)=>{e.resolve=t,e.reject=i});if(e.done=t,e.opts&&!1!==e.opts.updateURL&&this.useRouter){const t=document.querySelector("ion-router");if(t){const i=await t.canTransition();if(!1===i)return Promise.resolve(!1);if("string"==typeof i)return t.push(i,e.opts.direction||"back"),Promise.resolve(!1)}}return e.insertViews&&0===e.insertViews.length&&(e.insertViews=void 0),this.transInstr.push(e),this.nextTrns(),i}success(e,t){if(this.destroyed)this.fireError("nav controller was destroyed",t);else if(t.done&&t.done(e.hasCompleted,e.requiresTransition,e.enteringView,e.leavingView,e.direction),t.resolve(e.hasCompleted),!1!==t.opts.updateURL&&this.useRouter){const t=document.querySelector("ion-router");if(t){const i="back"===e.direction?"back":"forward";t.navChanged(i)}}}failed(e,t){this.destroyed?this.fireError("nav controller was destroyed",t):(this.transInstr.length=0,this.fireError(e,t))}fireError(e,t){t.done&&t.done(!1,!1,e),t.reject&&!this.destroyed?t.reject(e):t.resolve(!1)}nextTrns(){if(this.isTransitioning)return!1;const e=this.transInstr.shift();return!!e&&(this.runTransition(e),!0)}async runTransition(e){try{this.ionNavWillChange.emit(),this.isTransitioning=!0,this.prepareTI(e);const t=this.getActiveSync(),i=this.getEnteringView(e,t);if(!t&&!i)throw new Error("no views in the stack to be removed");i&&1===i.state&&await i.init(this.el),this.postViewInit(i,t,e);const n=(e.enteringRequiresTransition||e.leavingRequiresTransition)&&i!==t;if(n&&e.opts&&t){"back"===e.opts.direction&&(e.opts.animationBuilder=e.opts.animationBuilder||i&&i.animationBuilder),t.animationBuilder=e.opts.animationBuilder}const s=n?await this.transition(i,t,e):{hasCompleted:!0,requiresTransition:!1};this.success(s,e),this.ionNavDidChange.emit()}catch(t){this.failed(t,e)}this.isTransitioning=!1,this.nextTrns()}prepareTI(e){const t=this.views.length;if(e.opts=e.opts||{},void 0===e.opts.delegate&&(e.opts.delegate=this.delegate),void 0!==e.removeView){Object(r.m)(void 0!==e.removeStart,"removeView needs removeStart"),Object(r.m)(void 0!==e.removeCount,"removeView needs removeCount");const t=this.views.indexOf(e.removeView);if(t<0)throw new Error("removeView was not found");e.removeStart+=t}void 0!==e.removeStart&&(e.removeStart<0&&(e.removeStart=t-1),e.removeCount<0&&(e.removeCount=t-e.removeStart),e.leavingRequiresTransition=e.removeCount>0&&e.removeStart+e.removeCount===t),e.insertViews&&((e.insertStart<0||e.insertStart>t)&&(e.insertStart=t),e.enteringRequiresTransition=e.insertStart===t);const i=e.insertViews;if(!i)return;Object(r.m)(i.length>0,"length can not be zero");const n=i.map(e=>e instanceof h?e:"component"in e?l(e.component,null===e.componentProps?void 0:e.componentProps):l(e,void 0)).filter(e=>null!==e);if(0===n.length)throw new Error("invalid views to insert");for(const s of n){s.delegate=e.opts.delegate;const t=s.nav;if(t&&t!==this)throw new Error("inserted view was already inserted");if(3===s.state)throw new Error("inserted view was already destroyed")}e.insertViews=n}getEnteringView(e,t){const i=e.insertViews;if(void 0!==i)return i[i.length-1];const n=e.removeStart;if(void 0!==n){const i=this.views,s=n+e.removeCount;for(let e=i.length-1;e>=0;e--){const o=i[e];if((e<n||e>=s)&&o!==t)return o}}}postViewInit(e,t,i){Object(r.m)(t||e,"Both leavingView and enteringView are null"),Object(r.m)(i.resolve,"resolve must be valid"),Object(r.m)(i.reject,"reject must be valid");const n=i.opts,s=i.insertViews,o=i.removeStart,c=i.removeCount;let h;if(void 0!==o&&void 0!==c){Object(r.m)(o>=0,"removeStart can not be negative"),Object(r.m)(c>=0,"removeCount can not be negative"),h=[];for(let i=0;i<c;i++){const n=this.views[i+o];n&&n!==e&&n!==t&&h.push(n)}n.direction=n.direction||"back"}const u=this.views.length+(void 0!==s?s.length:0)-(void 0!==c?c:0);if(Object(r.m)(u>=0,"final balance can not be negative"),0===u)throw console.warn("You can't remove all the pages in the navigation stack. nav.pop() is probably called too many times.",this,this.el),new Error("navigation stack needs at least one root page");if(s){let e=i.insertStart;for(const t of s)this.insertViewAt(t,e),e++;i.enteringRequiresTransition&&(n.direction=n.direction||"forward")}if(h&&h.length>0){for(const e of h)Object(a.h)(e.element,a.c),Object(a.h)(e.element,a.d),Object(a.h)(e.element,a.e);for(const e of h)this.destroyView(e)}}async transition(e,t,i){const n=i.opts,o=n.progressAnimation?e=>this.sbAni=e:void 0,r=Object(s.b)(this),c=e.element,h=t&&t.element,u=Object.assign(Object.assign({mode:r,showGoBack:this.canGoBackSync(e),baseEl:this.el,progressCallback:o,animated:this.animated&&s.c.getBoolean("animated",!0),enteringEl:c,leavingEl:h},n),{animationBuilder:n.animationBuilder||this.animation||s.c.get("navAnimation")}),{hasCompleted:l}=await Object(a.j)(u);return this.transitionFinish(l,e,t,n)}transitionFinish(e,t,i,n){const s=e?t:i;return s&&this.cleanup(s),{hasCompleted:e,requiresTransition:!0,enteringView:t,leavingView:i,direction:n.direction}}insertViewAt(e,t){const i=this.views,n=i.indexOf(e);n>-1?(Object(r.m)(e.nav===this,"view is not part of the nav"),i.splice(t,0,i.splice(n,1)[0])):(Object(r.m)(!e.nav,"nav is used"),e.nav=this,i.splice(t,0,e))}removeView(e){Object(r.m)(2===e.state||3===e.state,"view state should be loaded or destroyed");const t=this.views,i=t.indexOf(e);Object(r.m)(i>-1,"view must be part of the stack"),i>=0&&t.splice(i,1)}destroyView(e){e._destroy(),this.removeView(e)}cleanup(e){if(this.destroyed)return;const t=this.views,i=t.indexOf(e);for(let n=t.length-1;n>=0;n--){const e=t[n],s=e.element;s&&(n>i?(Object(a.h)(s,a.e),this.destroyView(e)):n<i&&Object(a.i)(s,!0))}}canStart(){return!!this.swipeGesture&&!this.isTransitioning&&0===this.transInstr.length&&this.animationEnabled&&this.canGoBackSync()}onStart(){this.queueTrns({removeStart:-1,removeCount:1,opts:{direction:"back",progressAnimation:!0}},void 0)}onMove(e){this.sbAni&&this.sbAni.progressStep(e)}onEnd(e,t,i){if(this.sbAni){this.animationEnabled=!1,this.sbAni.onFinish(()=>{this.animationEnabled=!0},{oneTimeCallback:!0});let n=e?-.001:.001;e?n+=Object(o.a)([0,0],[.32,.72],[0,1],[1,1],t)[0]:(this.sbAni.easing("cubic-bezier(1, 0, 0.68, 0.28)"),n+=Object(o.a)([0,0],[1,0],[.68,.28],[1,1],t)[0]),this.sbAni.progressEnd(e?1:0,n,i)}}render(){return Object(n.j)("slot",null)}get el(){return Object(n.k)(this)}static get watchers(){return{swipeGesture:["swipeGestureChanged"],root:["rootChanged"]}}};d.style=":host{left:0;right:0;top:0;bottom:0;position:absolute;contain:layout size style;overflow:hidden;z-index:0}";const m=class{constructor(e){Object(n.o)(this,e),this.routerDirection="forward",this.onClick=()=>((e,t,i,n,s)=>{const o=e.closest("ion-nav");if(o)if("forward"===t){if(void 0!==i)return o.push(i,n,{skipIfBusy:!0,animationBuilder:s})}else if("root"===t){if(void 0!==i)return o.setRoot(i,n,{skipIfBusy:!0,animationBuilder:s})}else if("back"===t)return o.pop({skipIfBusy:!0,animationBuilder:s});return Promise.resolve(!1)})(this.el,this.routerDirection,this.component,this.componentProps,this.routerAnimation)}render(){return Object(n.j)(n.c,{onClick:this.onClick})}get el(){return Object(n.k)(this)}}}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[39],{
+
+/***/ "./node_modules/@ionic/core/dist/esm/ion-textarea.entry.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-textarea.entry.js ***!
+  \*****************************************************************/
+/*! exports provided: ion_textarea */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_textarea", function() { return Textarea; });
+/* harmony import */ var _index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-7a8b7a1c.js */ "./node_modules/@ionic/core/dist/esm/index-7a8b7a1c.js");
+/* harmony import */ var _ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-63a97a32.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-63a97a32.js");
+/* harmony import */ var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-1457892a.js */ "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
+/* harmony import */ var _theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-ff3fc52f.js */ "./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js");
+
+
+
+
+
+const textareaIosCss = ".sc-ion-textarea-ios-h{--background:initial;--color:initial;--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;--padding-top:0;--padding-end:0;--padding-bottom:0;--padding-start:0;--border-radius:0;display:block;position:relative;-ms-flex:1;flex:1;width:100%;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);white-space:pre-wrap;z-index:2;-webkit-box-sizing:border-box;box-sizing:border-box}.ion-color.sc-ion-textarea-ios-h{background:initial}.ion-color.sc-ion-textarea-ios-h{color:var(--ion-color-base)}ion-item.sc-ion-textarea-ios-h,ion-item .sc-ion-textarea-ios-h{-ms-flex-item-align:baseline;align-self:baseline}ion-item.sc-ion-textarea-ios-h:not(.item-label),ion-item:not(.item-label) .sc-ion-textarea-ios-h{--padding-start:0}.textarea-wrapper.sc-ion-textarea-ios{min-width:inherit;max-width:inherit;min-height:inherit;max-height:inherit}.native-textarea.sc-ion-textarea-ios{border-radius:var(--border-radius);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;resize:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.native-textarea.sc-ion-textarea-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.native-textarea.sc-ion-textarea-ios::-webkit-input-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::-moz-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios:-ms-input-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::-ms-input-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea[disabled].sc-ion-textarea-ios{opacity:0.4}.cloned-input.sc-ion-textarea-ios{left:0;top:0;position:absolute;pointer-events:none}[dir=rtl].sc-ion-textarea-ios .cloned-input.sc-ion-textarea-ios,[dir=rtl].sc-ion-textarea-ios-h .cloned-input.sc-ion-textarea-ios,[dir=rtl] .sc-ion-textarea-ios-h .cloned-input.sc-ion-textarea-ios{left:unset;right:unset;right:0}.item-label-floating.item-has-placeholder.sc-ion-textarea-ios-h:not(.item-has-value),.item-label-floating.item-has-placeholder:not(.item-has-value) .sc-ion-textarea-ios-h{opacity:0}.item-label-floating.item-has-placeholder.sc-ion-textarea-ios-h:not(.item-has-value).item-has-focus,.item-label-floating.item-has-placeholder:not(.item-has-value).item-has-focus .sc-ion-textarea-ios-h{-webkit-transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);opacity:1}.sc-ion-textarea-ios-h{--padding-top:10px;--padding-end:10px;--padding-bottom:10px;--padding-start:0;font-size:inherit}.item-label-stacked.sc-ion-textarea-ios-h,.item-label-stacked .sc-ion-textarea-ios-h,.item-label-floating.sc-ion-textarea-ios-h,.item-label-floating .sc-ion-textarea-ios-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0px}";
+
+const textareaMdCss = ".sc-ion-textarea-md-h{--background:initial;--color:initial;--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;--padding-top:0;--padding-end:0;--padding-bottom:0;--padding-start:0;--border-radius:0;display:block;position:relative;-ms-flex:1;flex:1;width:100%;background:var(--background);color:var(--color);font-family:var(--ion-font-family, inherit);white-space:pre-wrap;z-index:2;-webkit-box-sizing:border-box;box-sizing:border-box}.ion-color.sc-ion-textarea-md-h{background:initial}.ion-color.sc-ion-textarea-md-h{color:var(--ion-color-base)}ion-item.sc-ion-textarea-md-h,ion-item .sc-ion-textarea-md-h{-ms-flex-item-align:baseline;align-self:baseline}ion-item.sc-ion-textarea-md-h:not(.item-label),ion-item:not(.item-label) .sc-ion-textarea-md-h{--padding-start:0}.textarea-wrapper.sc-ion-textarea-md{min-width:inherit;max-width:inherit;min-height:inherit;max-height:inherit}.native-textarea.sc-ion-textarea-md{border-radius:var(--border-radius);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;resize:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.native-textarea.sc-ion-textarea-md{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.native-textarea.sc-ion-textarea-md::-webkit-input-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::-moz-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md:-ms-input-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::-ms-input-placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::placeholder{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea[disabled].sc-ion-textarea-md{opacity:0.4}.cloned-input.sc-ion-textarea-md{left:0;top:0;position:absolute;pointer-events:none}[dir=rtl].sc-ion-textarea-md .cloned-input.sc-ion-textarea-md,[dir=rtl].sc-ion-textarea-md-h .cloned-input.sc-ion-textarea-md,[dir=rtl] .sc-ion-textarea-md-h .cloned-input.sc-ion-textarea-md{left:unset;right:unset;right:0}.item-label-floating.item-has-placeholder.sc-ion-textarea-md-h:not(.item-has-value),.item-label-floating.item-has-placeholder:not(.item-has-value) .sc-ion-textarea-md-h{opacity:0}.item-label-floating.item-has-placeholder.sc-ion-textarea-md-h:not(.item-has-value).item-has-focus,.item-label-floating.item-has-placeholder:not(.item-has-value).item-has-focus .sc-ion-textarea-md-h{-webkit-transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);transition:opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);opacity:1}.sc-ion-textarea-md-h{--padding-top:10px;--padding-end:0;--padding-bottom:11px;--padding-start:8px;margin-left:0;margin-right:0;margin-top:8px;margin-bottom:0;font-size:inherit}.item-label-stacked.sc-ion-textarea-md-h,.item-label-stacked .sc-ion-textarea-md-h,.item-label-floating.sc-ion-textarea-md-h,.item-label-floating .sc-ion-textarea-md-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0}";
+
+const Textarea = class {
+  constructor(hostRef) {
+    Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    this.ionChange = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionChange", 7);
+    this.ionInput = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionInput", 7);
+    this.ionStyle = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionStyle", 7);
+    this.ionBlur = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionBlur", 7);
+    this.ionFocus = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionFocus", 7);
+    this.inputId = `ion-textarea-${textareaIds++}`;
+    this.didBlurAfterEdit = false;
+    this.inheritedAttributes = {};
+    /**
+     * This is required for a WebKit bug which requires us to
+     * blur and focus an input to properly focus the input in
+     * an item with delegatesFocus. It will no longer be needed
+     * with iOS 14.
+     *
+     * @internal
+     */
+    this.fireFocusEvents = true;
+    this.hasFocus = false;
+    /**
+     * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+     */
+    this.autocapitalize = 'none';
+    /**
+     * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+     */
+    this.autofocus = false;
+    /**
+     * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+     */
+    this.clearOnEdit = false;
+    /**
+     * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+     */
+    this.debounce = 0;
+    /**
+     * If `true`, the user cannot interact with the textarea.
+     */
+    this.disabled = false;
+    /**
+     * The name of the control, which is submitted with the form data.
+     */
+    this.name = this.inputId;
+    /**
+     * If `true`, the user cannot modify the value.
+     */
+    this.readonly = false;
+    /**
+     * If `true`, the user must fill in a value before submitting a form.
+     */
+    this.required = false;
+    /**
+     * If `true`, the element will have its spelling and grammar checked.
+     */
+    this.spellcheck = false;
+    /**
+     * If `true`, the element height will increase based on the value.
+     */
+    this.autoGrow = false;
+    /**
+     * The value of the textarea.
+     */
+    this.value = '';
+    this.onInput = (ev) => {
+      if (this.nativeInput) {
+        this.value = this.nativeInput.value;
+      }
+      this.emitStyle();
+      this.ionInput.emit(ev);
+    };
+    this.onFocus = (ev) => {
+      this.hasFocus = true;
+      this.focusChange();
+      if (this.fireFocusEvents) {
+        this.ionFocus.emit(ev);
+      }
+    };
+    this.onBlur = (ev) => {
+      this.hasFocus = false;
+      this.focusChange();
+      if (this.fireFocusEvents) {
+        this.ionBlur.emit(ev);
+      }
+    };
+    this.onKeyDown = () => {
+      this.checkClearOnEdit();
+    };
+  }
+  debounceChanged() {
+    this.ionChange = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.ionChange, this.debounce);
+  }
+  disabledChanged() {
+    this.emitStyle();
+  }
+  /**
+   * Update the native input element when the value changes
+   */
+  valueChanged() {
+    const nativeInput = this.nativeInput;
+    const value = this.getValue();
+    if (nativeInput && nativeInput.value !== value) {
+      nativeInput.value = value;
+    }
+    this.runAutoGrow();
+    this.emitStyle();
+    this.ionChange.emit({ value });
+  }
+  connectedCallback() {
+    this.emitStyle();
+    this.debounceChanged();
+    {
+      document.dispatchEvent(new CustomEvent('ionInputDidLoad', {
+        detail: this.el
+      }));
+    }
+  }
+  disconnectedCallback() {
+    {
+      document.dispatchEvent(new CustomEvent('ionInputDidUnload', {
+        detail: this.el
+      }));
+    }
+  }
+  componentWillLoad() {
+    this.inheritedAttributes = Object.assign(Object.assign({}, Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.el)), Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["h"])(this.el, ['title']));
+  }
+  componentDidLoad() {
+    Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["r"])(() => this.runAutoGrow());
+  }
+  runAutoGrow() {
+    const nativeInput = this.nativeInput;
+    if (nativeInput && this.autoGrow) {
+      Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
+        nativeInput.style.height = 'auto';
+        nativeInput.style.height = nativeInput.scrollHeight + 'px';
+        if (this.textareaWrapper) {
+          this.textareaWrapper.style.height = nativeInput.scrollHeight + 'px';
+        }
+      });
+    }
+  }
+  /**
+   * Sets focus on the native `textarea` in `ion-textarea`. Use this method instead of the global
+   * `textarea.focus()`.
+   */
+  async setFocus() {
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  }
+  /**
+   * Sets blur on the native `textarea` in `ion-textarea`. Use this method instead of the global
+   * `textarea.blur()`.
+   * @internal
+   */
+  async setBlur() {
+    if (this.nativeInput) {
+      this.nativeInput.blur();
+    }
+  }
+  /**
+   * Returns the native `<textarea>` element used under the hood.
+   */
+  getInputElement() {
+    return Promise.resolve(this.nativeInput);
+  }
+  emitStyle() {
+    this.ionStyle.emit({
+      'interactive': true,
+      'textarea': true,
+      'input': true,
+      'interactive-disabled': this.disabled,
+      'has-placeholder': this.placeholder != null,
+      'has-value': this.hasValue(),
+      'has-focus': this.hasFocus
+    });
+  }
+  /**
+   * Check if we need to clear the text input if clearOnEdit is enabled
+   */
+  checkClearOnEdit() {
+    if (!this.clearOnEdit) {
+      return;
+    }
+    // Did the input value change after it was blurred and edited?
+    if (this.didBlurAfterEdit && this.hasValue()) {
+      // Clear the input
+      this.value = '';
+    }
+    // Reset the flag
+    this.didBlurAfterEdit = false;
+  }
+  focusChange() {
+    // If clearOnEdit is enabled and the input blurred but has a value, set a flag
+    if (this.clearOnEdit && !this.hasFocus && this.hasValue()) {
+      this.didBlurAfterEdit = true;
+    }
+    this.emitStyle();
+  }
+  hasValue() {
+    return this.getValue() !== '';
+  }
+  getValue() {
+    return this.value || '';
+  }
+  render() {
+    const mode = Object(_ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+    const value = this.getValue();
+    const labelId = this.inputId + '-lbl';
+    const label = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["j"])(this.el);
+    if (label) {
+      label.id = labelId;
+    }
+    return (Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["H"], { "aria-disabled": this.disabled ? 'true' : null, class: Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color, {
+        [mode]: true,
+      }) }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "textarea-wrapper", ref: el => this.textareaWrapper = el }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", Object.assign({ class: "native-textarea", "aria-labelledby": label ? labelId : null, ref: el => this.nativeInput = el, autoCapitalize: this.autocapitalize, autoFocus: this.autofocus, enterKeyHint: this.enterkeyhint, inputMode: this.inputmode, disabled: this.disabled, maxLength: this.maxlength, minLength: this.minlength, name: this.name, placeholder: this.placeholder || '', readOnly: this.readonly, required: this.required, spellcheck: this.spellcheck, cols: this.cols, rows: this.rows, wrap: this.wrap, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown }, this.inheritedAttributes), value))));
+  }
+  get el() { return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+  static get watchers() { return {
+    "debounce": ["debounceChanged"],
+    "disabled": ["disabledChanged"],
+    "value": ["valueChanged"]
+  }; }
+};
+let textareaIds = 0;
+Textarea.style = {
+  ios: textareaIosCss,
+  md: textareaMdCss
+};
+
+
+
+
+/***/ })
+
+}]);
 //# sourceMappingURL=39-es2015.js.map

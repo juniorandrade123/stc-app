@@ -1,2 +1,234 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{"r+KJ":function(t,e,n){"use strict";n.r(e),n.d(e,"startTapClick",(function(){return o}));var i=n("W6o/"),o=function(t){var e,n,o,v,l=10*-f,p=0,L=t.getBoolean("animated",!0)&&t.getBoolean("rippleEffect",!0),m=new WeakMap,w=function(t){l=Object(i.q)(t),b(t)},h=function(){clearTimeout(v),v=void 0,n&&(j(!1),n=void 0)},E=function(t){n||void 0!==e&&null!==e.parentElement||(e=void 0,g(a(t),t))},b=function(t){g(void 0,t)},g=function(t,e){if(!t||t!==n){clearTimeout(v),v=void 0;var o=Object(i.p)(e),a=o.x,c=o.y;if(n){if(m.has(n))throw new Error("internal error");n.classList.contains(s)||q(n,a,c),j(!0)}if(t){var u=m.get(t);u&&(clearTimeout(u),m.delete(t));var f=r(t)?0:d;t.classList.remove(s),v=setTimeout((function(){q(t,a,c),v=void 0}),f)}n=t}},q=function(t,e,n){p=Date.now(),t.classList.add(s);var i=L&&c(t);i&&i.addRipple&&(T(),o=i.addRipple(e,n))},T=function(){void 0!==o&&(o.then((function(t){return t()})),o=void 0)},j=function(t){T();var e=n;if(e){var i=u-Date.now()+p;if(t&&i>0&&!r(e)){var o=setTimeout((function(){e.classList.remove(s),m.delete(e)}),u);m.set(e,o)}else e.classList.remove(s)}},O=document;O.addEventListener("ionScrollStart",(function(t){e=t.target,h()})),O.addEventListener("ionScrollEnd",(function(){e=void 0})),O.addEventListener("ionGestureCaptured",h),O.addEventListener("touchstart",(function(t){l=Object(i.q)(t),E(t)}),!0),O.addEventListener("touchcancel",w,!0),O.addEventListener("touchend",w,!0),O.addEventListener("mousedown",(function(t){var e=Object(i.q)(t)-f;l<e&&E(t)}),!0),O.addEventListener("mouseup",(function(t){var e=Object(i.q)(t)-f;l<e&&b(t)}),!0)},a=function(t){if(!t.composedPath)return t.target.closest(".ion-activatable");for(var e=t.composedPath(),n=0;n<e.length-2;n++){var i=e[n];if(i.classList&&i.classList.contains("ion-activatable"))return i}},r=function(t){return t.classList.contains("ion-activatable-instant")},c=function(t){if(t.shadowRoot){var e=t.shadowRoot.querySelector("ion-ripple-effect");if(e)return e}return t.querySelector("ion-ripple-effect")},s="ion-activated",d=200,u=200,f=2500}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["tap-click-7ddcdebb-js"], {
+  /***/
+  "./node_modules/@ionic/core/dist/esm/tap-click-7ddcdebb.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/tap-click-7ddcdebb.js ***!
+    \*****************************************************************/
+
+  /*! exports provided: startTapClick */
+
+  /***/
+  function node_modulesIonicCoreDistEsmTapClick7ddcdebbJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "startTapClick", function () {
+      return startTapClick;
+    });
+    /* harmony import */
+
+
+    var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./helpers-1457892a.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
+
+    var startTapClick = function startTapClick(config) {
+      var lastTouch = -MOUSE_WAIT * 10;
+      var lastActivated = 0;
+      var scrollingEl;
+      var activatableEle;
+      var activeRipple;
+      var activeDefer;
+      var useRippleEffect = config.getBoolean('animated', true) && config.getBoolean('rippleEffect', true);
+      var clearDefers = new WeakMap();
+
+      var isScrolling = function isScrolling() {
+        return scrollingEl !== undefined && scrollingEl.parentElement !== null;
+      }; // Touch Events
+
+
+      var onTouchStart = function onTouchStart(ev) {
+        lastTouch = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__["q"])(ev);
+        pointerDown(ev);
+      };
+
+      var onTouchEnd = function onTouchEnd(ev) {
+        lastTouch = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__["q"])(ev);
+        pointerUp(ev);
+      };
+
+      var onMouseDown = function onMouseDown(ev) {
+        var t = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__["q"])(ev) - MOUSE_WAIT;
+
+        if (lastTouch < t) {
+          pointerDown(ev);
+        }
+      };
+
+      var onMouseUp = function onMouseUp(ev) {
+        var t = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__["q"])(ev) - MOUSE_WAIT;
+
+        if (lastTouch < t) {
+          pointerUp(ev);
+        }
+      };
+
+      var cancelActive = function cancelActive() {
+        clearTimeout(activeDefer);
+        activeDefer = undefined;
+
+        if (activatableEle) {
+          removeActivated(false);
+          activatableEle = undefined;
+        }
+      };
+
+      var pointerDown = function pointerDown(ev) {
+        if (activatableEle || isScrolling()) {
+          return;
+        }
+
+        scrollingEl = undefined;
+        setActivatedElement(getActivatableTarget(ev), ev);
+      };
+
+      var pointerUp = function pointerUp(ev) {
+        setActivatedElement(undefined, ev);
+      };
+
+      var setActivatedElement = function setActivatedElement(el, ev) {
+        // do nothing
+        if (el && el === activatableEle) {
+          return;
+        }
+
+        clearTimeout(activeDefer);
+        activeDefer = undefined;
+
+        var _Object = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev),
+            x = _Object.x,
+            y = _Object.y; // deactivate selected
+
+
+        if (activatableEle) {
+          if (clearDefers.has(activatableEle)) {
+            throw new Error('internal error');
+          }
+
+          if (!activatableEle.classList.contains(ACTIVATED)) {
+            addActivated(activatableEle, x, y);
+          }
+
+          removeActivated(true);
+        } // activate
+
+
+        if (el) {
+          var deferId = clearDefers.get(el);
+
+          if (deferId) {
+            clearTimeout(deferId);
+            clearDefers["delete"](el);
+          }
+
+          var delay = isInstant(el) ? 0 : ADD_ACTIVATED_DEFERS;
+          el.classList.remove(ACTIVATED);
+          activeDefer = setTimeout(function () {
+            addActivated(el, x, y);
+            activeDefer = undefined;
+          }, delay);
+        }
+
+        activatableEle = el;
+      };
+
+      var addActivated = function addActivated(el, x, y) {
+        lastActivated = Date.now();
+        el.classList.add(ACTIVATED);
+        var rippleEffect = useRippleEffect && getRippleEffect(el);
+
+        if (rippleEffect && rippleEffect.addRipple) {
+          removeRipple();
+          activeRipple = rippleEffect.addRipple(x, y);
+        }
+      };
+
+      var removeRipple = function removeRipple() {
+        if (activeRipple !== undefined) {
+          activeRipple.then(function (remove) {
+            return remove();
+          });
+          activeRipple = undefined;
+        }
+      };
+
+      var removeActivated = function removeActivated(smooth) {
+        removeRipple();
+        var active = activatableEle;
+
+        if (!active) {
+          return;
+        }
+
+        var time = CLEAR_STATE_DEFERS - Date.now() + lastActivated;
+
+        if (smooth && time > 0 && !isInstant(active)) {
+          var deferId = setTimeout(function () {
+            active.classList.remove(ACTIVATED);
+            clearDefers["delete"](active);
+          }, CLEAR_STATE_DEFERS);
+          clearDefers.set(active, deferId);
+        } else {
+          active.classList.remove(ACTIVATED);
+        }
+      };
+
+      var doc = document;
+      doc.addEventListener('ionScrollStart', function (ev) {
+        scrollingEl = ev.target;
+        cancelActive();
+      });
+      doc.addEventListener('ionScrollEnd', function () {
+        scrollingEl = undefined;
+      });
+      doc.addEventListener('ionGestureCaptured', cancelActive);
+      doc.addEventListener('touchstart', onTouchStart, true);
+      doc.addEventListener('touchcancel', onTouchEnd, true);
+      doc.addEventListener('touchend', onTouchEnd, true);
+      doc.addEventListener('mousedown', onMouseDown, true);
+      doc.addEventListener('mouseup', onMouseUp, true);
+    };
+
+    var getActivatableTarget = function getActivatableTarget(ev) {
+      if (ev.composedPath) {
+        var path = ev.composedPath();
+
+        for (var i = 0; i < path.length - 2; i++) {
+          var el = path[i];
+
+          if (el.classList && el.classList.contains('ion-activatable')) {
+            return el;
+          }
+        }
+      } else {
+        return ev.target.closest('.ion-activatable');
+      }
+    };
+
+    var isInstant = function isInstant(el) {
+      return el.classList.contains('ion-activatable-instant');
+    };
+
+    var getRippleEffect = function getRippleEffect(el) {
+      if (el.shadowRoot) {
+        var ripple = el.shadowRoot.querySelector('ion-ripple-effect');
+
+        if (ripple) {
+          return ripple;
+        }
+      }
+
+      return el.querySelector('ion-ripple-effect');
+    };
+
+    var ACTIVATED = 'ion-activated';
+    var ADD_ACTIVATED_DEFERS = 200;
+    var CLEAR_STATE_DEFERS = 200;
+    var MOUSE_WAIT = 2500;
+    /***/
+  }
+}]);
 //# sourceMappingURL=tap-click-7ddcdebb-js-es5.js.map
