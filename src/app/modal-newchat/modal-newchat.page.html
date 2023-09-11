@@ -14,6 +14,17 @@
     <div class="col-12 mt-5"></div>
     <div class="col-12 mt-5"></div>
     <div *ngIf="user.typeUser === 'agente'" class="col-4 mr-auto ml-auto mt-4 text-center filter">
+      <div class="row" (click)="setAllSendMenssage()">
+        <div class="col-8 filter-text">
+          Marcar
+        </div>
+        <div class="col-2 text-right filter-text">
+          <ion-icon class="filter-icon"
+            name="{{setAllUsersSendMessage ? 'checkmark-circle' : 'checkmark-circle-outline'}}"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="user.typeUser === 'agente'" class="col-4 mr-auto ml-auto mt-4 text-center filter">
       <div class="row" (click)="presentModal()">
         <div class="col-8 filter-text">
           <span>Filtrar</span>
@@ -29,8 +40,8 @@
         <ion-card class="card p-2">
           <div style="margin-block-end: -50px;">
             <ion-row style="margin-bottom: 15px;">
-              <ion-col style="margin-left: -3px; margin-top: -3px;"><ion-checkbox
-                  (click)="setSendMenssage(mensageiro.patient)"></ion-checkbox></ion-col>
+              <ion-col style="margin-left: -3px; margin-top: -3px;" (click)="setSendMenssage(mensageiro)"> <ion-checkbox
+                  [checked]="mensageiro['userChecked']"></ion-checkbox></ion-col>
               <ion-col></ion-col>
               <ion-col></ion-col>
               <ion-col>
@@ -93,7 +104,8 @@
     </div>
   </div>
   <!-- Botao do envio de menssagem global -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="light" (click)="openSendGlobalMessage()" *ngIf="user.typeUser === 'agente'">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="light" (click)="openSendGlobalMessage()"
+    *ngIf="user.typeUser === 'agente'">
     <img src="assets/imagens/enviar.png" alt="auto" width=40px>
     <ion-badge style="background-color: #2dd36f;">{{listUsersSendMessage.length}}</ion-badge>
   </ion-fab>

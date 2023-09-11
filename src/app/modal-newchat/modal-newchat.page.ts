@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { NavParams, ModalController, ToastController, LoadingController, AlertController, PopoverController } from '@ionic/angular';
 import { DependentHolderFilterDto } from '../dependent/model/dependent-holder-filter-dto';
 import { RequestService } from '../core/request-help/request-service';
@@ -27,6 +27,7 @@ export class ModalNewchatPage implements OnInit {
     public loading: any;
     public isFilterActive = false;
     public listUsersSendMessage: any = [];
+    public setAllUsersSendMessage: boolean = false;
 
     constructor(
         public navParams: NavParams,
@@ -37,13 +38,15 @@ export class ModalNewchatPage implements OnInit {
         public alertController: AlertController,
         public modalController: ModalController,
         private firebaseService: FirebaseService,
-        private popoverController: PopoverController
+        private popoverController: PopoverController,
+        private changeDetectorRef: ChangeDetectorRef
     ) {
         this.user = JSON.parse(localStorage.getItem("user"));
     }
 
     public async ngOnInit() {
         this.listUsersSendMessage = [];
+        this.setAllUsersSendMessage = false;
         await this.presentLoading();
         /**Salvando o token de notificação push do usuário! */
         this.firebaseService.saveTokenUserFirebase();
@@ -68,6 +71,7 @@ export class ModalNewchatPage implements OnInit {
                         }
 
                         result.patient['pushToken'] = result.pushToken;
+                        result['userChecked'] = false;
                         this.mensageiros.push(result);
                         this.mensageirosAux.push(result);
                         this.mensageiros.sort(this.sortMensagem);
@@ -199,25 +203,29 @@ export class ModalNewchatPage implements OnInit {
     }
 
     /**
-     * @param userInfo 
+     * @param mensageiro 
      * Método que colocar o usuário na lista de
      *  mensagens globais
      */
-    public setSendMenssage(userInfo: any) {
+    public setSendMenssage(mensageiro: any) {
         try {
-            let userExist: boolean = false;
-            this.listUsersSendMessage.forEach((item, index) => {
-                if (item.cpf === userInfo.cpf.toUpperCase()) {
-                    this.listUsersSendMessage.splice(index, 1);
-                    userExist = true;
+            this.listUsersSendMessage = [];
+
+            if (mensageiro['userChecked']) {
+                mensageiro['userChecked'] = false;
+            } else {
+                mensageiro['userChecked'] = true;
+            }
+
+            this.mensageiros.forEach((item) => {
+                if (item['userChecked']) {
+                    this.listUsersSendMessage.push(item.patient)
                 }
             });
 
-            if ((this.listUsersSendMessage.length === 0 && !userExist) || !userExist) {
-                this.listUsersSendMessage.push(userInfo);
-            }
+            this.changeDetectorRef.detectChanges();
         } catch (error) {
-            console.log("🚀 ~ file: modal-newchat.page.ts:215 ~ ModalNewchatPage ~ serSendMenssage ~ error:", error);
+            console.log("🚀 ~ file: modal-newchat.page.ts:222 ~ ModalNewchatPage ~ setSendMenssage ~ error:", error);
         }
     }
 
@@ -257,6 +265,37 @@ export class ModalNewchatPage implements OnInit {
             }
         } catch (error) {
             console.log("🚀 ~ file: modal-newchat.page.ts:249 ~ ModalNewchatPage ~ openSendGlobalMessage ~ error:", error);
+        }
+    }
+
+    /**
+     * Método responsável por marcar todos os usuários
+     * para envio da menssagem global
+     */
+    public setAllSendMenssage() {
+        try {
+            this.listUsersSendMessage = [];
+
+            if (this.setAllUsersSendMessage) {
+                this.mensageiros.forEach((item) => {
+                    item['userChecked'] = false;
+                });
+
+                this.setAllUsersSendMessage = false;
+                this.changeDetectorRef.detectChanges();
+
+            } else {
+                this.mensageiros.forEach((item) => {
+                    item['userChecked'] = true;
+                    this.listUsersSendMessage.push(item.patient)
+                });
+
+                this.setAllUsersSendMessage = true;
+                this.changeDetectorRef.detectChanges();
+            }
+
+        } catch (error) {
+            console.log("🚀 ~ file: modal-newchat.page.ts:298 ~ ModalNewchatPage ~ setAllSendMenssage ~ error:", error);
         }
     }
 }
