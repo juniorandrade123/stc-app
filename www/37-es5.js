@@ -1,2 +1,539 @@
-function _defineProperty(t,e,n){return(e=_toPropertyKey(e))in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}function _regeneratorRuntime(){"use strict";/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */_regeneratorRuntime=function(){return e};var t,e={},n=Object.prototype,i=n.hasOwnProperty,r=Object.defineProperty||function(t,e,n){t[e]=n.value},o="function"==typeof Symbol?Symbol:{},a=o.iterator||"@@iterator",s=o.asyncIterator||"@@asyncIterator",c=o.toStringTag||"@@toStringTag";function u(t,e,n){return Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{u({},"")}catch(t){u=function(t,e,n){return t[e]=n}}function l(t,e,n,i){var o=e&&e.prototype instanceof b?e:b,a=Object.create(o.prototype),s=new A(i||[]);return r(a,"_invoke",{value:j(t,n,s)}),a}function h(t,e,n){try{return{type:"normal",arg:t.call(e,n)}}catch(t){return{type:"throw",arg:t}}}e.wrap=l;var d="suspendedStart",p="executing",f="completed",m={};function b(){}function v(){}function g(){}var y={};u(y,a,(function(){return this}));var w=Object.getPrototypeOf,x=w&&w(w(S([])));x&&x!==n&&i.call(x,a)&&(y=x);var k=g.prototype=b.prototype=Object.create(y);function _(t){["next","throw","return"].forEach((function(e){u(t,e,(function(t){return this._invoke(e,t)}))}))}function O(t,e){function n(r,o,a,s){var c=h(t[r],t,o);if("throw"!==c.type){var u=c.arg,l=u.value;return l&&"object"==typeof l&&i.call(l,"__await")?e.resolve(l.__await).then((function(t){n("next",t,a,s)}),(function(t){n("throw",t,a,s)})):e.resolve(l).then((function(t){u.value=t,a(u)}),(function(t){return n("throw",t,a,s)}))}s(c.arg)}var o;r(this,"_invoke",{value:function(t,i){function r(){return new e((function(e,r){n(t,i,e,r)}))}return o=o?o.then(r,r):r()}})}function j(e,n,i){var r=d;return function(o,a){if(r===p)throw new Error("Generator is already running");if(r===f){if("throw"===o)throw a;return{value:t,done:!0}}for(i.method=o,i.arg=a;;){var s=i.delegate;if(s){var c=E(s,i);if(c){if(c===m)continue;return c}}if("next"===i.method)i.sent=i._sent=i.arg;else if("throw"===i.method){if(r===d)throw r=f,i.arg;i.dispatchException(i.arg)}else"return"===i.method&&i.abrupt("return",i.arg);r=p;var u=h(e,n,i);if("normal"===u.type){if(r=i.done?f:"suspendedYield",u.arg===m)continue;return{value:u.arg,done:i.done}}"throw"===u.type&&(r=f,i.method="throw",i.arg=u.arg)}}}function E(e,n){var i=n.method,r=e.iterator[i];if(r===t)return n.delegate=null,"throw"===i&&e.iterator.return&&(n.method="return",n.arg=t,E(e,n),"throw"===n.method)||"return"!==i&&(n.method="throw",n.arg=new TypeError("The iterator does not provide a '"+i+"' method")),m;var o=h(r,e.iterator,n.arg);if("throw"===o.type)return n.method="throw",n.arg=o.arg,n.delegate=null,m;var a=o.arg;return a?a.done?(n[e.resultName]=a.value,n.next=e.nextLoc,"return"!==n.method&&(n.method="next",n.arg=t),n.delegate=null,m):a:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,m)}function C(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function P(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function A(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(C,this),this.reset(!0)}function S(e){if(e||""===e){var n=e[a];if(n)return n.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var r=-1,o=function n(){for(;++r<e.length;)if(i.call(e,r))return n.value=e[r],n.done=!1,n;return n.value=t,n.done=!0,n};return o.next=o}}throw new TypeError(typeof e+" is not iterable")}return v.prototype=g,r(k,"constructor",{value:g,configurable:!0}),r(g,"constructor",{value:v,configurable:!0}),v.displayName=u(g,c,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===v||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,g):(t.__proto__=g,u(t,c,"GeneratorFunction")),t.prototype=Object.create(k),t},e.awrap=function(t){return{__await:t}},_(O.prototype),u(O.prototype,s,(function(){return this})),e.AsyncIterator=O,e.async=function(t,n,i,r,o){void 0===o&&(o=Promise);var a=new O(l(t,n,i,r),o);return e.isGeneratorFunction(n)?a:a.next().then((function(t){return t.done?t.value:a.next()}))},_(k),u(k,c,"Generator"),u(k,a,(function(){return this})),u(k,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),n=[];for(var i in e)n.push(i);return n.reverse(),function t(){for(;n.length;){var i=n.pop();if(i in e)return t.value=i,t.done=!1,t}return t.done=!0,t}},e.values=S,A.prototype={constructor:A,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(P),!e)for(var n in this)"t"===n.charAt(0)&&i.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=t)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var n=this;function r(i,r){return s.type="throw",s.arg=e,n.next=i,r&&(n.method="next",n.arg=t),!!r}for(var o=this.tryEntries.length-1;o>=0;--o){var a=this.tryEntries[o],s=a.completion;if("root"===a.tryLoc)return r("end");if(a.tryLoc<=this.prev){var c=i.call(a,"catchLoc"),u=i.call(a,"finallyLoc");if(c&&u){if(this.prev<a.catchLoc)return r(a.catchLoc,!0);if(this.prev<a.finallyLoc)return r(a.finallyLoc)}else if(c){if(this.prev<a.catchLoc)return r(a.catchLoc,!0)}else{if(!u)throw new Error("try statement without catch or finally");if(this.prev<a.finallyLoc)return r(a.finallyLoc)}}}},abrupt:function(t,e){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.tryLoc<=this.prev&&i.call(r,"finallyLoc")&&this.prev<r.finallyLoc){var o=r;break}}o&&("break"===t||"continue"===t)&&o.tryLoc<=e&&e<=o.finallyLoc&&(o=null);var a=o?o.completion:{};return a.type=t,a.arg=e,o?(this.method="next",this.next=o.finallyLoc,m):this.complete(a)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),m},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var n=this.tryEntries[e];if(n.finallyLoc===t)return this.complete(n.completion,n.afterLoc),P(n),m}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var n=this.tryEntries[e];if(n.tryLoc===t){var i=n.completion;if("throw"===i.type){var r=i.arg;P(n)}return r}}throw new Error("illegal catch attempt")},delegateYield:function(e,n,i){return this.delegate={iterator:S(e),resultName:n,nextLoc:i},"next"===this.method&&(this.arg=t),m}},e}function asyncGeneratorStep(t,e,n,i,r,o,a){try{var s=t[o](a),c=s.value}catch(u){return void n(u)}s.done?e(c):Promise.resolve(c).then(i,r)}function _asyncToGenerator(t){return function(){var e=this,n=arguments;return new Promise((function(i,r){var o=t.apply(e,n);function a(t){asyncGeneratorStep(o,i,r,a,s,"next",t)}function s(t){asyncGeneratorStep(o,i,r,a,s,"throw",t)}a(void 0)}))}}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function _defineProperties(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,_toPropertyKey(i.key),i)}}function _createClass(t,e,n){return e&&_defineProperties(t.prototype,e),n&&_defineProperties(t,n),Object.defineProperty(t,"prototype",{writable:!1}),t}function _toPropertyKey(t){var e=_toPrimitive(t,"string");return"symbol"==typeof e?e:String(e)}function _toPrimitive(t,e){if("object"!=typeof t||null===t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,e||"default");if("object"!=typeof i)return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(window.webpackJsonp=window.webpackJsonp||[]).push([[37],{kyFE:function(t,e,n){"use strict";var i;n.r(e),n.d(e,"ion_menu",(function(){return d})),n.d(e,"ion_menu_button",(function(){return y})),n.d(e,"ion_menu_toggle",(function(){return w}));var r=n("wEJo"),o=n("E/Mt"),a=n("bC4P"),s=n("y08P"),c=n("W6o/"),u=n("gfLf"),l=n("74mu");n("B4Jq"),n("Kfhc");var h='[tabindex]:not([tabindex^="-"]), input:not([type=hidden]):not([tabindex^="-"]), textarea:not([tabindex^="-"]), button:not([tabindex^="-"]), select:not([tabindex^="-"]), .ion-focusable:not([tabindex^="-"])',d=function(t,e,i,l,d){function g(t){var e=this;_classCallCheck(this,g),Object(r.o)(this,t),this.ionWillOpen=Object(r.g)(this,"ionWillOpen",7),this.ionWillClose=Object(r.g)(this,"ionWillClose",7),this.ionDidOpen=Object(r.g)(this,"ionDidOpen",7),this.ionDidClose=Object(r.g)(this,"ionDidClose",7),this.ionMenuChange=Object(r.g)(this,"ionMenuChange",7),this.lastOnEnd=0,this.blocker=s.a.createBlocker({disableScroll:!0}),this.isAnimating=!1,this._isOpen=!1,this.inheritedAttributes={},this.handleFocus=function(t){return e.trapKeyboardFocus(t,document)},this.isPaneVisible=!1,this.isEndSide=!1,this.disabled=!1,this.side="start",this.swipeGesture=!0,this.maxEdgeStart=50}return _createClass(g,[{key:"typeChanged",value:function(t,e){var n=this.contentEl;n&&(void 0!==e&&n.classList.remove("menu-content-"+e),n.classList.add("menu-content-"+t),n.removeAttribute("style")),this.menuInnerEl&&this.menuInnerEl.removeAttribute("style"),this.animation=void 0}},{key:"disabledChanged",value:function(){this.updateState(),this.ionMenuChange.emit({disabled:this.disabled,open:this._isOpen})}},{key:"sideChanged",value:function(){this.isEndSide=Object(c.n)(this.side)}},{key:"swipeGestureChanged",value:function(){this.updateState()}},{key:"connectedCallback",value:function(){return(t=t||_asyncToGenerator(_regeneratorRuntime().mark((function t(){var e,i,r=this;return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(void 0===this.type&&(this.type=o.c.get("menuType","overlay")),e=this.el.parentNode,void 0===this.contentId&&console.warn('[DEPRECATED][ion-menu] Using the [main] attribute is deprecated, please use the "contentId" property instead:\nBEFORE:\n  <ion-menu>...</ion-menu>\n  <div main>...</div>\n\nAFTER:\n  <ion-menu contentId="main-content"></ion-menu>\n  <div id="main-content">...</div>\n'),!(i=void 0!==this.contentId?document.getElementById(this.contentId):e&&e.querySelector&&e.querySelector("[main]"))||!i.tagName){t.next=16;break}return this.contentEl=i,i.classList.add("menu-content"),this.typeChanged(this.type,void 0),this.sideChanged(),u.a._register(this),t.next=12,Promise.resolve().then(n.bind(null,"KF81"));case 12:this.gesture=t.sent.createGesture({el:document,gestureName:"menu-swipe",gesturePriority:30,threshold:10,blurOnStart:!0,canStart:function(t){return r.canStart(t)},onWillStart:function(){return r.onWillStart()},onStart:function(){return r.onStart()},onMove:function(t){return r.onMove(t)},onEnd:function(t){return r.onEnd(t)}}),this.updateState(),t.next=17;break;case 16:console.error('Menu: must have a "content" element to listen for drag events on.');case 17:case"end":return t.stop()}}),t,this)})))).apply(this,arguments)}},{key:"componentWillLoad",value:function(){this.inheritedAttributes=Object(c.i)(this.el)}},{key:"componentDidLoad",value:function(){return(e=e||_asyncToGenerator(_regeneratorRuntime().mark((function t(){return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:this.ionMenuChange.emit({disabled:this.disabled,open:this._isOpen}),this.updateState();case 1:case"end":return t.stop()}}),t,this)})))).apply(this,arguments)}},{key:"disconnectedCallback",value:function(){this.blocker.destroy(),u.a._unregister(this),this.animation&&this.animation.destroy(),this.gesture&&(this.gesture.destroy(),this.gesture=void 0),this.animation=void 0,this.contentEl=this.backdropEl=this.menuInnerEl=void 0}},{key:"onSplitPaneChanged",value:function(t){this.isPaneVisible=t.detail.isPane(this.el),this.updateState()}},{key:"onBackdropClick",value:function(t){this._isOpen&&this.lastOnEnd<t.timeStamp-100&&t.composedPath&&!t.composedPath().includes(this.menuInnerEl)&&(t.preventDefault(),t.stopPropagation(),this.close())}},{key:"onKeydown",value:function(t){"Escape"===t.key&&this.close()}},{key:"isOpen",value:function(){return Promise.resolve(this._isOpen)}},{key:"isActive",value:function(){return Promise.resolve(this._isActive())}},{key:"open",value:function(){var t=!(arguments.length>0&&void 0!==arguments[0])||arguments[0];return this.setOpen(!0,t)}},{key:"close",value:function(){var t=!(arguments.length>0&&void 0!==arguments[0])||arguments[0];return this.setOpen(!1,t)}},{key:"toggle",value:function(){var t=!(arguments.length>0&&void 0!==arguments[0])||arguments[0];return this.setOpen(!this._isOpen,t)}},{key:"setOpen",value:function(t){var e=!(arguments.length>1&&void 0!==arguments[1])||arguments[1];return u.a._setOpen(this,t,e)}},{key:"focusFirstDescendant",value:function(){var t=this.el,e=t.querySelector(h);e?e.focus():t.focus()}},{key:"focusLastDescendant",value:function(){var t=this.el,e=Array.from(t.querySelectorAll(h)),n=e.length>0?e[e.length-1]:null;n?n.focus():t.focus()}},{key:"trapKeyboardFocus",value:function(t,e){var n=t.target;n&&(this.el.contains(n)?this.lastFocus=n:(this.focusFirstDescendant(),this.lastFocus===e.activeElement&&this.focusLastDescendant()))}},{key:"_setOpen",value:function(t){return(i=i||_asyncToGenerator(_regeneratorRuntime().mark((function t(e){var n,i=arguments;return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(n=!(i.length>1&&void 0!==i[1])||i[1],t.t0=!(!this._isActive()||this.isAnimating||e===this._isOpen),!t.t0){t.next=10;break}return this.beforeAnimation(e),t.next=6,this.loadAnimation();case 6:return t.next=8,this.startAnimation(e,n);case 8:this.afterAnimation(e),t.t0=!0;case 10:return t.abrupt("return",t.t0);case 11:case"end":return t.stop()}}),t,this)})))).apply(this,arguments)}},{key:"loadAnimation",value:function(){return(l=l||_asyncToGenerator(_regeneratorRuntime().mark((function t(){var e;return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(e=this.menuInnerEl.offsetWidth,t.t0=e===this.width&&void 0!==this.animation,t.t0){t.next=10;break}return this.width=e,this.animation&&(this.animation.destroy(),this.animation=void 0),t.next=7,u.a._createAnimation(this.type,this);case 7:this.animation=t.sent,o.c.getBoolean("animated",!0)||this.animation.duration(0),this.animation.fill("both");case 10:case"end":return t.stop()}}),t,this)})))).apply(this,arguments)}},{key:"startAnimation",value:function(t,e){return(d=d||_asyncToGenerator(_regeneratorRuntime().mark((function t(e,n){var i,r,a,s,c;return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(i=!e,r=Object(o.b)(this),a="ios"===r?"cubic-bezier(0.32,0.72,0,1)":"cubic-bezier(0.0,0.0,0.2,1)",s="ios"===r?"cubic-bezier(1, 0, 0.68, 0.28)":"cubic-bezier(0.4, 0, 0.6, 1)",c=this.animation.direction(i?"reverse":"normal").easing(i?s:a).onFinish((function(){"reverse"===c.getDirection()&&c.direction("normal")})),!n){t.next=6;break}return t.next=4,c.play();case 4:t.next=7;break;case 6:c.play({sync:!0});case 7:case"end":return t.stop()}}),t,this)})))).apply(this,arguments)}},{key:"_isActive",value:function(){return!this.disabled&&!this.isPaneVisible}},{key:"canSwipe",value:function(){return this.swipeGesture&&!this.isAnimating&&this._isActive()}},{key:"canStart",value:function(t){return!(document.querySelector("ion-modal.show-modal")||!this.canSwipe())&&(!!this._isOpen||!u.a._getOpenSync()&&f(window,t.currentX,this.isEndSide,this.maxEdgeStart))}},{key:"onWillStart",value:function(){return this.beforeAnimation(!this._isOpen),this.loadAnimation()}},{key:"onStart",value:function(){this.isAnimating&&this.animation?this.animation.progressStart(!0,this._isOpen?1:0):Object(c.m)(!1,"isAnimating has to be true")}},{key:"onMove",value:function(t){if(this.isAnimating&&this.animation){var e=p(t.deltaX,this._isOpen,this.isEndSide)/this.width;this.animation.progressStep(this._isOpen?1-e:e)}else Object(c.m)(!1,"isAnimating has to be true")}},{key:"onEnd",value:function(t){var e=this;if(this.isAnimating&&this.animation){var n=this._isOpen,i=this.isEndSide,r=p(t.deltaX,n,i),o=this.width,s=r/o,u=t.velocityX,l=o/2,h=u>=0&&(u>.2||t.deltaX>l),d=u<=0&&(u<-.2||t.deltaX<-l),f=n?i?h:d:i?d:h,m=!n&&f;n&&!f&&(m=!0),this.lastOnEnd=t.currentTime;var b=f?.001:-.001,v=s<0?.01:s;b+=Object(a.a)([0,0],[.4,0],[.6,1],[1,1],Object(c.k)(0,v,.9999))[0]||0;var g=this._isOpen?!f:f;this.animation.easing("cubic-bezier(0.4, 0.0, 0.6, 1)").onFinish((function(){return e.afterAnimation(m)}),{oneTimeCallback:!0}).progressEnd(g?1:0,this._isOpen?1-b:b,300)}else Object(c.m)(!1,"isAnimating has to be true")}},{key:"beforeAnimation",value:function(t){Object(c.m)(!this.isAnimating,"_before() should not be called while animating"),this.el.classList.add(m),this.el.setAttribute("tabindex","0"),this.backdropEl&&this.backdropEl.classList.add(b),this.blocker.block(),this.isAnimating=!0,t?this.ionWillOpen.emit():this.ionWillClose.emit()}},{key:"afterAnimation",value:function(t){Object(c.m)(this.isAnimating,"_before() should be called while animating"),this._isOpen=t,this.isAnimating=!1,this._isOpen||this.blocker.unblock(),t?(this.contentEl&&(this.contentEl.classList.add(v),this.contentEl.setAttribute("aria-hidden","true")),this.ionDidOpen.emit(),this.menuInnerEl&&this.focusFirstDescendant(),document.addEventListener("focus",this.handleFocus,!0)):(this.el.classList.remove(m),this.el.removeAttribute("tabindex"),this.contentEl&&(this.contentEl.classList.remove(v),this.contentEl.removeAttribute("aria-hidden")),this.backdropEl&&this.backdropEl.classList.remove(b),this.animation&&this.animation.stop(),this.ionDidClose.emit(),document.removeEventListener("focus",this.handleFocus,!0))}},{key:"updateState",value:function(){var t=this._isActive();this.gesture&&this.gesture.enable(t&&this.swipeGesture),!t&&this._isOpen&&this.forceClosing(),this.disabled||u.a._setActiveMenu(this),Object(c.m)(!this.isAnimating,"can not be animating")}},{key:"forceClosing",value:function(){Object(c.m)(this._isOpen,"menu cannot be closed"),this.isAnimating=!0,this.animation.direction("reverse").play({sync:!0}),this.afterAnimation(!1)}},{key:"render",value:function(){var t,e=this,n=this.isEndSide,i=this.type,a=this.disabled,s=this.isPaneVisible,c=this.inheritedAttributes,u=Object(o.b)(this);return Object(r.j)(r.c,{role:"navigation","aria-label":c["aria-label"]||"menu",class:(t={},_defineProperty(t,u,!0),_defineProperty(t,"menu-type-"+i,!0),_defineProperty(t,"menu-enabled",!a),_defineProperty(t,"menu-side-end",n),_defineProperty(t,"menu-side-start",!n),_defineProperty(t,"menu-pane-visible",s),t)},Object(r.j)("div",{class:"menu-inner",part:"container",ref:function(t){return e.menuInnerEl=t}},Object(r.j)("slot",null)),Object(r.j)("ion-backdrop",{ref:function(t){return e.backdropEl=t},class:"menu-backdrop",tappable:!1,stopPropagation:!1,part:"backdrop"}))}},{key:"el",get:function(){return Object(r.k)(this)}}],[{key:"watchers",get:function(){return{type:["typeChanged"],disabled:["disabledChanged"],side:["sideChanged"],swipeGesture:["swipeGestureChanged"]}}}]),g}(),p=function(t,e,n){return Math.max(0,e!==n?-t:t)},f=function(t,e,n,i){return n?e>=t.innerWidth-i:e<=i},m="show-menu",b="show-backdrop",v="menu-content-open";d.style={ios:":host{--width:304px;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--background:var(--ion-background-color, #fff);left:0;right:0;top:0;bottom:0;display:none;position:absolute;contain:strict}:host(.show-menu){display:block}.menu-inner{left:0;right:auto;top:0;bottom:0;-webkit-transform:translate3d(-9999px,  0,  0);transform:translate3d(-9999px,  0,  0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:strict}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{left:unset;right:unset;left:auto;right:0}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{-webkit-transform:translate3d(calc(-1 * -9999px),  0,  0);transform:translate3d(calc(-1 * -9999px),  0,  0)}:host(.menu-side-start) .menu-inner{--ion-safe-area-right:0px;right:auto;left:0}:host(.menu-side-end) .menu-inner{--ion-safe-area-left:0px;right:0;left:auto;}ion-backdrop{display:none;opacity:0.01;z-index:-1}@media (max-width: 340px){.menu-inner{--width:264px}}:host(.menu-type-reveal){z-index:0}:host(.menu-type-reveal.show-menu) .menu-inner{-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0)}:host(.menu-type-overlay){z-index:1000}:host(.menu-type-overlay) .show-backdrop{display:block;cursor:pointer}:host(.menu-pane-visible){width:var(--width);min-width:var(--min-width);max-width:var(--max-width)}:host(.menu-pane-visible) .menu-inner{left:0;right:0;width:auto;-webkit-transform:none !important;transform:none !important;-webkit-box-shadow:none !important;box-shadow:none !important}:host(.menu-pane-visible) ion-backdrop{display:hidden !important;}:host(.menu-type-push){z-index:1000}:host(.menu-type-push) .show-backdrop{display:block}",md:":host{--width:304px;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--background:var(--ion-background-color, #fff);left:0;right:0;top:0;bottom:0;display:none;position:absolute;contain:strict}:host(.show-menu){display:block}.menu-inner{left:0;right:auto;top:0;bottom:0;-webkit-transform:translate3d(-9999px,  0,  0);transform:translate3d(-9999px,  0,  0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:strict}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{left:unset;right:unset;left:auto;right:0}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{-webkit-transform:translate3d(calc(-1 * -9999px),  0,  0);transform:translate3d(calc(-1 * -9999px),  0,  0)}:host(.menu-side-start) .menu-inner{--ion-safe-area-right:0px;right:auto;left:0}:host(.menu-side-end) .menu-inner{--ion-safe-area-left:0px;right:0;left:auto;}ion-backdrop{display:none;opacity:0.01;z-index:-1}@media (max-width: 340px){.menu-inner{--width:264px}}:host(.menu-type-reveal){z-index:0}:host(.menu-type-reveal.show-menu) .menu-inner{-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0)}:host(.menu-type-overlay){z-index:1000}:host(.menu-type-overlay) .show-backdrop{display:block;cursor:pointer}:host(.menu-pane-visible){width:var(--width);min-width:var(--min-width);max-width:var(--max-width)}:host(.menu-pane-visible) .menu-inner{left:0;right:0;width:auto;-webkit-transform:none !important;transform:none !important;-webkit-box-shadow:none !important;box-shadow:none !important}:host(.menu-pane-visible) ion-backdrop{display:hidden !important;}:host(.menu-type-overlay) .menu-inner{-webkit-box-shadow:4px 0px 16px rgba(0, 0, 0, 0.18);box-shadow:4px 0px 16px rgba(0, 0, 0, 0.18)}"};var g=function(t){return(i=i||_asyncToGenerator(_regeneratorRuntime().mark((function t(e){var n;return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,u.a.get(e);case 2:if(n=t.sent,t.t0=!n,t.t0){t.next=8;break}return t.next=7,n.isActive();case 7:t.t0=!t.sent;case 8:return t.abrupt("return",!t.t0);case 9:case"end":return t.stop()}}),t)})))).apply(this,arguments)},y=function(t){function e(t){var n=this;_classCallCheck(this,e),Object(r.o)(this,t),this.inheritedAttributes={},this.visible=!1,this.disabled=!1,this.autoHide=!0,this.type="button",this.onClick=_asyncToGenerator(_regeneratorRuntime().mark((function t(){return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.abrupt("return",u.a.toggle(n.menu));case 1:case"end":return t.stop()}}),t)})))}return _createClass(e,[{key:"componentWillLoad",value:function(){this.inheritedAttributes=Object(c.i)(this.el)}},{key:"componentDidLoad",value:function(){this.visibilityChanged()}},{key:"visibilityChanged",value:function(){return(t=t||_asyncToGenerator(_regeneratorRuntime().mark((function t(){return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,g(this.menu);case 2:this.visible=t.sent;case 3:case"end":return t.stop()}}),t,this)})))).apply(this,arguments)}},{key:"render",value:function(){var t,e=this.color,n=this.disabled,i=this.inheritedAttributes,a=Object(o.b)(this),s=o.c.get("menuIcon","ios"===a?"menu-outline":"menu-sharp"),c=this.autoHide&&!this.visible,u={type:this.type},h=i["aria-label"]||"menu";return Object(r.j)(r.c,{onClick:this.onClick,"aria-disabled":n?"true":null,"aria-hidden":c?"true":null,class:Object(l.a)(e,(t={},_defineProperty(t,a,!0),_defineProperty(t,"button",!0),_defineProperty(t,"menu-button-hidden",c),_defineProperty(t,"menu-button-disabled",n),_defineProperty(t,"in-toolbar",Object(l.c)("ion-toolbar",this.el)),_defineProperty(t,"in-toolbar-color",Object(l.c)("ion-toolbar[color]",this.el)),_defineProperty(t,"ion-activatable",!0),_defineProperty(t,"ion-focusable",!0),t))},Object(r.j)("button",Object.assign({},u,{disabled:n,class:"button-native",part:"native","aria-label":h}),Object(r.j)("span",{class:"button-inner"},Object(r.j)("slot",null,Object(r.j)("ion-icon",{part:"icon",icon:s,mode:a,lazy:!1,"aria-hidden":"true"}))),"md"===a&&Object(r.j)("ion-ripple-effect",{type:"unbounded"})))}},{key:"el",get:function(){return Object(r.k)(this)}}]),e}();y.style={ios:':host{--background:transparent;--color-focused:currentColor;--border-radius:initial;--padding-top:0;--padding-bottom:0;color:var(--color);text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;border:0;outline:none;background:var(--background);line-height:1;cursor:pointer;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;z-index:1}ion-icon{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;pointer-events:none}:host(.menu-button-hidden){display:none}:host(.menu-button-disabled){cursor:default;opacity:0.5;pointer-events:none}:host(.ion-focused) .button-native{color:var(--color-focused)}:host(.ion-focused) .button-native::after{background:var(--background-focused);opacity:var(--background-focused-opacity)}.button-native::after{left:0;right:0;top:0;bottom:0;position:absolute;content:"";opacity:0}@media (any-hover: hover){:host(:hover) .button-native{color:var(--color-hover)}:host(:hover) .button-native::after{background:var(--background-hover);opacity:var(--background-hover-opacity, 0)}}:host(.ion-color) .button-native{color:var(--ion-color-base)}:host(.in-toolbar:not(.in-toolbar-color)){color:var(--ion-toolbar-color, var(--color))}:host{--background-focused:currentColor;--background-focused-opacity:.1;--border-radius:4px;--color:var(--ion-color-primary, #3880ff);--padding-start:5px;--padding-end:5px;height:32px;font-size:31px}:host(.ion-activated){opacity:0.4}@media (any-hover: hover){:host(:hover){opacity:0.6}}',md:':host{--background:transparent;--color-focused:currentColor;--border-radius:initial;--padding-top:0;--padding-bottom:0;color:var(--color);text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;border:0;outline:none;background:var(--background);line-height:1;cursor:pointer;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;z-index:1}ion-icon{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;pointer-events:none}:host(.menu-button-hidden){display:none}:host(.menu-button-disabled){cursor:default;opacity:0.5;pointer-events:none}:host(.ion-focused) .button-native{color:var(--color-focused)}:host(.ion-focused) .button-native::after{background:var(--background-focused);opacity:var(--background-focused-opacity)}.button-native::after{left:0;right:0;top:0;bottom:0;position:absolute;content:"";opacity:0}@media (any-hover: hover){:host(:hover) .button-native{color:var(--color-hover)}:host(:hover) .button-native::after{background:var(--background-hover);opacity:var(--background-hover-opacity, 0)}}:host(.ion-color) .button-native{color:var(--ion-color-base)}:host(.in-toolbar:not(.in-toolbar-color)){color:var(--ion-toolbar-color, var(--color))}:host{--background-focused:currentColor;--background-focused-opacity:.12;--background-hover:currentColor;--background-hover-opacity:.04;--border-radius:50%;--color:initial;--padding-start:8px;--padding-end:8px;width:48px;height:48px;font-size:24px}:host(.ion-color.ion-focused)::after{background:var(--ion-color-base)}@media (any-hover: hover){:host(.ion-color:hover) .button-native::after{background:var(--ion-color-base)}}'};var w=function(t){function e(t){var n=this;_classCallCheck(this,e),Object(r.o)(this,t),this.visible=!1,this.autoHide=!0,this.onClick=function(){return u.a.toggle(n.menu)}}return _createClass(e,[{key:"connectedCallback",value:function(){this.visibilityChanged()}},{key:"visibilityChanged",value:function(){return(t=t||_asyncToGenerator(_regeneratorRuntime().mark((function t(){return _regeneratorRuntime().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,g(this.menu);case 2:this.visible=t.sent;case 3:case"end":return t.stop()}}),t,this)})))).apply(this,arguments)}},{key:"render",value:function(){var t,e=Object(o.b)(this),n=this.autoHide&&!this.visible;return Object(r.j)(r.c,{onClick:this.onClick,"aria-hidden":n?"true":null,class:(t={},_defineProperty(t,e,!0),_defineProperty(t,"menu-toggle-hidden",n),t)},Object(r.j)("slot",null))}}]),e}();w.style=":host(.menu-toggle-hidden){display:none}"}}]);
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == typeof h && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(typeof e + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+
+function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[37], {
+  /***/
+  "./node_modules/@ionic/core/dist/esm/ion-tab_2.entry.js":
+  /*!**************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-tab_2.entry.js ***!
+    \**************************************************************/
+
+  /*! exports provided: ion_tab, ion_tabs */
+
+  /***/
+  function node_modulesIonicCoreDistEsmIonTab_2EntryJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_tab", function () {
+      return Tab;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_tabs", function () {
+      return Tabs;
+    });
+    /* harmony import */
+
+
+    var _index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./index-7a8b7a1c.js */
+    "./node_modules/@ionic/core/dist/esm/index-7a8b7a1c.js");
+    /* harmony import */
+
+
+    var _framework_delegate_94e770cc_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./framework-delegate-94e770cc.js */
+    "./node_modules/@ionic/core/dist/esm/framework-delegate-94e770cc.js");
+    /* harmony import */
+
+
+    var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-1457892a.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
+
+    var tabCss = ":host(.tab-hidden){display:none !important}";
+
+    var Tab = /*#__PURE__*/function () {
+      function Tab(hostRef) {
+        _classCallCheck(this, Tab);
+
+        Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.loaded = false;
+        /** @internal */
+
+        this.active = false;
+      }
+
+      _createClass(Tab, [{
+        key: "componentWillLoad",
+        value: function () {
+          var _componentWillLoad = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+              while (1) switch (_context.prev = _context.next) {
+                case 0:
+                  if (!this.active) {
+                    _context.next = 3;
+                    break;
+                  }
+
+                  _context.next = 3;
+                  return this.setActive();
+
+                case 3:
+                case "end":
+                  return _context.stop();
+              }
+            }, _callee, this);
+          }));
+
+          function componentWillLoad() {
+            return _componentWillLoad.apply(this, arguments);
+          }
+
+          return componentWillLoad;
+        }()
+        /** Set the active component for the tab */
+
+      }, {
+        key: "setActive",
+        value: function () {
+          var _setActive = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+            return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+              while (1) switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return this.prepareLazyLoaded();
+
+                case 2:
+                  this.active = true;
+
+                case 3:
+                case "end":
+                  return _context2.stop();
+              }
+            }, _callee2, this);
+          }));
+
+          function setActive() {
+            return _setActive.apply(this, arguments);
+          }
+
+          return setActive;
+        }()
+      }, {
+        key: "changeActive",
+        value: function changeActive(isActive) {
+          if (isActive) {
+            this.prepareLazyLoaded();
+          }
+        }
+      }, {
+        key: "prepareLazyLoaded",
+        value: function prepareLazyLoaded() {
+          if (!this.loaded && this.component != null) {
+            this.loaded = true;
+
+            try {
+              return Object(_framework_delegate_94e770cc_js__WEBPACK_IMPORTED_MODULE_1__["a"])(this.delegate, this.el, this.component, ['ion-page']);
+            } catch (e) {
+              console.error(e);
+            }
+          }
+
+          return Promise.resolve(undefined);
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var tab = this.tab,
+              active = this.active,
+              component = this.component;
+          return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            role: "tabpanel",
+            "aria-hidden": !active ? 'true' : null,
+            "aria-labelledby": "tab-button-".concat(tab),
+            "class": {
+              'ion-page': component === undefined,
+              'tab-hidden': !active
+            }
+          }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+        }
+      }], [{
+        key: "watchers",
+        get: function get() {
+          return {
+            "active": ["changeActive"]
+          };
+        }
+      }]);
+
+      return Tab;
+    }();
+
+    Tab.style = tabCss;
+    var tabsCss = ":host{left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:100%;height:100%;contain:layout size style;z-index:0}.tabs-inner{position:relative;-ms-flex:1;flex:1;contain:layout size style}";
+
+    var Tabs = /*#__PURE__*/function () {
+      function Tabs(hostRef) {
+        var _this = this;
+
+        _classCallCheck(this, Tabs);
+
+        Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.ionNavWillLoad = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionNavWillLoad", 7);
+        this.ionTabsWillChange = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionTabsWillChange", 3);
+        this.ionTabsDidChange = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionTabsDidChange", 3);
+        this.transitioning = false;
+        /** @internal */
+
+        this.useRouter = false;
+
+        this.onTabClicked = function (ev) {
+          var _ev$detail = ev.detail,
+              href = _ev$detail.href,
+              tab = _ev$detail.tab;
+
+          if (_this.useRouter && href !== undefined) {
+            var router = document.querySelector('ion-router');
+
+            if (router) {
+              router.push(href);
+            }
+          } else {
+            _this.select(tab);
+          }
+        };
+      }
+
+      _createClass(Tabs, [{
+        key: "componentWillLoad",
+        value: function () {
+          var _componentWillLoad2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+            var tabs;
+            return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+              while (1) switch (_context3.prev = _context3.next) {
+                case 0:
+                  if (!this.useRouter) {
+                    this.useRouter = !!document.querySelector('ion-router') && !this.el.closest('[no-router]');
+                  }
+
+                  if (this.useRouter) {
+                    _context3.next = 6;
+                    break;
+                  }
+
+                  tabs = this.tabs;
+
+                  if (!(tabs.length > 0)) {
+                    _context3.next = 6;
+                    break;
+                  }
+
+                  _context3.next = 6;
+                  return this.select(tabs[0]);
+
+                case 6:
+                  this.ionNavWillLoad.emit();
+
+                case 7:
+                case "end":
+                  return _context3.stop();
+              }
+            }, _callee3, this);
+          }));
+
+          function componentWillLoad() {
+            return _componentWillLoad2.apply(this, arguments);
+          }
+
+          return componentWillLoad;
+        }()
+      }, {
+        key: "componentWillRender",
+        value: function componentWillRender() {
+          var tabBar = this.el.querySelector('ion-tab-bar');
+
+          if (tabBar) {
+            var tab = this.selectedTab ? this.selectedTab.tab : undefined;
+            tabBar.selectedTab = tab;
+          }
+        }
+        /**
+         * Select a tab by the value of its `tab` property or an element reference.
+         *
+         * @param tab The tab instance to select. If passed a string, it should be the value of the tab's `tab` property.
+         */
+
+      }, {
+        key: "select",
+        value: function () {
+          var _select = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(tab) {
+            var selectedTab;
+            return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+              while (1) switch (_context4.prev = _context4.next) {
+                case 0:
+                  selectedTab = _getTab(this.tabs, tab);
+
+                  if (this.shouldSwitch(selectedTab)) {
+                    _context4.next = 3;
+                    break;
+                  }
+
+                  return _context4.abrupt("return", false);
+
+                case 3:
+                  _context4.next = 5;
+                  return this.setActive(selectedTab);
+
+                case 5:
+                  _context4.next = 7;
+                  return this.notifyRouter();
+
+                case 7:
+                  this.tabSwitch();
+                  return _context4.abrupt("return", true);
+
+                case 9:
+                case "end":
+                  return _context4.stop();
+              }
+            }, _callee4, this);
+          }));
+
+          function select(_x) {
+            return _select.apply(this, arguments);
+          }
+
+          return select;
+        }()
+        /**
+         * Get a specific tab by the value of its `tab` property or an element reference.
+         *
+         * @param tab The tab instance to select. If passed a string, it should be the value of the tab's `tab` property.
+         */
+
+      }, {
+        key: "getTab",
+        value: function () {
+          var _getTab2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(tab) {
+            return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+              while (1) switch (_context5.prev = _context5.next) {
+                case 0:
+                  return _context5.abrupt("return", _getTab(this.tabs, tab));
+
+                case 1:
+                case "end":
+                  return _context5.stop();
+              }
+            }, _callee5, this);
+          }));
+
+          function getTab(_x2) {
+            return _getTab2.apply(this, arguments);
+          }
+
+          return getTab;
+        }()
+        /**
+         * Get the currently selected tab.
+         */
+
+      }, {
+        key: "getSelected",
+        value: function getSelected() {
+          return Promise.resolve(this.selectedTab ? this.selectedTab.tab : undefined);
+        }
+        /** @internal */
+
+      }, {
+        key: "setRouteId",
+        value: function () {
+          var _setRouteId = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(id) {
+            var _this2 = this;
+
+            var selectedTab;
+            return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+              while (1) switch (_context6.prev = _context6.next) {
+                case 0:
+                  selectedTab = _getTab(this.tabs, id);
+
+                  if (this.shouldSwitch(selectedTab)) {
+                    _context6.next = 3;
+                    break;
+                  }
+
+                  return _context6.abrupt("return", {
+                    changed: false,
+                    element: this.selectedTab
+                  });
+
+                case 3:
+                  _context6.next = 5;
+                  return this.setActive(selectedTab);
+
+                case 5:
+                  return _context6.abrupt("return", {
+                    changed: true,
+                    element: this.selectedTab,
+                    markVisible: function markVisible() {
+                      return _this2.tabSwitch();
+                    }
+                  });
+
+                case 6:
+                case "end":
+                  return _context6.stop();
+              }
+            }, _callee6, this);
+          }));
+
+          function setRouteId(_x3) {
+            return _setRouteId.apply(this, arguments);
+          }
+
+          return setRouteId;
+        }()
+        /** @internal */
+
+      }, {
+        key: "getRouteId",
+        value: function () {
+          var _getRouteId = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+            var tabId;
+            return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+              while (1) switch (_context7.prev = _context7.next) {
+                case 0:
+                  tabId = this.selectedTab && this.selectedTab.tab;
+                  return _context7.abrupt("return", tabId !== undefined ? {
+                    id: tabId,
+                    element: this.selectedTab
+                  } : undefined);
+
+                case 2:
+                case "end":
+                  return _context7.stop();
+              }
+            }, _callee7, this);
+          }));
+
+          function getRouteId() {
+            return _getRouteId.apply(this, arguments);
+          }
+
+          return getRouteId;
+        }()
+      }, {
+        key: "setActive",
+        value: function setActive(selectedTab) {
+          if (this.transitioning) {
+            return Promise.reject('transitioning already happening');
+          }
+
+          this.transitioning = true;
+          this.leavingTab = this.selectedTab;
+          this.selectedTab = selectedTab;
+          this.ionTabsWillChange.emit({
+            tab: selectedTab.tab
+          });
+          selectedTab.active = true;
+          return Promise.resolve();
+        }
+      }, {
+        key: "tabSwitch",
+        value: function tabSwitch() {
+          var selectedTab = this.selectedTab;
+          var leavingTab = this.leavingTab;
+          this.leavingTab = undefined;
+          this.transitioning = false;
+
+          if (!selectedTab) {
+            return;
+          }
+
+          if (leavingTab !== selectedTab) {
+            if (leavingTab) {
+              leavingTab.active = false;
+            }
+
+            this.ionTabsDidChange.emit({
+              tab: selectedTab.tab
+            });
+          }
+        }
+      }, {
+        key: "notifyRouter",
+        value: function notifyRouter() {
+          if (this.useRouter) {
+            var router = document.querySelector('ion-router');
+
+            if (router) {
+              return router.navChanged('forward');
+            }
+          }
+
+          return Promise.resolve(false);
+        }
+      }, {
+        key: "shouldSwitch",
+        value: function shouldSwitch(selectedTab) {
+          var leavingTab = this.selectedTab;
+          return selectedTab !== undefined && selectedTab !== leavingTab && !this.transitioning;
+        }
+      }, {
+        key: "tabs",
+        get: function get() {
+          return Array.from(this.el.querySelectorAll('ion-tab'));
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            onIonTabButtonClick: this.onTabClicked
+          }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            name: "top"
+          }), Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            "class": "tabs-inner"
+          }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            name: "bottom"
+          }));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+        }
+      }]);
+
+      return Tabs;
+    }();
+
+    var _getTab = function _getTab(tabs, tab) {
+      var tabEl = typeof tab === 'string' ? tabs.find(function (t) {
+        return t.tab === tab;
+      }) : tab;
+
+      if (!tabEl) {
+        console.error("tab with id: \"".concat(tabEl, "\" does not exist"));
+      }
+
+      return tabEl;
+    };
+
+    Tabs.style = tabsCss;
+    /***/
+  }
+}]);
 //# sourceMappingURL=37-es5.js.map
