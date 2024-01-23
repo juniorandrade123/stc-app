@@ -55,6 +55,8 @@ export class DetailComponent implements OnInit {
 
   loading: any;
 
+  companionAvailable: boolean = true;
+
   constructor(private routeSub: ActivatedRoute, private router: Router,
     public alertController: AlertController, private requestService: RequestService,
     private builder: FormBuilder, public toastController: ToastController,
@@ -133,7 +135,8 @@ export class DetailComponent implements OnInit {
         this.requestService.get('scheduling/getSchedulingAppById?idScheduling=' + Number(params['id']))
         .subscribe(async (result: any) => {
           this.scheduling = result;
-          await LoadingOnDidDismiss(this.loadingController);          
+          this.companionAvailable = this.scheduling.companionAvailable;
+          await LoadingOnDidDismiss(this.loadingController);   
         },
         async (err) => {
           await LoadingOnDidDismiss(this.loadingController);
@@ -201,11 +204,12 @@ export class DetailComponent implements OnInit {
   }
 
   navigateStep(step, no, change) {
+
     if (!no) {
       this.propulateForm(step, change);
       if (step === 0) {
         this.stepActual = 1;
-      } else if (step === 5) {
+      } else if (step === 5 || (this.stepActual === 3 && !this.companionAvailable) ) {
         this.routeSub.params.subscribe(params => {
           if (!isNullOrUndefined(params['id'])) {
             localStorage.setItem('detail-scheduling', JSON.stringify(this.populateObj()));
@@ -217,7 +221,6 @@ export class DetailComponent implements OnInit {
         this.stepActual = step;
       }
     } else {
-
       if (this.stepActual === 1) {
         this.presentAlertCancelConsulting();
       }
@@ -237,7 +240,17 @@ export class DetailComponent implements OnInit {
       }
 
       if (this.stepActual === 3) {
-        this.stepActual = 4;
+        
+        if (this.companionAvailable) {
+          this.stepActual = 4;
+        } else {
+          this.routeSub.params.subscribe(params => {
+            if (!isNullOrUndefined(params['id'])) {
+              localStorage.setItem('detail-scheduling', JSON.stringify(this.populateObj()));
+              location.href = 'transport/' + params['id'] + '/' + this.formScheduling.controls.isSpecial.value;
+            }
+          });
+        }
       }
 
     }
