@@ -1,2 +1,845 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[29],{WgF3:function(t,e,i){"use strict";i.r(e),i.d(e,"ion_datetime",(function(){return Q})),i.d(e,"ion_picker",(function(){return nt})),i.d(e,"ion_picker_column",(function(){return lt}));var o=i("wEJo"),r=i("E/Mt"),n=i("W6o/"),a=i("f9PN"),s=i("74mu"),l=i("Kfhc"),d=i("qULd");i("B4Jq");const c=(t,e,i,o)=>{if(t!==I&&t!==T){if(t===q)return void 0!==i&&void 0!==i.hour?i.hour<12?"AM":"PM":e?e.toUpperCase():"";if(t===U)return void 0!==i&&void 0!==i.hour?i.hour<12?"am":"pm":e||"";if(null==e)return"";if(t===S||t===N||t===E||t===H||t===$||t===J)return O(e);if(t===C)return D(e);if(t===z)return(o.monthNames?o.monthNames:G)[e-1];if(t===F)return(o.monthShortNames?o.monthShortNames:R)[e-1];if(t===V||t===W){if(0===e)return"12";if(e>12&&(e-=12),t===V&&e<10)return"0"+e}return e.toString()}try{return e=new Date(i.year,i.month-1,i.day).getDay(),t===I?(o.dayNames?o.dayNames:_)[e]:(o.dayShortNames?o.dayShortNames:K)[e]}catch(r){}},h=(t,e,i,o=0,r=0)=>parseInt(`1${D(t)}${O(e)}${O(i)}${O(o)}${O(r)}`,10),p=t=>h(t.year,t.month,t.day,t.hour,t.minute),m=t=>t%4==0&&t%100!=0||t%400==0,u=/^(\d{4}|[+\-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/,g=/^((\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/,b=t=>{let e=null;if(null!=t&&""!==t&&(e=g.exec(t),e?(e.unshift(void 0,void 0),e[2]=e[3]=void 0):e=u.exec(t)),null===e)return;for(let o=1;o<8;o++)e[o]=void 0!==e[o]?parseInt(e[o],10):void 0;let i=0;return e[9]&&e[10]&&(i=60*parseInt(e[10],10),e[11]&&(i+=parseInt(e[11],10)),"-"===e[9]&&(i*=-1)),{year:e[1],month:e[2],day:e[3],hour:e[4],minute:e[5],second:e[6],millisecond:e[7],tzOffset:i}},f=(t,e)=>{const i=new Date(t.toLocaleString("en-US",{timeZone:"utc"})),o=new Date(t.toLocaleString("en-US",{timeZone:e}));return i.getTime()-o.getTime()},k=(t,e,i)=>{if(!e||"string"==typeof e){const t=((t="",e="")=>{null==t&&(t=""),10!==t.length&&7!==t.length&&4!==t.length||(t+=" ");const i="string"==typeof t&&t.length>0?new Date(t):new Date,o=new Date(Date.UTC(i.getFullYear(),i.getMonth(),i.getDate(),i.getHours(),i.getMinutes(),i.getSeconds(),i.getMilliseconds()));return e&&e.length>0?new Date(i.getTime()-f(o,e)):o})(e,i);Number.isNaN(t.getTime())||(e=t.toISOString())}if(e&&""!==e){if("string"==typeof e){if(e=b(e))return Object.assign(t,e),!0}else{if(e.year||e.hour||e.month||e.day||e.minute||e.second){void 0!==e.ampm&&void 0!==e.hour&&(e.hour.value="pm"===e.ampm.value?12===e.hour.value?12:e.hour.value+12:12===e.hour.value?0:e.hour.value);for(const i of Object.keys(e))t[i]=e[i].value;return!0}if(e.ampm)return e.hour={value:e.hour?e.hour.value:"pm"===e.ampm.value?t.hour<12?t.hour+12:t.hour:t.hour>=12?t.hour-12:t.hour},t.hour=e.hour.value,t.ampm=e.ampm.value,!0}console.warn(`Error parsing date: "${e}". Please provide a valid ISO 8601 datetime format: https://www.w3.org/TR/NOTE-datetime`)}else for(const o in t)t.hasOwnProperty(o)&&delete t[o];return!1},v=(t,e)=>e===q||e===U?t.hour<12?"am":"pm":e===V||e===W?t.hour>12?t.hour-12:0===t.hour?12:t.hour:t[x(e)],x=t=>{for(const e in Z)if(Z[e].f===t)return Z[e].k},y=t=>{let e="";return void 0!==t.year?(e=D(t.year),void 0!==t.month&&(e+="-"+O(t.month),void 0!==t.day&&(e+="-"+O(t.day),void 0!==t.hour&&(e+=`T${O(t.hour)}:${O(t.minute)}:${O(t.second)}`,t.millisecond>0&&(e+="."+M(t.millisecond)),void 0===t.tzOffset?e+="Z":e+=(t.tzOffset>0?"+":"-")+O(Math.floor(Math.abs(t.tzOffset/60)))+":"+O(t.tzOffset%60))))):void 0!==t.hour&&(e=O(t.hour)+":"+O(t.minute),void 0!==t.second&&(e+=":"+O(t.second),void 0!==t.millisecond&&(e+="."+M(t.millisecond)))),e},w=(t,e)=>{if(null==t)return;let i;return"string"==typeof t&&(t=t.replace(/\[|\]/g,"").split(",")),Array.isArray(t)&&(i=t.map(t=>t.toString().trim())),void 0!==i&&0!==i.length||console.warn(`Invalid "${e}Names". Must be an array of strings, or a comma separated string.`),i},j=(t,e)=>{let i;return"string"==typeof t&&(t=t.replace(/\[|\]|\s/g,"").split(",")),i=Array.isArray(t)?t.map(t=>parseInt(t,10)).filter(isFinite):[t],0===i.length&&console.warn(`Invalid "${e}Values". Must be an array of numbers, or a comma separated string of numbers.`),i},O=t=>("0"+(void 0!==t?Math.abs(t):"0")).slice(-2),M=t=>("00"+(void 0!==t?Math.abs(t):"0")).slice(-3),D=t=>("000"+(void 0!==t?Math.abs(t):"0")).slice(-4),C="YYYY",S="YY",z="MMMM",F="MMM",N="MM",Y="M",I="DDDD",T="DDD",E="DD",P="D",H="HH",A="H",V="hh",W="h",$="mm",B="m",J="ss",L="s",q="A",U="a",Z=[{f:C,k:"year"},{f:z,k:"month"},{f:I,k:"day"},{f:F,k:"month"},{f:T,k:"day"},{f:S,k:"year"},{f:N,k:"month"},{f:E,k:"day"},{f:H,k:"hour"},{f:V,k:"hour"},{f:$,k:"minute"},{f:J,k:"second"},{f:Y,k:"month"},{f:P,k:"day"},{f:A,k:"hour"},{f:W,k:"hour"},{f:B,k:"minute"},{f:L,k:"second"},{f:q,k:"ampm"},{f:U,k:"ampm"}],_=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],K=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],G=["January","February","March","April","May","June","July","August","September","October","November","December"],R=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],X=[V,W,$,B,J,L],Q=class{constructor(t){Object(o.o)(this,t),this.ionCancel=Object(o.g)(this,"ionCancel",7),this.ionChange=Object(o.g)(this,"ionChange",7),this.ionFocus=Object(o.g)(this,"ionFocus",7),this.ionBlur=Object(o.g)(this,"ionBlur",7),this.ionStyle=Object(o.g)(this,"ionStyle",7),this.inputId="ion-dt-"+it++,this.locale={},this.datetimeMin={},this.datetimeMax={},this.datetimeValue={},this.isExpanded=!1,this.name=this.inputId,this.disabled=!1,this.readonly=!1,this.displayFormat="MMM D, YYYY",this.cancelText="Cancel",this.doneText="Done",this.onClick=()=>{this.setFocus(),this.open()},this.onFocus=()=>{this.ionFocus.emit()},this.onBlur=()=>{this.ionBlur.emit()}}disabledChanged(){this.emitStyle()}valueChanged(){this.updateDatetimeValue(this.value),this.emitStyle(),this.ionChange.emit({value:this.value})}componentWillLoad(){this.locale={monthNames:w(this.monthNames,"monthNames"),monthShortNames:w(this.monthShortNames,"monthShortNames"),dayNames:w(this.dayNames,"dayNames"),dayShortNames:w(this.dayShortNames,"dayShortNames")},this.updateDatetimeValue(this.value),this.emitStyle()}async open(){if(this.disabled||this.isExpanded)return;const t=this.generatePickerOptions(),e=await a.m.create(t);this.isExpanded=!0,e.onDidDismiss().then(()=>{this.isExpanded=!1,this.setFocus()}),Object(n.a)(e,"ionPickerColChange",async t=>{const i=t.detail,o=i.selectedIndex,r=i.options,n={};n[i.name]={value:r[o].value},"ampm"!==i.name&&void 0!==this.datetimeValue.ampm&&(n.ampm={value:this.datetimeValue.ampm}),this.updateDatetimeValue(n),e.columns=this.generateColumns()}),await e.present()}emitStyle(){this.ionStyle.emit({interactive:!0,datetime:!0,"has-placeholder":null!=this.placeholder,"has-value":this.hasValue(),"interactive-disabled":this.disabled})}updateDatetimeValue(t){k(this.datetimeValue,t,this.displayTimezone)}generatePickerOptions(){const t=Object(r.b)(this);this.locale={monthNames:w(this.monthNames,"monthNames"),monthShortNames:w(this.monthShortNames,"monthShortNames"),dayNames:w(this.dayNames,"dayNames"),dayShortNames:w(this.dayShortNames,"dayShortNames")};const e=Object.assign(Object.assign({mode:t},this.pickerOptions),{columns:this.generateColumns()}),i=e.buttons;return i&&0!==i.length||(e.buttons=[{text:this.cancelText,role:"cancel",handler:()=>{this.updateDatetimeValue(this.value),this.ionCancel.emit()}},{text:this.doneText,handler:t=>{this.updateDatetimeValue(t);const e=new Date(y(this.datetimeValue));this.datetimeValue.tzOffset=void 0!==this.displayTimezone&&this.displayTimezone.length>0?f(e,this.displayTimezone)/1e3/60*-1:-1*e.getTimezoneOffset(),this.value=y(this.datetimeValue)}}]),e}generateColumns(){let t=this.pickerFormat||this.displayFormat||et;if(0===t.length)return[];this.calcMinMax(),t=t.replace("DDDD","{~}").replace("DDD","{~}"),-1===t.indexOf("D")&&(t=t.replace("{~}","D")),t=t.replace(/{~}/g,"");const e=(t=>{const e=[];t=t.replace(/[^\w\s]/gi," "),Z.forEach(e=>{e.f.length>1&&t.indexOf(e.f)>-1&&t.indexOf(e.f+e.f.charAt(0))<0&&(t=t.replace(e.f," "+e.f+" "))});const i=t.split(" ").filter(t=>t.length>0);return i.forEach((t,o)=>{Z.forEach(r=>{if(t===r.f){if((t===q||t===U)&&(e.indexOf(W)<0&&e.indexOf(V)<0||-1===X.indexOf(i[o-1])))return;e.push(t)}})}),e})(t).map(t=>{const e=x(t);let i;i=this[e+"Values"]?j(this[e+"Values"],e):((t,e,i)=>{const o=[];if(t===C||t===S){if(void 0===i.year||void 0===e.year)throw new Error("min and max year is undefined");for(let t=i.year;t>=e.year;t--)o.push(t)}else if(t===z||t===F||t===N||t===Y||t===V||t===W)for(let r=1;r<13;r++)o.push(r);else if(t===I||t===T||t===E||t===P)for(let r=1;r<32;r++)o.push(r);else if(t===H||t===A)for(let r=0;r<24;r++)o.push(r);else if(t===$||t===B)for(let r=0;r<60;r++)o.push(r);else if(t===J||t===L)for(let r=0;r<60;r++)o.push(r);else t!==q&&t!==U||o.push("am","pm");return o})(t,this.datetimeMin,this.datetimeMax);const o=i.map(e=>({value:e,text:c(t,e,void 0,this.locale)})),r=((t,e)=>{const i=v(t,e);if(void 0!==i)return e!==q&&e!==U||(t.ampm=i),i;const o=b((new Date).toISOString());return v(o,e)})(this.datetimeValue,t),n=o.findIndex(t=>t.value===r);return{name:e,selectedIndex:n>=0?n:0,options:o}}),i=this.datetimeMin,o=this.datetimeMax;return["month","day","hour","minute"].filter(t=>!e.find(e=>e.name===t)).forEach(t=>{i[t]=0,o[t]=0}),this.validateColumns(tt(e))}validateColumns(t){const e=new Date,i=p(this.datetimeMin),o=p(this.datetimeMax),r=t.find(t=>"year"===t.name);let n=e.getFullYear();if(r){r.options.find(t=>t.value===e.getFullYear())||(n=r.options[0].value);const t=r.selectedIndex;if(void 0!==t){const e=r.options[t];e&&(n=e.value)}}const a=this.validateColumn(t,"month",1,i,o,[n,0,0,0,0],[n,12,31,23,59]),s=(d=n,4===(l=a)||6===l||9===l||11===l?30:2===l?m(d)?29:28:31);var l,d;const c=this.validateColumn(t,"day",2,i,o,[n,a,0,0,0],[n,a,s,23,59]),h=this.validateColumn(t,"hour",3,i,o,[n,a,c,0,0],[n,a,c,23,59]);return this.validateColumn(t,"minute",4,i,o,[n,a,c,h,0],[n,a,c,h,59]),t}calcMinMax(){const t=(new Date).getFullYear();if(void 0!==this.yearValues){const t=j(this.yearValues,"year");void 0===this.min&&(this.min=Math.min(...t).toString()),void 0===this.max&&(this.max=Math.max(...t).toString())}else void 0===this.min&&(this.min=(t-100).toString()),void 0===this.max&&(this.max=t.toString());const e=this.datetimeMin=b(this.min),i=this.datetimeMax=b(this.max);e.year=e.year||t,i.year=i.year||t,e.month=e.month||1,i.month=i.month||12,e.day=e.day||1,i.day=i.day||31,e.hour=e.hour||0,i.hour=void 0===i.hour?23:i.hour,e.minute=e.minute||0,i.minute=void 0===i.minute?59:i.minute,e.second=e.second||0,i.second=void 0===i.second?59:i.second,e.year>i.year&&(console.error("min.year > max.year"),e.year=i.year-100),e.year===i.year&&(e.month>i.month?(console.error("min.month > max.month"),e.month=1):e.month===i.month&&e.day>i.day&&(console.error("min.day > max.day"),e.day=1))}validateColumn(t,e,i,o,r,a,s){const l=t.find(t=>t.name===e);if(!l)return 0;const d=a.slice(),c=s.slice(),p=l.options;let m=p.length-1,u=0;for(let n=0;n<p.length;n++){const t=p[n],e=t.value;d[i]=t.value,c[i]=t.value;(t.disabled=e<a[i]||e>s[i]||h(c[0],c[1],c[2],c[3],c[4])<o||h(d[0],d[1],d[2],d[3],d[4])>r)||(m=Math.min(m,n),u=Math.max(u,n))}const g=l.selectedIndex=Object(n.k)(m,l.selectedIndex,u),b=l.options[g];return b?b.value:0}get text(){const t=this.displayFormat||this.pickerFormat||et;if(void 0!==this.value&&null!==this.value&&0!==this.value.length)return((t,e,i)=>{if(void 0===e)return;const o=[];let r=!1;if(Z.forEach((n,a)=>{if(t.indexOf(n.f)>-1){const s="{"+a+"}",l=c(n.f,e[n.k],e,i);r||void 0===l||null==e[n.k]||(r=!0),o.push(s,l||""),t=t.replace(n.f,s)}}),r){for(let e=0;e<o.length;e+=2)t=t.replace(o[e],o[e+1]);return t}})(t,this.datetimeValue,this.locale)}hasValue(){return void 0!==this.text}setFocus(){this.buttonEl&&this.buttonEl.focus()}render(){const{inputId:t,text:e,disabled:i,readonly:a,isExpanded:l,el:d,placeholder:c}=this,h=Object(r.b)(this),p=t+"-lbl",m=Object(n.j)(d),u=void 0===e&&null!=c,g=void 0===e?null!=c?c:"":e,b=void 0===e?null!=c?"placeholder":void 0:"text";return m&&(m.id=p),Object(n.e)(!0,d,this.name,this.value,this.disabled),Object(o.j)(o.c,{onClick:this.onClick,"aria-disabled":i?"true":null,"aria-expanded":""+l,"aria-haspopup":"true","aria-labelledby":m?p:null,class:{[h]:!0,"datetime-disabled":i,"datetime-readonly":a,"datetime-placeholder":u,"in-item":Object(s.c)("ion-item",d)}},Object(o.j)("div",{class:"datetime-text",part:b},g),Object(o.j)("button",{type:"button",onFocus:this.onFocus,onBlur:this.onBlur,disabled:this.disabled,ref:t=>this.buttonEl=t}))}get el(){return Object(o.k)(this)}static get watchers(){return{disabled:["disabledChanged"],value:["valueChanged"]}}},tt=t=>{const e=[];let i,o;for(let r=0;r<t.length;r++){i=t[r],e.push(0);for(const t of i.options)o=t.text.length,o>e[r]&&(e[r]=o)}return 2===e.length?(o=Math.max(e[0],e[1]),t[0].align="right",t[1].align="left",t[0].optionsWidth=t[1].optionsWidth=17*o+"px"):3===e.length&&(o=Math.max(e[0],e[2]),t[0].align="right",t[1].columnWidth=17*e[1]+"px",t[0].optionsWidth=t[2].optionsWidth=17*o+"px",t[2].align="left"),t},et="MMM D, YYYY";let it=0;Q.style={ios:":host{padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:-ms-flexbox;display:flex;position:relative;min-width:16px;min-height:1.2em;font-family:var(--ion-font-family, inherit);text-overflow:ellipsis;white-space:nowrap;overflow:hidden;z-index:2}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}:host(.in-item){position:static}:host(.datetime-placeholder){color:var(--placeholder-color)}:host(.datetime-disabled){opacity:0.3;pointer-events:none}:host(.datetime-readonly){pointer-events:none}button{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}[dir=rtl] button,:host-context([dir=rtl]) button{left:unset;right:unset;right:0}button::-moz-focus-inner{border:0}.datetime-text{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;-ms-flex:1;flex:1;min-height:inherit;direction:ltr;overflow:inherit}[dir=rtl] .datetime-text,:host-context([dir=rtl]) .datetime-text{direction:rtl}:host{--placeholder-color:var(--ion-color-step-400, #999999);--padding-top:10px;--padding-end:10px;--padding-bottom:10px;--padding-start:20px}",md:":host{padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);display:-ms-flexbox;display:flex;position:relative;min-width:16px;min-height:1.2em;font-family:var(--ion-font-family, inherit);text-overflow:ellipsis;white-space:nowrap;overflow:hidden;z-index:2}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}:host(.in-item){position:static}:host(.datetime-placeholder){color:var(--placeholder-color)}:host(.datetime-disabled){opacity:0.3;pointer-events:none}:host(.datetime-readonly){pointer-events:none}button{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}[dir=rtl] button,:host-context([dir=rtl]) button{left:unset;right:unset;right:0}button::-moz-focus-inner{border:0}.datetime-text{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;-ms-flex:1;flex:1;min-height:inherit;direction:ltr;overflow:inherit}[dir=rtl] .datetime-text,:host-context([dir=rtl]) .datetime-text{direction:rtl}:host{--placeholder-color:var(--ion-placeholder-color, var(--ion-color-step-400, #999999));--padding-top:10px;--padding-end:0;--padding-bottom:11px;--padding-start:16px}"};const ot=t=>{const e=Object(l.a)(),i=Object(l.a)(),o=Object(l.a)();return i.addElement(t.querySelector("ion-backdrop")).fromTo("opacity",.01,"var(--backdrop-opacity)").beforeStyles({"pointer-events":"none"}).afterClearStyles(["pointer-events"]),o.addElement(t.querySelector(".picker-wrapper")).fromTo("transform","translateY(100%)","translateY(0%)"),e.addElement(t).easing("cubic-bezier(.36,.66,.04,1)").duration(400).addAnimation([i,o])},rt=t=>{const e=Object(l.a)(),i=Object(l.a)(),o=Object(l.a)();return i.addElement(t.querySelector("ion-backdrop")).fromTo("opacity","var(--backdrop-opacity)",.01),o.addElement(t.querySelector(".picker-wrapper")).fromTo("transform","translateY(0%)","translateY(100%)"),e.addElement(t).easing("cubic-bezier(.36,.66,.04,1)").duration(400).addAnimation([i,o])},nt=class{constructor(t){Object(o.o)(this,t),this.didPresent=Object(o.g)(this,"ionPickerDidPresent",7),this.willPresent=Object(o.g)(this,"ionPickerWillPresent",7),this.willDismiss=Object(o.g)(this,"ionPickerWillDismiss",7),this.didDismiss=Object(o.g)(this,"ionPickerDidDismiss",7),this.presented=!1,this.keyboardClose=!0,this.buttons=[],this.columns=[],this.duration=0,this.showBackdrop=!0,this.backdropDismiss=!0,this.animated=!0,this.onBackdropTap=()=>{this.dismiss(void 0,a.a)},this.dispatchCancelHandler=t=>{const e=t.detail.role;if(Object(a.j)(e)){const t=this.buttons.find(t=>"cancel"===t.role);this.callButtonHandler(t)}}}connectedCallback(){Object(a.f)(this.el)}async present(){await Object(a.e)(this,"pickerEnter",ot,ot,void 0),this.duration>0&&(this.durationTimeout=setTimeout(()=>this.dismiss(),this.duration))}dismiss(t,e){return this.durationTimeout&&clearTimeout(this.durationTimeout),Object(a.g)(this,t,e,"pickerLeave",rt,rt)}onDidDismiss(){return Object(a.h)(this.el,"ionPickerDidDismiss")}onWillDismiss(){return Object(a.h)(this.el,"ionPickerWillDismiss")}getColumn(t){return Promise.resolve(this.columns.find(e=>e.name===t))}async buttonClick(t){const e=t.role;if(Object(a.j)(e))return this.dismiss(void 0,e);return await this.callButtonHandler(t)?this.dismiss(this.getSelected(),t.role):Promise.resolve()}async callButtonHandler(t){if(t){if(!1===await Object(a.n)(t.handler,this.getSelected()))return!1}return!0}getSelected(){const t={};return this.columns.forEach((e,i)=>{const o=void 0!==e.selectedIndex?e.options[e.selectedIndex]:void 0;t[e.name]={text:o?o.text:void 0,value:o?o.value:void 0,columnIndex:i}}),t}render(){const{htmlAttributes:t}=this,e=Object(r.b)(this);return Object(o.j)(o.c,Object.assign({"aria-modal":"true",tabindex:"-1"},t,{style:{zIndex:""+(2e4+this.overlayIndex)},class:Object.assign({[e]:!0,["picker-"+e]:!0},Object(s.b)(this.cssClass)),onIonBackdropTap:this.onBackdropTap,onIonPickerWillDismiss:this.dispatchCancelHandler}),Object(o.j)("ion-backdrop",{visible:this.showBackdrop,tappable:this.backdropDismiss}),Object(o.j)("div",{tabindex:"0"}),Object(o.j)("div",{class:"picker-wrapper ion-overlay-wrapper",role:"dialog"},Object(o.j)("div",{class:"picker-toolbar"},this.buttons.map(t=>Object(o.j)("div",{class:at(t)},Object(o.j)("button",{type:"button",onClick:()=>this.buttonClick(t),class:st(t)},t.text)))),Object(o.j)("div",{class:"picker-columns"},Object(o.j)("div",{class:"picker-above-highlight"}),this.presented&&this.columns.map(t=>Object(o.j)("ion-picker-column",{col:t})),Object(o.j)("div",{class:"picker-below-highlight"}))),Object(o.j)("div",{tabindex:"0"}))}get el(){return Object(o.k)(this)}},at=t=>({["picker-toolbar-"+t.role]:void 0!==t.role,"picker-toolbar-button":!0}),st=t=>Object.assign({"picker-button":!0,"ion-activatable":!0},Object(s.b)(t.cssClass));nt.style={ios:".sc-ion-picker-ios-h{--border-radius:0;--border-style:solid;--min-width:auto;--width:100%;--max-width:500px;--min-height:auto;--max-height:auto;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;top:0;display:block;position:absolute;width:100%;height:100%;outline:none;font-family:var(--ion-font-family, inherit);contain:strict;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}[dir=rtl].sc-ion-picker-ios-h,[dir=rtl] .sc-ion-picker-ios-h{left:unset;right:unset;right:0}.overlay-hidden.sc-ion-picker-ios-h{display:none}.picker-wrapper.sc-ion-picker-ios{border-radius:var(--border-radius);left:0;right:0;bottom:0;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;-webkit-transform:translate3d(0,  100%,  0);transform:translate3d(0,  100%,  0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);contain:strict;overflow:hidden;z-index:10}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.picker-wrapper.sc-ion-picker-ios{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}.picker-toolbar.sc-ion-picker-ios{width:100%;background:transparent;contain:strict;z-index:1}.picker-button.sc-ion-picker-ios{border:0;font-family:inherit}.picker-button.sc-ion-picker-ios:active,.picker-button.sc-ion-picker-ios:focus{outline:none}.picker-columns.sc-ion-picker-ios{display:-ms-flexbox;display:flex;position:relative;-ms-flex-pack:center;justify-content:center;margin-bottom:var(--ion-safe-area-bottom, 0);contain:strict;direction:ltr;overflow:hidden}.picker-above-highlight.sc-ion-picker-ios,.picker-below-highlight.sc-ion-picker-ios{display:none;pointer-events:none}.sc-ion-picker-ios-h{--background:var(--ion-background-color, #fff);--border-width:1px 0 0;--border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, #c8c7cc)));--height:260px;--backdrop-opacity:var(--ion-backdrop-opacity, 0.26);color:var(--ion-item-color, var(--ion-text-color, #000))}.picker-toolbar.sc-ion-picker-ios{display:-ms-flexbox;display:flex;height:44px;border-bottom:0.55px solid var(--border-color)}.picker-toolbar-button.sc-ion-picker-ios{-ms-flex:1;flex:1;text-align:end}.picker-toolbar-button.sc-ion-picker-ios:last-child .picker-button.sc-ion-picker-ios{font-weight:600}.picker-toolbar-button.sc-ion-picker-ios:first-child{font-weight:normal;text-align:start}.picker-button.sc-ion-picker-ios,.picker-button.ion-activated.sc-ion-picker-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:1em;padding-right:1em;padding-top:0;padding-bottom:0;height:44px;background:transparent;color:var(--ion-color-primary, #3880ff);font-size:16px}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.picker-button.sc-ion-picker-ios,.picker-button.ion-activated.sc-ion-picker-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:1em;padding-inline-start:1em;-webkit-padding-end:1em;padding-inline-end:1em}}.picker-columns.sc-ion-picker-ios{height:215px;-webkit-perspective:1000px;perspective:1000px}.picker-above-highlight.sc-ion-picker-ios{left:0;top:0;-webkit-transform:translate3d(0,  0,  90px);transform:translate3d(0,  0,  90px);display:block;position:absolute;width:100%;height:81px;border-bottom:1px solid var(--border-color);background:-webkit-gradient(linear, left top, left bottom, color-stop(20%, var(--background, var(--ion-background-color, #fff))), to(rgba(var(--background-rgb, var(--ion-background-color-rgb, 255, 255, 255)), 0.8)));background:linear-gradient(to bottom, var(--background, var(--ion-background-color, #fff)) 20%, rgba(var(--background-rgb, var(--ion-background-color-rgb, 255, 255, 255)), 0.8) 100%);z-index:10}[dir=rtl].sc-ion-picker-ios .picker-above-highlight.sc-ion-picker-ios,[dir=rtl].sc-ion-picker-ios-h .picker-above-highlight.sc-ion-picker-ios,[dir=rtl] .sc-ion-picker-ios-h .picker-above-highlight.sc-ion-picker-ios{left:unset;right:unset;right:0}.picker-below-highlight.sc-ion-picker-ios{left:0;top:115px;-webkit-transform:translate3d(0,  0,  90px);transform:translate3d(0,  0,  90px);display:block;position:absolute;width:100%;height:119px;border-top:1px solid var(--border-color);background:-webkit-gradient(linear, left bottom, left top, color-stop(30%, var(--background, var(--ion-background-color, #fff))), to(rgba(var(--background-rgb, var(--ion-background-color-rgb, 255, 255, 255)), 0.8)));background:linear-gradient(to top, var(--background, var(--ion-background-color, #fff)) 30%, rgba(var(--background-rgb, var(--ion-background-color-rgb, 255, 255, 255)), 0.8) 100%);z-index:11}[dir=rtl].sc-ion-picker-ios .picker-below-highlight.sc-ion-picker-ios,[dir=rtl].sc-ion-picker-ios-h .picker-below-highlight.sc-ion-picker-ios,[dir=rtl] .sc-ion-picker-ios-h .picker-below-highlight.sc-ion-picker-ios{left:unset;right:unset;right:0}",md:".sc-ion-picker-md-h{--border-radius:0;--border-style:solid;--min-width:auto;--width:100%;--max-width:500px;--min-height:auto;--max-height:auto;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;top:0;display:block;position:absolute;width:100%;height:100%;outline:none;font-family:var(--ion-font-family, inherit);contain:strict;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}[dir=rtl].sc-ion-picker-md-h,[dir=rtl] .sc-ion-picker-md-h{left:unset;right:unset;right:0}.overlay-hidden.sc-ion-picker-md-h{display:none}.picker-wrapper.sc-ion-picker-md{border-radius:var(--border-radius);left:0;right:0;bottom:0;margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;-webkit-transform:translate3d(0,  100%,  0);transform:translate3d(0,  100%,  0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);contain:strict;overflow:hidden;z-index:10}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.picker-wrapper.sc-ion-picker-md{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}.picker-toolbar.sc-ion-picker-md{width:100%;background:transparent;contain:strict;z-index:1}.picker-button.sc-ion-picker-md{border:0;font-family:inherit}.picker-button.sc-ion-picker-md:active,.picker-button.sc-ion-picker-md:focus{outline:none}.picker-columns.sc-ion-picker-md{display:-ms-flexbox;display:flex;position:relative;-ms-flex-pack:center;justify-content:center;margin-bottom:var(--ion-safe-area-bottom, 0);contain:strict;direction:ltr;overflow:hidden}.picker-above-highlight.sc-ion-picker-md,.picker-below-highlight.sc-ion-picker-md{display:none;pointer-events:none}.sc-ion-picker-md-h{--background:var(--ion-background-color, #fff);--border-width:0.55px 0 0;--border-color:var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));--height:260px;--backdrop-opacity:var(--ion-backdrop-opacity, 0.26);color:var(--ion-item-color, var(--ion-text-color, #000))}.picker-toolbar.sc-ion-picker-md{display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;height:44px}.picker-button.sc-ion-picker-md,.picker-button.ion-activated.sc-ion-picker-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:1.1em;padding-right:1.1em;padding-top:0;padding-bottom:0;height:44px;background:transparent;color:var(--ion-color-primary, #3880ff);font-size:14px;font-weight:500;text-transform:uppercase;-webkit-box-shadow:none;box-shadow:none}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.picker-button.sc-ion-picker-md,.picker-button.ion-activated.sc-ion-picker-md{padding-left:unset;padding-right:unset;-webkit-padding-start:1.1em;padding-inline-start:1.1em;-webkit-padding-end:1.1em;padding-inline-end:1.1em}}.picker-columns.sc-ion-picker-md{height:216px;-webkit-perspective:1800px;perspective:1800px}.picker-above-highlight.sc-ion-picker-md{left:0;top:0;-webkit-transform:translate3d(0,  0,  90px);transform:translate3d(0,  0,  90px);position:absolute;width:100%;height:81px;border-bottom:1px solid var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));background:-webkit-gradient(linear, left top, left bottom, color-stop(20%, var(--ion-background-color, #fff)), to(rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8)));background:linear-gradient(to bottom, var(--ion-background-color, #fff) 20%, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8) 100%);z-index:10}[dir=rtl].sc-ion-picker-md .picker-above-highlight.sc-ion-picker-md,[dir=rtl].sc-ion-picker-md-h .picker-above-highlight.sc-ion-picker-md,[dir=rtl] .sc-ion-picker-md-h .picker-above-highlight.sc-ion-picker-md{left:unset;right:unset;right:0}.picker-below-highlight.sc-ion-picker-md{left:0;top:115px;-webkit-transform:translate3d(0,  0,  90px);transform:translate3d(0,  0,  90px);position:absolute;width:100%;height:119px;border-top:1px solid var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.13))));background:-webkit-gradient(linear, left bottom, left top, color-stop(30%, var(--ion-background-color, #fff)), to(rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8)));background:linear-gradient(to top, var(--ion-background-color, #fff) 30%, rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8) 100%);z-index:11}[dir=rtl].sc-ion-picker-md .picker-below-highlight.sc-ion-picker-md,[dir=rtl].sc-ion-picker-md-h .picker-below-highlight.sc-ion-picker-md,[dir=rtl] .sc-ion-picker-md-h .picker-below-highlight.sc-ion-picker-md{left:unset;right:unset;right:0}"};const lt=class{constructor(t){Object(o.o)(this,t),this.ionPickerColChange=Object(o.g)(this,"ionPickerColChange",7),this.optHeight=0,this.rotateFactor=0,this.scaleFactor=1,this.velocity=0,this.y=0,this.noAnimate=!0}colChanged(){this.refresh()}async connectedCallback(){let t=0,e=.81;"ios"===Object(r.b)(this)&&(t=-.46,e=1),this.rotateFactor=t,this.scaleFactor=e,this.gesture=(await Promise.resolve().then(i.bind(null,"KF81"))).createGesture({el:this.el,gestureName:"picker-swipe",gesturePriority:100,threshold:0,passive:!1,onStart:t=>this.onStart(t),onMove:t=>this.onMove(t),onEnd:t=>this.onEnd(t)}),this.gesture.enable(),this.tmrId=setTimeout(()=>{this.noAnimate=!1,this.refresh(!0)},250)}componentDidLoad(){const t=this.optsEl;t&&(this.optHeight=t.firstElementChild?t.firstElementChild.clientHeight:0),this.refresh()}disconnectedCallback(){cancelAnimationFrame(this.rafId),clearTimeout(this.tmrId),this.gesture&&(this.gesture.destroy(),this.gesture=void 0)}emitColChange(){this.ionPickerColChange.emit(this.col)}setSelected(t,e){const i=t>-1?-t*this.optHeight:0;this.velocity=0,cancelAnimationFrame(this.rafId),this.update(i,e,!0),this.emitColChange()}update(t,e,i){if(!this.optsEl)return;let o=0,r=0;const{col:n,rotateFactor:a}=this,s=n.selectedIndex=this.indexForY(-t),l=0===e?"":e+"ms",c=`scale(${this.scaleFactor})`,h=this.optsEl.children;for(let d=0;d<h.length;d++){const i=h[d],p=n.options[d],m=d*this.optHeight+t;let u="";if(0!==a){const t=m*a;Math.abs(t)<=90?(o=0,r=90,u=`rotateX(${t}deg) `):o=-9999}else r=0,o=m;const g=s===d;u+=`translate3d(0px,${o}px,${r}px) `,1===this.scaleFactor||g||(u+=c),this.noAnimate?(p.duration=0,i.style.transitionDuration=""):e!==p.duration&&(p.duration=e,i.style.transitionDuration=l),u!==p.transform&&(p.transform=u,i.style.transform=u),g!==p.selected&&(p.selected=g,g?i.classList.add(dt):i.classList.remove(dt))}this.col.prevSelected=s,i&&(this.y=t),this.lastIndex!==s&&(Object(d.b)(),this.lastIndex=s)}decelerate(){if(0!==this.velocity){this.velocity*=ct,this.velocity=this.velocity>0?Math.max(this.velocity,1):Math.min(this.velocity,-1);let t=this.y+this.velocity;t>this.minY?(t=this.minY,this.velocity=0):t<this.maxY&&(t=this.maxY,this.velocity=0),this.update(t,0,!0);Math.round(t)%this.optHeight!=0||Math.abs(this.velocity)>1?this.rafId=requestAnimationFrame(()=>this.decelerate()):(this.velocity=0,this.emitColChange(),Object(d.e)())}else if(this.y%this.optHeight!=0){const t=Math.abs(this.y%this.optHeight);this.velocity=t>this.optHeight/2?1:-1,this.decelerate()}}indexForY(t){return Math.min(Math.max(Math.abs(Math.round(t/this.optHeight)),0),this.col.options.length-1)}onStart(t){t.event.cancelable&&t.event.preventDefault(),t.event.stopPropagation(),Object(d.a)(),cancelAnimationFrame(this.rafId);const e=this.col.options;let i=e.length-1,o=0;for(let r=0;r<e.length;r++)e[r].disabled||(i=Math.min(i,r),o=Math.max(o,r));this.minY=-i*this.optHeight,this.maxY=-o*this.optHeight}onMove(t){t.event.cancelable&&t.event.preventDefault(),t.event.stopPropagation();let e=this.y+t.deltaY;e>this.minY?(e=Math.pow(e,.8),this.bounceFrom=e):e<this.maxY?(e+=Math.pow(this.maxY-e,.9),this.bounceFrom=e):this.bounceFrom=0,this.update(e,0,!1)}onEnd(t){if(this.bounceFrom>0)return this.update(this.minY,100,!0),void this.emitColChange();if(this.bounceFrom<0)return this.update(this.maxY,100,!0),void this.emitColChange();if(this.velocity=Object(n.k)(-ht,23*t.velocityY,ht),0===this.velocity&&0===t.deltaY){const e=t.event.target.closest(".picker-opt");e&&e.hasAttribute("opt-index")&&this.setSelected(parseInt(e.getAttribute("opt-index"),10),pt)}else{if(this.y+=t.deltaY,Math.abs(t.velocityY)<.05){const e=t.deltaY>0,i=Math.abs(this.y)%this.optHeight/this.optHeight;e&&i>.5?this.velocity=-1*Math.abs(this.velocity):!e&&i<=.5&&(this.velocity=Math.abs(this.velocity))}this.decelerate()}}refresh(t){let e=this.col.options.length-1,i=0;const o=this.col.options;for(let n=0;n<o.length;n++)o[n].disabled||(e=Math.min(e,n),i=Math.max(i,n));if(0!==this.velocity)return;const r=Object(n.k)(e,this.col.selectedIndex||0,i);if(this.col.prevSelected!==r||t){const t=r*this.optHeight*-1;this.velocity=0,this.update(t,pt,!0)}}render(){const t=this.col,e=Object(r.b)(this);return Object(o.j)(o.c,{class:{[e]:!0,"picker-col":!0,"picker-opts-left":"left"===this.col.align,"picker-opts-right":"right"===this.col.align},style:{"max-width":this.col.columnWidth}},t.prefix&&Object(o.j)("div",{class:"picker-prefix",style:{width:t.prefixWidth}},t.prefix),Object(o.j)("div",{class:"picker-opts",style:{maxWidth:t.optionsWidth},ref:t=>this.optsEl=t},t.options.map((t,e)=>Object(o.j)("button",{type:"button",class:{"picker-opt":!0,"picker-opt-disabled":!!t.disabled},"opt-index":e},t.text))),t.suffix&&Object(o.j)("div",{class:"picker-suffix",style:{width:t.suffixWidth}},t.suffix))}get el(){return Object(o.k)(this)}static get watchers(){return{col:["colChanged"]}}},dt="picker-opt-selected",ct=.97,ht=90,pt=150;lt.style={ios:".picker-col{display:-ms-flexbox;display:flex;position:relative;-ms-flex:1;flex:1;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-box-sizing:content-box;box-sizing:content-box;contain:content}.picker-opts{position:relative;-ms-flex:1;flex:1;max-width:100%}.picker-opt{left:0;top:0;display:block;position:absolute;width:100%;border:0;text-align:center;text-overflow:ellipsis;white-space:nowrap;contain:strict;overflow:hidden;will-change:transform}[dir=rtl] .picker-opt,:host-context([dir=rtl]) .picker-opt{left:unset;right:unset;right:0}.picker-opt.picker-opt-disabled{pointer-events:none}.picker-opt-disabled{opacity:0}.picker-opts-left{-ms-flex-pack:start;justify-content:flex-start}.picker-opts-right{-ms-flex-pack:end;justify-content:flex-end}.picker-opt:active,.picker-opt:focus{outline:none}.picker-prefix{position:relative;-ms-flex:1;flex:1;text-align:end;white-space:nowrap}.picker-suffix{position:relative;-ms-flex:1;flex:1;text-align:start;white-space:nowrap}.picker-col{padding-left:4px;padding-right:4px;padding-top:0;padding-bottom:0;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.picker-col{padding-left:unset;padding-right:unset;-webkit-padding-start:4px;padding-inline-start:4px;-webkit-padding-end:4px;padding-inline-end:4px}}.picker-prefix,.picker-suffix,.picker-opts{top:77px;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;color:inherit;font-size:20px;line-height:42px;pointer-events:none}.picker-opt{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;-webkit-transform-origin:center center;transform-origin:center center;height:46px;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out;background:transparent;color:inherit;font-size:20px;line-height:42px;-webkit-backface-visibility:hidden;backface-visibility:hidden;pointer-events:auto}[dir=rtl] .picker-opt,:host-context([dir=rtl]) .picker-opt{-webkit-transform-origin:calc(100% - center) center;transform-origin:calc(100% - center) center}",md:".picker-col{display:-ms-flexbox;display:flex;position:relative;-ms-flex:1;flex:1;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-box-sizing:content-box;box-sizing:content-box;contain:content}.picker-opts{position:relative;-ms-flex:1;flex:1;max-width:100%}.picker-opt{left:0;top:0;display:block;position:absolute;width:100%;border:0;text-align:center;text-overflow:ellipsis;white-space:nowrap;contain:strict;overflow:hidden;will-change:transform}[dir=rtl] .picker-opt,:host-context([dir=rtl]) .picker-opt{left:unset;right:unset;right:0}.picker-opt.picker-opt-disabled{pointer-events:none}.picker-opt-disabled{opacity:0}.picker-opts-left{-ms-flex-pack:start;justify-content:flex-start}.picker-opts-right{-ms-flex-pack:end;justify-content:flex-end}.picker-opt:active,.picker-opt:focus{outline:none}.picker-prefix{position:relative;-ms-flex:1;flex:1;text-align:end;white-space:nowrap}.picker-suffix{position:relative;-ms-flex:1;flex:1;text-align:start;white-space:nowrap}.picker-col{padding-left:8px;padding-right:8px;padding-top:0;padding-bottom:0;-webkit-transform-style:preserve-3d;transform-style:preserve-3d}@supports ((-webkit-margin-start: 0) or (margin-inline-start: 0)) or (-webkit-margin-start: 0){.picker-col{padding-left:unset;padding-right:unset;-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px}}.picker-prefix,.picker-suffix,.picker-opts{top:77px;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;color:inherit;font-size:22px;line-height:42px;pointer-events:none}.picker-opt{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;height:43px;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out;background:transparent;color:inherit;font-size:22px;line-height:42px;-webkit-backface-visibility:hidden;backface-visibility:hidden;pointer-events:auto}.picker-prefix,.picker-suffix,.picker-opt.picker-opt-selected{color:var(--ion-color-primary, #3880ff)}"}}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[29],{
+
+/***/ "./node_modules/@ionic/core/dist/esm/ion-route_4.entry.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-route_4.entry.js ***!
+  \****************************************************************/
+/*! exports provided: ion_route, ion_route_redirect, ion_router, ion_router_link */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_route", function() { return Route; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_route_redirect", function() { return RouteRedirect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_router", function() { return Router; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_router_link", function() { return RouterLink; });
+/* harmony import */ var _index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-7a8b7a1c.js */ "./node_modules/@ionic/core/dist/esm/index-7a8b7a1c.js");
+/* harmony import */ var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-1457892a.js */ "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
+/* harmony import */ var _ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ionic-global-63a97a32.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-63a97a32.js");
+/* harmony import */ var _theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-ff3fc52f.js */ "./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js");
+
+
+
+
+
+const Route = class {
+  constructor(hostRef) {
+    Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    this.ionRouteDataChanged = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionRouteDataChanged", 7);
+    /**
+     * Relative path that needs to match in order for this route to apply.
+     *
+     * Accepts paths similar to expressjs so that you can define parameters
+     * in the url /foo/:bar where bar would be available in incoming props.
+     */
+    this.url = '';
+  }
+  onUpdate(newValue) {
+    this.ionRouteDataChanged.emit(newValue);
+  }
+  onComponentProps(newValue, oldValue) {
+    if (newValue === oldValue) {
+      return;
+    }
+    const keys1 = newValue ? Object.keys(newValue) : [];
+    const keys2 = oldValue ? Object.keys(oldValue) : [];
+    if (keys1.length !== keys2.length) {
+      this.onUpdate(newValue);
+      return;
+    }
+    for (const key of keys1) {
+      if (newValue[key] !== oldValue[key]) {
+        this.onUpdate(newValue);
+        return;
+      }
+    }
+  }
+  connectedCallback() {
+    this.ionRouteDataChanged.emit();
+  }
+  static get watchers() { return {
+    "url": ["onUpdate"],
+    "component": ["onUpdate"],
+    "componentProps": ["onComponentProps"]
+  }; }
+};
+
+const RouteRedirect = class {
+  constructor(hostRef) {
+    Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    this.ionRouteRedirectChanged = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionRouteRedirectChanged", 7);
+  }
+  propDidChange() {
+    this.ionRouteRedirectChanged.emit();
+  }
+  connectedCallback() {
+    this.ionRouteRedirectChanged.emit();
+  }
+  static get watchers() { return {
+    "from": ["propDidChange"],
+    "to": ["propDidChange"]
+  }; }
+};
+
+const ROUTER_INTENT_NONE = 'root';
+const ROUTER_INTENT_FORWARD = 'forward';
+const ROUTER_INTENT_BACK = 'back';
+
+// Join the non empty segments with "/".
+const generatePath = (segments) => {
+  const path = segments
+    .filter(s => s.length > 0)
+    .join('/');
+  return '/' + path;
+};
+const generateUrl = (segments, useHash, queryString) => {
+  let url = generatePath(segments);
+  if (useHash) {
+    url = '#' + url;
+  }
+  if (queryString !== undefined) {
+    url += '?' + queryString;
+  }
+  return url;
+};
+const writePath = (history, root, useHash, path, direction, state, queryString) => {
+  const url = generateUrl([...parsePath(root).segments, ...path], useHash, queryString);
+  if (direction === ROUTER_INTENT_FORWARD) {
+    history.pushState(state, '', url);
+  }
+  else {
+    history.replaceState(state, '', url);
+  }
+};
+const chainToPath = (chain) => {
+  const path = [];
+  for (const route of chain) {
+    for (const segment of route.path) {
+      if (segment[0] === ':') {
+        const param = route.params && route.params[segment.slice(1)];
+        if (!param) {
+          return null;
+        }
+        path.push(param);
+      }
+      else if (segment !== '') {
+        path.push(segment);
+      }
+    }
+  }
+  return path;
+};
+// Remove the prefix segments from the path segments.
+//
+// Return:
+// - null when the path segments do not start with the passed prefix,
+// - the path segments after the prefix otherwise.
+const removePrefix = (prefix, path) => {
+  if (prefix.length > path.length) {
+    return null;
+  }
+  if (prefix.length <= 1 && prefix[0] === '') {
+    return path;
+  }
+  for (let i = 0; i < prefix.length; i++) {
+    if (prefix[i] !== path[i]) {
+      return null;
+    }
+  }
+  if (path.length === prefix.length) {
+    return [''];
+  }
+  return path.slice(prefix.length);
+};
+const readPath = (loc, root, useHash) => {
+  const prefix = parsePath(root).segments;
+  const pathname = useHash ? loc.hash.slice(1) : loc.pathname;
+  const path = parsePath(pathname).segments;
+  return removePrefix(prefix, path);
+};
+// Parses the path to:
+// - segments an array of '/' separated parts,
+// - queryString (undefined when no query string).
+const parsePath = (path) => {
+  let segments = [''];
+  let queryString;
+  if (path != null) {
+    const qsStart = path.indexOf('?');
+    if (qsStart > -1) {
+      queryString = path.substr(qsStart + 1);
+      path = path.substr(0, qsStart);
+    }
+    segments = path.split('/')
+      .map(s => s.trim())
+      .filter(s => s.length > 0);
+    if (segments.length === 0) {
+      segments = [''];
+    }
+  }
+  return { segments, queryString };
+};
+
+const printRoutes = (routes) => {
+  console.group(`[ion-core] ROUTES[${routes.length}]`);
+  for (const chain of routes) {
+    const path = [];
+    chain.forEach(r => path.push(...r.path));
+    const ids = chain.map(r => r.id);
+    console.debug(`%c ${generatePath(path)}`, 'font-weight: bold; padding-left: 20px', '=>\t', `(${ids.join(', ')})`);
+  }
+  console.groupEnd();
+};
+const printRedirects = (redirects) => {
+  console.group(`[ion-core] REDIRECTS[${redirects.length}]`);
+  for (const redirect of redirects) {
+    if (redirect.to) {
+      console.debug('FROM: ', `$c ${generatePath(redirect.from)}`, 'font-weight: bold', ' TO: ', `$c ${generatePath(redirect.to.segments)}`, 'font-weight: bold');
+    }
+  }
+  console.groupEnd();
+};
+
+const writeNavState = async (root, chain, direction, index, changed = false, animation) => {
+  try {
+    // find next navigation outlet in the DOM
+    const outlet = searchNavNode(root);
+    // make sure we can continue interacting the DOM, otherwise abort
+    if (index >= chain.length || !outlet) {
+      return changed;
+    }
+    await new Promise(resolve => Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_1__["c"])(outlet, resolve));
+    const route = chain[index];
+    const result = await outlet.setRouteId(route.id, route.params, direction, animation);
+    // if the outlet changed the page, reset navigation to neutral (no direction)
+    // this means nested outlets will not animate
+    if (result.changed) {
+      direction = ROUTER_INTENT_NONE;
+      changed = true;
+    }
+    // recursively set nested outlets
+    changed = await writeNavState(result.element, chain, direction, index + 1, changed, animation);
+    // once all nested outlets are visible let's make the parent visible too,
+    // using markVisible prevents flickering
+    if (result.markVisible) {
+      await result.markVisible();
+    }
+    return changed;
+  }
+  catch (e) {
+    console.error(e);
+    return false;
+  }
+};
+const readNavState = async (root) => {
+  const ids = [];
+  let outlet;
+  let node = root;
+  // tslint:disable-next-line:no-constant-condition
+  while (true) {
+    outlet = searchNavNode(node);
+    if (outlet) {
+      const id = await outlet.getRouteId();
+      if (id) {
+        node = id.element;
+        id.element = undefined;
+        ids.push(id);
+      }
+      else {
+        break;
+      }
+    }
+    else {
+      break;
+    }
+  }
+  return { ids, outlet };
+};
+const waitUntilNavNode = () => {
+  if (searchNavNode(document.body)) {
+    return Promise.resolve();
+  }
+  return new Promise(resolve => {
+    window.addEventListener('ionNavWillLoad', resolve, { once: true });
+  });
+};
+const QUERY = ':not([no-router]) ion-nav, :not([no-router]) ion-tabs, :not([no-router]) ion-router-outlet';
+const searchNavNode = (root) => {
+  if (!root) {
+    return undefined;
+  }
+  if (root.matches(QUERY)) {
+    return root;
+  }
+  const outlet = root.querySelector(QUERY);
+  return outlet !== null && outlet !== void 0 ? outlet : undefined;
+};
+
+// Returns whether the given redirect matches the given path segments.
+//
+// A redirect matches when the segments of the path and redirect.from are equal.
+// Note that segments are only checked until redirect.from contains a '*' which matches any path segment.
+// The path ['some', 'path', 'to', 'page'] matches both ['some', 'path', 'to', 'page'] and ['some', 'path', '*'].
+const matchesRedirect = (path, redirect) => {
+  const { from, to } = redirect;
+  if (to === undefined) {
+    return false;
+  }
+  if (from.length > path.length) {
+    return false;
+  }
+  for (let i = 0; i < from.length; i++) {
+    const expected = from[i];
+    if (expected === '*') {
+      return true;
+    }
+    if (expected !== path[i]) {
+      return false;
+    }
+  }
+  return from.length === path.length;
+};
+// Returns the first redirect matching the path segments or undefined when no match found.
+const findRouteRedirect = (path, redirects) => {
+  return redirects.find(redirect => matchesRedirect(path, redirect));
+};
+const matchesIDs = (ids, chain) => {
+  const len = Math.min(ids.length, chain.length);
+  let score = 0;
+  for (let i = 0; i < len; i++) {
+    const routeId = ids[i];
+    const routeChain = chain[i];
+    // Skip results where the route id does not match the chain at the same index
+    if (routeId.id.toLowerCase() !== routeChain.id) {
+      break;
+    }
+    if (routeId.params) {
+      const routeIdParams = Object.keys(routeId.params);
+      /**
+       * Only compare routes with the chain that have the same number of parameters.
+       */
+      if (routeIdParams.length === routeChain.path.length) {
+        /**
+         * Maps the route's params into a path based on the path variable names,
+         * to compare against the route chain format.
+         *
+         * Before:
+         * ```ts
+         * {
+         *  params: {
+         *    s1: 'a',
+         *    s2: 'b'
+         *  }
+         * }
+         * ```
+         *
+         * After:
+         * ```ts
+         * [':s1',':s2']
+         * ```
+         */
+        const pathWithParams = routeIdParams.map(key => `:${key}`);
+        for (let j = 0; j < pathWithParams.length; j++) {
+          // Skip results where the path variable is not a match
+          if (pathWithParams[j].toLowerCase() !== routeChain.path[j]) {
+            break;
+          }
+          // Weight path matches for the same index higher.
+          score++;
+        }
+      }
+    }
+    // Weight id matches
+    score++;
+  }
+  return score;
+};
+const matchesPath = (inputPath, chain) => {
+  const segments = new RouterSegments(inputPath);
+  let matchesDefault = false;
+  let allparams;
+  for (let i = 0; i < chain.length; i++) {
+    const path = chain[i].path;
+    if (path[0] === '') {
+      matchesDefault = true;
+    }
+    else {
+      for (const segment of path) {
+        const data = segments.next();
+        // data param
+        if (segment[0] === ':') {
+          if (data === '') {
+            return null;
+          }
+          allparams = allparams || [];
+          const params = allparams[i] || (allparams[i] = {});
+          params[segment.slice(1)] = data;
+        }
+        else if (data !== segment) {
+          return null;
+        }
+      }
+      matchesDefault = false;
+    }
+  }
+  const matches = (matchesDefault)
+    ? matchesDefault === (segments.next() === '')
+    : true;
+  if (!matches) {
+    return null;
+  }
+  if (allparams) {
+    return chain.map((route, i) => ({
+      id: route.id,
+      path: route.path,
+      params: mergeParams(route.params, allparams[i]),
+      beforeEnter: route.beforeEnter,
+      beforeLeave: route.beforeLeave
+    }));
+  }
+  return chain;
+};
+// Merges the route parameter objects.
+// Returns undefined when both parameters are undefined.
+const mergeParams = (a, b) => {
+  return a || b ? Object.assign(Object.assign({}, a), b) : undefined;
+};
+const routerIDsToChain = (ids, chains) => {
+  let match = null;
+  let maxMatches = 0;
+  for (const chain of chains) {
+    const score = matchesIDs(ids, chain);
+    if (score > maxMatches) {
+      match = chain;
+      maxMatches = score;
+    }
+  }
+  if (match) {
+    return match.map((route, i) => ({
+      id: route.id,
+      path: route.path,
+      params: mergeParams(route.params, ids[i] && ids[i].params)
+    }));
+  }
+  return null;
+};
+const routerPathToChain = (path, chains) => {
+  let match = null;
+  let matches = 0;
+  for (const chain of chains) {
+    const matchedChain = matchesPath(path, chain);
+    if (matchedChain !== null) {
+      const score = computePriority(matchedChain);
+      if (score > matches) {
+        matches = score;
+        match = matchedChain;
+      }
+    }
+  }
+  return match;
+};
+const computePriority = (chain) => {
+  let score = 1;
+  let level = 1;
+  for (const route of chain) {
+    for (const path of route.path) {
+      if (path[0] === ':') {
+        score += Math.pow(1, level);
+      }
+      else if (path !== '') {
+        score += Math.pow(2, level);
+      }
+      level++;
+    }
+  }
+  return score;
+};
+class RouterSegments {
+  constructor(path) {
+    this.path = path.slice();
+  }
+  next() {
+    if (this.path.length > 0) {
+      return this.path.shift();
+    }
+    return '';
+  }
+}
+
+const readProp = (el, prop) => {
+  if (prop in el) {
+    return el[prop];
+  }
+  if (el.hasAttribute(prop)) {
+    return el.getAttribute(prop);
+  }
+  return null;
+};
+const readRedirects = (root) => {
+  return Array.from(root.children)
+    .filter(el => el.tagName === 'ION-ROUTE-REDIRECT')
+    .map(el => {
+    const to = readProp(el, 'to');
+    return {
+      from: parsePath(readProp(el, 'from')).segments,
+      to: to == null ? undefined : parsePath(to),
+    };
+  });
+};
+const readRoutes = (root) => {
+  return flattenRouterTree(readRouteNodes(root));
+};
+const readRouteNodes = (node) => {
+  return Array.from(node.children)
+    .filter(el => el.tagName === 'ION-ROUTE' && el.component)
+    .map(el => {
+    const component = readProp(el, 'component');
+    return {
+      path: parsePath(readProp(el, 'url')).segments,
+      id: component.toLowerCase(),
+      params: el.componentProps,
+      beforeLeave: el.beforeLeave,
+      beforeEnter: el.beforeEnter,
+      children: readRouteNodes(el)
+    };
+  });
+};
+const flattenRouterTree = (nodes) => {
+  const chains = [];
+  for (const node of nodes) {
+    flattenNode([], chains, node);
+  }
+  return chains;
+};
+const flattenNode = (chain, chains, node) => {
+  chain = chain.slice();
+  chain.push({
+    id: node.id,
+    path: node.path,
+    params: node.params,
+    beforeLeave: node.beforeLeave,
+    beforeEnter: node.beforeEnter
+  });
+  if (node.children.length === 0) {
+    chains.push(chain);
+    return;
+  }
+  for (const child of node.children) {
+    flattenNode(chain, chains, child);
+  }
+};
+
+const Router = class {
+  constructor(hostRef) {
+    Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    this.ionRouteWillChange = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionRouteWillChange", 7);
+    this.ionRouteDidChange = Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionRouteDidChange", 7);
+    this.previousPath = null;
+    this.busy = false;
+    this.state = 0;
+    this.lastState = 0;
+    /**
+     * The root path to use when matching URLs. By default, this is set to "/", but you can specify
+     * an alternate prefix for all URL paths.
+     */
+    this.root = '/';
+    /**
+     * The router can work in two "modes":
+     * - With hash: `/index.html#/path/to/page`
+     * - Without hash: `/path/to/page`
+     *
+     * Using one or another might depend in the requirements of your app and/or where it's deployed.
+     *
+     * Usually "hash-less" navigation works better for SEO and it's more user friendly too, but it might
+     * requires additional server-side configuration in order to properly work.
+     *
+     * On the other side hash-navigation is much easier to deploy, it even works over the file protocol.
+     *
+     * By default, this property is `true`, change to `false` to allow hash-less URLs.
+     */
+    this.useHash = true;
+  }
+  async componentWillLoad() {
+    await waitUntilNavNode();
+    const canProceed = await this.runGuards(this.getPath());
+    if (canProceed !== true) {
+      if (typeof canProceed === 'object') {
+        const { redirect } = canProceed;
+        const path = parsePath(redirect);
+        this.setPath(path.segments, ROUTER_INTENT_NONE, path.queryString);
+        await this.writeNavStateRoot(path.segments, ROUTER_INTENT_NONE);
+      }
+    }
+    else {
+      await this.onRoutesChanged();
+    }
+  }
+  componentDidLoad() {
+    window.addEventListener('ionRouteRedirectChanged', Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_1__["o"])(this.onRedirectChanged.bind(this), 10));
+    window.addEventListener('ionRouteDataChanged', Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_1__["o"])(this.onRoutesChanged.bind(this), 100));
+  }
+  async onPopState() {
+    const direction = this.historyDirection();
+    let segments = this.getPath();
+    const canProceed = await this.runGuards(segments);
+    if (canProceed !== true) {
+      if (typeof canProceed === 'object') {
+        segments = parsePath(canProceed.redirect).segments;
+      }
+      else {
+        return false;
+      }
+    }
+    return this.writeNavStateRoot(segments, direction);
+  }
+  onBackButton(ev) {
+    ev.detail.register(0, processNextHandler => {
+      this.back();
+      processNextHandler();
+    });
+  }
+  /** @internal */
+  async canTransition() {
+    const canProceed = await this.runGuards();
+    if (canProceed !== true) {
+      if (typeof canProceed === 'object') {
+        return canProceed.redirect;
+      }
+      else {
+        return false;
+      }
+    }
+    return true;
+  }
+  /**
+   * Navigate to the specified URL.
+   *
+   * @param url The url to navigate to.
+   * @param direction The direction of the animation. Defaults to `"forward"`.
+   */
+  async push(url, direction = 'forward', animation) {
+    if (url.startsWith('.')) {
+      url = (new URL(url, window.location.href)).pathname;
+    }
+    let parsedPath = parsePath(url);
+    const canProceed = await this.runGuards(parsedPath.segments);
+    if (canProceed !== true) {
+      if (typeof canProceed === 'object') {
+        parsedPath = parsePath(canProceed.redirect);
+      }
+      else {
+        return false;
+      }
+    }
+    this.setPath(parsedPath.segments, direction, parsedPath.queryString);
+    return this.writeNavStateRoot(parsedPath.segments, direction, animation);
+  }
+  /**
+   * Go back to previous page in the window.history.
+   */
+  back() {
+    window.history.back();
+    return Promise.resolve(this.waitPromise);
+  }
+  /** @internal */
+  async printDebug() {
+    printRoutes(readRoutes(this.el));
+    printRedirects(readRedirects(this.el));
+  }
+  /** @internal */
+  async navChanged(direction) {
+    if (this.busy) {
+      console.warn('[ion-router] router is busy, navChanged was cancelled');
+      return false;
+    }
+    const { ids, outlet } = await readNavState(window.document.body);
+    const routes = readRoutes(this.el);
+    const chain = routerIDsToChain(ids, routes);
+    if (!chain) {
+      console.warn('[ion-router] no matching URL for ', ids.map(i => i.id));
+      return false;
+    }
+    const path = chainToPath(chain);
+    if (!path) {
+      console.warn('[ion-router] router could not match path because some required param is missing');
+      return false;
+    }
+    this.setPath(path, direction);
+    await this.safeWriteNavState(outlet, chain, ROUTER_INTENT_NONE, path, null, ids.length);
+    return true;
+  }
+  // This handler gets called when a `ion-route-redirect` component is added to the DOM or if the from or to property of such node changes.
+  onRedirectChanged() {
+    const path = this.getPath();
+    if (path && findRouteRedirect(path, readRedirects(this.el))) {
+      this.writeNavStateRoot(path, ROUTER_INTENT_NONE);
+    }
+  }
+  // This handler gets called when a `ion-route` component is added to the DOM or if the from or to property of such node changes.
+  onRoutesChanged() {
+    return this.writeNavStateRoot(this.getPath(), ROUTER_INTENT_NONE);
+  }
+  historyDirection() {
+    var _a;
+    const win = window;
+    if (win.history.state === null) {
+      this.state++;
+      win.history.replaceState(this.state, win.document.title, (_a = win.document.location) === null || _a === void 0 ? void 0 : _a.href);
+    }
+    const state = win.history.state;
+    const lastState = this.lastState;
+    this.lastState = state;
+    if (state > lastState || (state >= lastState && lastState > 0)) {
+      return ROUTER_INTENT_FORWARD;
+    }
+    if (state < lastState) {
+      return ROUTER_INTENT_BACK;
+    }
+    return ROUTER_INTENT_NONE;
+  }
+  async writeNavStateRoot(path, direction, animation) {
+    if (!path) {
+      console.error('[ion-router] URL is not part of the routing set');
+      return false;
+    }
+    // lookup redirect rule
+    const redirects = readRedirects(this.el);
+    const redirect = findRouteRedirect(path, redirects);
+    let redirectFrom = null;
+    if (redirect) {
+      const { segments, queryString } = redirect.to;
+      this.setPath(segments, direction, queryString);
+      redirectFrom = redirect.from;
+      path = segments;
+    }
+    // lookup route chain
+    const routes = readRoutes(this.el);
+    const chain = routerPathToChain(path, routes);
+    if (!chain) {
+      console.error('[ion-router] the path does not match any route');
+      return false;
+    }
+    // write DOM give
+    return this.safeWriteNavState(document.body, chain, direction, path, redirectFrom, 0, animation);
+  }
+  async safeWriteNavState(node, chain, direction, path, redirectFrom, index = 0, animation) {
+    const unlock = await this.lock();
+    let changed = false;
+    try {
+      changed = await this.writeNavState(node, chain, direction, path, redirectFrom, index, animation);
+    }
+    catch (e) {
+      console.error(e);
+    }
+    unlock();
+    return changed;
+  }
+  async lock() {
+    const p = this.waitPromise;
+    let resolve;
+    this.waitPromise = new Promise(r => resolve = r);
+    if (p !== undefined) {
+      await p;
+    }
+    return resolve;
+  }
+  // Executes the beforeLeave hook of the source route and the beforeEnter hook of the target route if they exist.
+  //
+  // When the beforeLeave hook does not return true (to allow navigating) then that value is returned early and the beforeEnter is executed.
+  // Otherwise the beforeEnterHook hook of the target route is executed.
+  async runGuards(to = this.getPath(), from) {
+    if (from === undefined) {
+      from = parsePath(this.previousPath).segments;
+    }
+    if (!to || !from) {
+      return true;
+    }
+    const routes = readRoutes(this.el);
+    const fromChain = routerPathToChain(from, routes);
+    const beforeLeaveHook = fromChain && fromChain[fromChain.length - 1].beforeLeave;
+    const canLeave = beforeLeaveHook ? await beforeLeaveHook() : true;
+    if (canLeave === false || typeof canLeave === 'object') {
+      return canLeave;
+    }
+    const toChain = routerPathToChain(to, routes);
+    const beforeEnterHook = toChain && toChain[toChain.length - 1].beforeEnter;
+    return beforeEnterHook ? beforeEnterHook() : true;
+  }
+  async writeNavState(node, chain, direction, path, redirectFrom, index = 0, animation) {
+    if (this.busy) {
+      console.warn('[ion-router] router is busy, transition was cancelled');
+      return false;
+    }
+    this.busy = true;
+    // generate route event and emit will change
+    const routeEvent = this.routeChangeEvent(path, redirectFrom);
+    if (routeEvent) {
+      this.ionRouteWillChange.emit(routeEvent);
+    }
+    const changed = await writeNavState(node, chain, direction, index, false, animation);
+    this.busy = false;
+    // emit did change
+    if (routeEvent) {
+      this.ionRouteDidChange.emit(routeEvent);
+    }
+    return changed;
+  }
+  setPath(path, direction, queryString) {
+    this.state++;
+    writePath(window.history, this.root, this.useHash, path, direction, this.state, queryString);
+  }
+  getPath() {
+    return readPath(window.location, this.root, this.useHash);
+  }
+  routeChangeEvent(path, redirectFromPath) {
+    const from = this.previousPath;
+    const to = generatePath(path);
+    this.previousPath = to;
+    if (to === from) {
+      return null;
+    }
+    const redirectedFrom = redirectFromPath ? generatePath(redirectFromPath) : null;
+    return {
+      from,
+      redirectedFrom,
+      to,
+    };
+  }
+  get el() { return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+};
+
+const routerLinkCss = ":host{--background:transparent;--color:var(--ion-color-primary, #3880ff);background:var(--background);color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}a{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit}";
+
+const RouterLink = class {
+  constructor(hostRef) {
+    Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    /**
+     * When using a router, it specifies the transition direction when navigating to
+     * another page using `href`.
+     */
+    this.routerDirection = 'forward';
+    this.onClick = (ev) => {
+      Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__["o"])(this.href, ev, this.routerDirection, this.routerAnimation);
+    };
+  }
+  render() {
+    const mode = Object(_ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this);
+    const attrs = {
+      href: this.href,
+      rel: this.rel,
+      target: this.target
+    };
+    return (Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, class: Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color, {
+        [mode]: true,
+        'ion-activatable': true
+      }) }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("a", Object.assign({}, attrs), Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null))));
+  }
+};
+RouterLink.style = routerLinkCss;
+
+
+
+
+/***/ })
+
+}]);
 //# sourceMappingURL=29-es2015.js.map

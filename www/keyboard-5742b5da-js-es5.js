@@ -1,2 +1,236 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{nGaW:function(n,t,e){"use strict";e.r(t),e.d(t,"KEYBOARD_DID_CLOSE",(function(){return o})),e.d(t,"KEYBOARD_DID_OPEN",(function(){return i})),e.d(t,"copyVisualViewport",(function(){return D})),e.d(t,"keyboardDidClose",(function(){return b})),e.d(t,"keyboardDidOpen",(function(){return p})),e.d(t,"keyboardDidResize",(function(){return w})),e.d(t,"resetKeyboardAssist",(function(){return a})),e.d(t,"setKeyboardClose",(function(){return h})),e.d(t,"setKeyboardOpen",(function(){return c})),e.d(t,"startKeyboardAssist",(function(){return s})),e.d(t,"trackViewportChanges",(function(){return y}));var i="ionKeyboardDidShow",o="ionKeyboardDidHide",r={},u={},d=!1,a=function(){r={},u={},d=!1},s=function(n){f(n),n.visualViewport&&(u=D(n.visualViewport),n.visualViewport.onresize=function(){y(n),p()||w(n)?c(n):b(n)&&h(n)})},f=function(n){n.addEventListener("keyboardDidShow",(function(t){return c(n,t)})),n.addEventListener("keyboardDidHide",(function(){return h(n)}))},c=function(n,t){g(n,t),d=!0},h=function(n){v(n),d=!1},p=function(){var n=(r.height-u.height)*u.scale;return!d&&r.width===u.width&&n>150},w=function(n){return d&&!b(n)},b=function(n){return d&&u.height===n.innerHeight},g=function(n,t){var e=t?t.keyboardHeight:n.innerHeight-u.height,o=new CustomEvent(i,{detail:{keyboardHeight:e}});n.dispatchEvent(o)},v=function(n){var t=new CustomEvent(o);n.dispatchEvent(t)},y=function(n){r=Object.assign({},u),u=D(n.visualViewport)},D=function(n){return{width:Math.round(n.width),height:Math.round(n.height),offsetTop:n.offsetTop,offsetLeft:n.offsetLeft,pageTop:n.pageTop,pageLeft:n.pageLeft,scale:n.scale}}}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["keyboard-5742b5da-js"], {
+  /***/
+  "./node_modules/@ionic/core/dist/esm/keyboard-5742b5da.js":
+  /*!****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/keyboard-5742b5da.js ***!
+    \****************************************************************/
+
+  /*! exports provided: KEYBOARD_DID_CLOSE, KEYBOARD_DID_OPEN, copyVisualViewport, keyboardDidClose, keyboardDidOpen, keyboardDidResize, resetKeyboardAssist, setKeyboardClose, setKeyboardOpen, startKeyboardAssist, trackViewportChanges */
+
+  /***/
+  function node_modulesIonicCoreDistEsmKeyboard5742b5daJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "KEYBOARD_DID_CLOSE", function () {
+      return KEYBOARD_DID_CLOSE;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "KEYBOARD_DID_OPEN", function () {
+      return KEYBOARD_DID_OPEN;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "copyVisualViewport", function () {
+      return copyVisualViewport;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "keyboardDidClose", function () {
+      return keyboardDidClose;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "keyboardDidOpen", function () {
+      return keyboardDidOpen;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "keyboardDidResize", function () {
+      return keyboardDidResize;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "resetKeyboardAssist", function () {
+      return resetKeyboardAssist;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "setKeyboardClose", function () {
+      return setKeyboardClose;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "setKeyboardOpen", function () {
+      return setKeyboardOpen;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "startKeyboardAssist", function () {
+      return startKeyboardAssist;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "trackViewportChanges", function () {
+      return trackViewportChanges;
+    });
+
+    var KEYBOARD_DID_OPEN = 'ionKeyboardDidShow';
+    var KEYBOARD_DID_CLOSE = 'ionKeyboardDidHide';
+    var KEYBOARD_THRESHOLD = 150;
+    var previousVisualViewport = {};
+    var currentVisualViewport = {};
+    var keyboardOpen = false;
+    /**
+     * This is only used for tests
+     */
+
+    var resetKeyboardAssist = function resetKeyboardAssist() {
+      previousVisualViewport = {};
+      currentVisualViewport = {};
+      keyboardOpen = false;
+    };
+
+    var startKeyboardAssist = function startKeyboardAssist(win) {
+      startNativeListeners(win);
+
+      if (!win.visualViewport) {
+        return;
+      }
+
+      currentVisualViewport = copyVisualViewport(win.visualViewport);
+
+      win.visualViewport.onresize = function () {
+        trackViewportChanges(win);
+
+        if (keyboardDidOpen() || keyboardDidResize(win)) {
+          setKeyboardOpen(win);
+        } else if (keyboardDidClose(win)) {
+          setKeyboardClose(win);
+        }
+      };
+    };
+    /**
+     * Listen for events fired by native keyboard plugin
+     * in Capacitor/Cordova so devs only need to listen
+     * in one place.
+     */
+
+
+    var startNativeListeners = function startNativeListeners(win) {
+      win.addEventListener('keyboardDidShow', function (ev) {
+        return setKeyboardOpen(win, ev);
+      });
+      win.addEventListener('keyboardDidHide', function () {
+        return setKeyboardClose(win);
+      });
+    };
+
+    var setKeyboardOpen = function setKeyboardOpen(win, ev) {
+      fireKeyboardOpenEvent(win, ev);
+      keyboardOpen = true;
+    };
+
+    var setKeyboardClose = function setKeyboardClose(win) {
+      fireKeyboardCloseEvent(win);
+      keyboardOpen = false;
+    };
+    /**
+     * Returns `true` if the `keyboardOpen` flag is not
+     * set, the previous visual viewport width equal the current
+     * visual viewport width, and if the scaled difference
+     * of the previous visual viewport height minus the current
+     * visual viewport height is greater than KEYBOARD_THRESHOLD
+     *
+     * We need to be able to accommodate users who have zooming
+     * enabled in their browser (or have zoomed in manually) which
+     * is why we take into account the current visual viewport's
+     * scale value.
+     */
+
+
+    var keyboardDidOpen = function keyboardDidOpen() {
+      var scaledHeightDifference = (previousVisualViewport.height - currentVisualViewport.height) * currentVisualViewport.scale;
+      return !keyboardOpen && previousVisualViewport.width === currentVisualViewport.width && scaledHeightDifference > KEYBOARD_THRESHOLD;
+    };
+    /**
+     * Returns `true` if the keyboard is open,
+     * but the keyboard did not close
+     */
+
+
+    var keyboardDidResize = function keyboardDidResize(win) {
+      return keyboardOpen && !keyboardDidClose(win);
+    };
+    /**
+     * Determine if the keyboard was closed
+     * Returns `true` if the `keyboardOpen` flag is set and
+     * the current visual viewport height equals the
+     * layout viewport height.
+     */
+
+
+    var keyboardDidClose = function keyboardDidClose(win) {
+      return keyboardOpen && currentVisualViewport.height === win.innerHeight;
+    };
+    /**
+     * Dispatch a keyboard open event
+     */
+
+
+    var fireKeyboardOpenEvent = function fireKeyboardOpenEvent(win, nativeEv) {
+      var keyboardHeight = nativeEv ? nativeEv.keyboardHeight : win.innerHeight - currentVisualViewport.height;
+      var ev = new CustomEvent(KEYBOARD_DID_OPEN, {
+        detail: {
+          keyboardHeight: keyboardHeight
+        }
+      });
+      win.dispatchEvent(ev);
+    };
+    /**
+     * Dispatch a keyboard close event
+     */
+
+
+    var fireKeyboardCloseEvent = function fireKeyboardCloseEvent(win) {
+      var ev = new CustomEvent(KEYBOARD_DID_CLOSE);
+      win.dispatchEvent(ev);
+    };
+    /**
+     * Given a window object, create a copy of
+     * the current visual and layout viewport states
+     * while also preserving the previous visual and
+     * layout viewport states
+     */
+
+
+    var trackViewportChanges = function trackViewportChanges(win) {
+      previousVisualViewport = Object.assign({}, currentVisualViewport);
+      currentVisualViewport = copyVisualViewport(win.visualViewport);
+    };
+    /**
+     * Creates a deep copy of the visual viewport
+     * at a given state
+     */
+
+
+    var copyVisualViewport = function copyVisualViewport(visualViewport) {
+      return {
+        width: Math.round(visualViewport.width),
+        height: Math.round(visualViewport.height),
+        offsetTop: visualViewport.offsetTop,
+        offsetLeft: visualViewport.offsetLeft,
+        pageTop: visualViewport.pageTop,
+        pageLeft: visualViewport.pageLeft,
+        scale: visualViewport.scale
+      };
+    };
+    /***/
+
+  }
+}]);
 //# sourceMappingURL=keyboard-5742b5da-js-es5.js.map

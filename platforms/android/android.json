@@ -40,12 +40,12 @@
           "/*": [
             {
               "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 7,
+              "count": 5,
               "after": "uses-permission"
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.POST_NOTIFICATIONS\" />",
-              "count": 7,
+              "count": 5,
               "after": "uses-permission"
             }
           ]

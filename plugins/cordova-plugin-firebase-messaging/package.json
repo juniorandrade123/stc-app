@@ -1,26 +1,32 @@
 {
-  "_from": "cordova-plugin-firebase-messaging@^7.0.4",
+  "_args": [
+    [
+      "cordova-plugin-firebase-messaging@7.0.4",
+      "D:\\Projetos\\arquivos\\stc-app"
+    ]
+  ],
+  "_development": true,
+  "_from": "cordova-plugin-firebase-messaging@7.0.4",
   "_id": "cordova-plugin-firebase-messaging@7.0.4",
   "_inBundle": false,
   "_integrity": "sha512-IZHX/bmDsVf3zBoLaPYxduOHmMp7FAphpQhbQ/5jbYQdPzgIOGnLR7ycxMzyRhb0KaSv6nEe5185+zvqhqahnw==",
   "_location": "/cordova-plugin-firebase-messaging",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-firebase-messaging@^7.0.4",
+    "raw": "cordova-plugin-firebase-messaging@7.0.4",
     "name": "cordova-plugin-firebase-messaging",
     "escapedName": "cordova-plugin-firebase-messaging",
-    "rawSpec": "^7.0.4",
+    "rawSpec": "7.0.4",
     "saveSpec": null,
-    "fetchSpec": "^7.0.4"
+    "fetchSpec": "7.0.4"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase-messaging/-/cordova-plugin-firebase-messaging-7.0.4.tgz",
-  "_shasum": "f96182e5594fca136ba5c3f35845f65f25443827",
-  "_spec": "cordova-plugin-firebase-messaging@^7.0.4",
+  "_spec": "7.0.4",
   "_where": "D:\\Projetos\\arquivos\\stc-app",
   "author": {
     "name": "Maksim Chemerisuk",
@@ -30,7 +36,6 @@
   "bugs": {
     "url": "https://github.com/chemerisuk/cordova-plugin-firebase-messaging/issues"
   },
-  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-firebase-messaging",
     "platforms": [
@@ -38,7 +43,6 @@
       "android"
     ]
   },
-  "deprecated": false,
   "description": "Cordova plugin for Firebase Messaging",
   "devDependencies": {
     "typedoc": "^0.23.9",

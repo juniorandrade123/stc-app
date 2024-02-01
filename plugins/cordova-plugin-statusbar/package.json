@@ -1,4 +1,11 @@
 {
+  "_args": [
+    [
+      "cordova-plugin-statusbar@3.0.0",
+      "D:\\Projetos\\arquivos\\stc-app"
+    ]
+  ],
+  "_development": true,
   "_from": "cordova-plugin-statusbar@3.0.0",
   "_id": "cordova-plugin-statusbar@3.0.0",
   "_inBundle": false,
@@ -19,8 +26,7 @@
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-statusbar/-/cordova-plugin-statusbar-3.0.0.tgz",
-  "_shasum": "371b54cef2594550118ef51c1d677c8adb3bc668",
-  "_spec": "cordova-plugin-statusbar@3.0.0",
+  "_spec": "3.0.0",
   "_where": "D:\\Projetos\\arquivos\\stc-app",
   "author": {
     "name": "Apache Software Foundation"
@@ -28,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-statusbar/issues"
   },
-  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-statusbar",
     "platforms": [
@@ -37,7 +42,6 @@
       "windows"
     ]
   },
-  "deprecated": false,
   "description": "Cordova StatusBar Plugin",
   "devDependencies": {
     "@cordova/eslint-config": "^4.0.0"

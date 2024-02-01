@@ -1,4 +1,11 @@
 {
+  "_args": [
+    [
+      "cordova-plugin-device@2.1.0",
+      "D:\\Projetos\\arquivos\\stc-app"
+    ]
+  ],
+  "_development": true,
   "_from": "cordova-plugin-device@2.1.0",
   "_id": "cordova-plugin-device@2.1.0",
   "_inBundle": false,
@@ -19,8 +26,7 @@
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-device/-/cordova-plugin-device-2.1.0.tgz",
-  "_shasum": "ef2292c2f0a34d01b5aca6c39cf204e48a460fb2",
-  "_spec": "cordova-plugin-device@2.1.0",
+  "_spec": "2.1.0",
   "_where": "D:\\Projetos\\arquivos\\stc-app",
   "author": {
     "name": "Apache Software Foundation"
@@ -28,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-device/issues"
   },
-  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-device",
     "platforms": [
@@ -40,7 +45,6 @@
       "osx"
     ]
   },
-  "deprecated": false,
   "description": "Cordova Device Plugin",
   "devDependencies": {
     "@cordova/eslint-config": "^3.0.0"

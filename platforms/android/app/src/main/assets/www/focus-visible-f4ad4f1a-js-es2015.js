@@ -1,2 +1,61 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{Tsnu:function(e,s,t){"use strict";t.r(s),t.d(s,"startFocusVisible",(function(){return n}));const o=["Tab","ArrowDown","Space","Escape"," ","Shift","Enter","ArrowLeft","ArrowRight","ArrowUp"],n=()=>{let e=[],s=!0;const t=document,n=s=>{e.forEach(e=>e.classList.remove("ion-focused")),s.forEach(e=>e.classList.add("ion-focused")),e=s},c=()=>{s=!1,n([])};t.addEventListener("keydown",e=>{s=o.includes(e.key),s||n([])}),t.addEventListener("focusin",e=>{if(s&&e.composedPath){const s=e.composedPath().filter(e=>!!e.classList&&e.classList.contains("ion-focusable"));n(s)}}),t.addEventListener("focusout",()=>{t.activeElement===t.body&&n([])}),t.addEventListener("touchstart",c),t.addEventListener("mousedown",c)}}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["focus-visible-f4ad4f1a-js"],{
+
+/***/ "./node_modules/@ionic/core/dist/esm/focus-visible-f4ad4f1a.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/focus-visible-f4ad4f1a.js ***!
+  \*********************************************************************/
+/*! exports provided: startFocusVisible */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startFocusVisible", function() { return startFocusVisible; });
+const ION_FOCUSED = 'ion-focused';
+const ION_FOCUSABLE = 'ion-focusable';
+const FOCUS_KEYS = ['Tab', 'ArrowDown', 'Space', 'Escape', ' ', 'Shift', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp'];
+const startFocusVisible = () => {
+  let currentFocus = [];
+  let keyboardMode = true;
+  const doc = document;
+  const setFocus = (elements) => {
+    currentFocus.forEach(el => el.classList.remove(ION_FOCUSED));
+    elements.forEach(el => el.classList.add(ION_FOCUSED));
+    currentFocus = elements;
+  };
+  const pointerDown = () => {
+    keyboardMode = false;
+    setFocus([]);
+  };
+  doc.addEventListener('keydown', ev => {
+    keyboardMode = FOCUS_KEYS.includes(ev.key);
+    if (!keyboardMode) {
+      setFocus([]);
+    }
+  });
+  doc.addEventListener('focusin', ev => {
+    if (keyboardMode && ev.composedPath) {
+      const toFocus = ev.composedPath().filter((el) => {
+        if (el.classList) {
+          return el.classList.contains(ION_FOCUSABLE);
+        }
+        return false;
+      });
+      setFocus(toFocus);
+    }
+  });
+  doc.addEventListener('focusout', () => {
+    if (doc.activeElement === doc.body) {
+      setFocus([]);
+    }
+  });
+  doc.addEventListener('touchstart', pointerDown);
+  doc.addEventListener('mousedown', pointerDown);
+};
+
+
+
+
+/***/ })
+
+}]);
 //# sourceMappingURL=focus-visible-f4ad4f1a-js-es2015.js.map

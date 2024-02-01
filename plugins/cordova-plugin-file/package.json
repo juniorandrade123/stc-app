@@ -1,26 +1,32 @@
 {
-  "_from": "cordova-plugin-file@^7.0.0",
+  "_args": [
+    [
+      "cordova-plugin-file@7.0.0",
+      "D:\\Projetos\\arquivos\\stc-app"
+    ]
+  ],
+  "_development": true,
+  "_from": "cordova-plugin-file@7.0.0",
   "_id": "cordova-plugin-file@7.0.0",
   "_inBundle": false,
   "_integrity": "sha512-mSwy9GE5pHq2ZHhu/wYk/VhrwR5VLk+XQsk3+IiiFmDgcPsrVIyELkM2FZKX09cC6i+bJVTFVKUlwteSStj3ow==",
   "_location": "/cordova-plugin-file",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-file@^7.0.0",
+    "raw": "cordova-plugin-file@7.0.0",
     "name": "cordova-plugin-file",
     "escapedName": "cordova-plugin-file",
-    "rawSpec": "^7.0.0",
+    "rawSpec": "7.0.0",
     "saveSpec": null,
-    "fetchSpec": "^7.0.0"
+    "fetchSpec": "7.0.0"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-file/-/cordova-plugin-file-7.0.0.tgz",
-  "_shasum": "40e72468e09439c402c81ff063d6ee74fffd763a",
-  "_spec": "cordova-plugin-file@^7.0.0",
+  "_spec": "7.0.0",
   "_where": "D:\\Projetos\\arquivos\\stc-app",
   "author": {
     "name": "Apache Software Foundation"
@@ -28,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-file/issues"
   },
-  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-file",
     "platforms": [
@@ -39,7 +44,6 @@
       "windows"
     ]
   },
-  "deprecated": false,
   "description": "Cordova File Plugin",
   "devDependencies": {
     "@cordova/eslint-config": "^3.0.0"

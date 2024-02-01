@@ -1,4 +1,11 @@
 {
+  "_args": [
+    [
+      "cordova-plugin-ionic-keyboard@2.2.0",
+      "D:\\Projetos\\arquivos\\stc-app"
+    ]
+  ],
+  "_development": true,
   "_from": "cordova-plugin-ionic-keyboard@2.2.0",
   "_id": "cordova-plugin-ionic-keyboard@2.2.0",
   "_inBundle": false,
@@ -19,8 +26,7 @@
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-keyboard/-/cordova-plugin-ionic-keyboard-2.2.0.tgz",
-  "_shasum": "53ba9ccd5e765165446a094cfe042a2ddd87d81d",
-  "_spec": "cordova-plugin-ionic-keyboard@2.2.0",
+  "_spec": "2.2.0",
   "_where": "D:\\Projetos\\arquivos\\stc-app",
   "author": {
     "name": "Apache Software Foundation"
@@ -28,8 +34,6 @@
   "bugs": {
     "url": "https://github.com/ionic-team/cordova-plugin-ionic-keyboard/issues"
   },
-  "bundleDependencies": false,
-  "deprecated": false,
   "description": "Ionic Keyboard Plugin",
   "devDependencies": {
     "np": "^5.0.3",

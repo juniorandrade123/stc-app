@@ -1,26 +1,32 @@
 {
-  "_from": "cordova-plugin-advanced-http@^3.3.1",
+  "_args": [
+    [
+      "cordova-plugin-advanced-http@3.3.1",
+      "D:\\Projetos\\arquivos\\stc-app"
+    ]
+  ],
+  "_development": true,
+  "_from": "cordova-plugin-advanced-http@3.3.1",
   "_id": "cordova-plugin-advanced-http@3.3.1",
   "_inBundle": false,
   "_integrity": "sha512-hESuB3mxIHCUrzb5lm7juda6PSNcC5N8Invizj5wGV2rSldCapiNxMTEpzKR1UVPDDP2XOtBzO0SAYS+3+g/ig==",
   "_location": "/cordova-plugin-advanced-http",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-advanced-http@^3.3.1",
+    "raw": "cordova-plugin-advanced-http@3.3.1",
     "name": "cordova-plugin-advanced-http",
     "escapedName": "cordova-plugin-advanced-http",
-    "rawSpec": "^3.3.1",
+    "rawSpec": "3.3.1",
     "saveSpec": null,
-    "fetchSpec": "^3.3.1"
+    "fetchSpec": "3.3.1"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-advanced-http/-/cordova-plugin-advanced-http-3.3.1.tgz",
-  "_shasum": "903143a9aae3577cdbb6953fbe482902983b9237",
-  "_spec": "cordova-plugin-advanced-http@^3.3.1",
+  "_spec": "3.3.1",
   "_where": "D:\\Projetos\\arquivos\\stc-app",
   "author": {
     "name": "Wymsee"
@@ -28,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/silkimen/cordova-plugin-advanced-http/issues"
   },
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "devgeeks"
@@ -65,7 +70,6 @@
       "android"
     ]
   },
-  "deprecated": false,
   "description": "Cordova / Phonegap plugin for communicating with HTTP servers using SSL pinning",
   "devDependencies": {
     "chai": "4.3.6",
